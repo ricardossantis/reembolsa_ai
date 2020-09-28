@@ -1,5 +1,16 @@
 import React from "react";
 import { Form, Input, Select, Button, DatePicker, InputNumber } from "antd";
+import styled from "styled-components";
+import {
+  StyledTriagle1,
+  StyledTriagle2,
+  StyledAside,
+  StyledInput,
+  StyledForm,
+  StyledConfirmButton,
+  StyledButton,
+  StyledH1,
+} from "./styled-refound";
 
 const layout = {
   labelCol: {
@@ -12,19 +23,12 @@ const layout = {
 
 const { Option } = Select;
 
-function onChange(value) {
-  console.log("changed", value);
-}
-
 const RefoundRequest = () => {
-  const onFinish = (values) => {
-    console.log(values);
-  };
-
   return (
     <div>
-      <h1>Novo Reembolso</h1>
-      <Form {...layout} name="nest-messages" onFinish={onFinish}>
+      <StyledForm {...layout} name="nest-messages">
+        <StyledH1>Novo Reembolso</StyledH1>
+
         <Form.Item label="Categoria">
           <Input.Group compact>
             <Form.Item
@@ -43,14 +47,13 @@ const RefoundRequest = () => {
           </Input.Group>
         </Form.Item>
 
-        <Form.Item>
+        <Form.Item label="Valor">
           <InputNumber
             defaultValue={0}
             formatter={(value) =>
-              `$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              `R$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
             parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
-            onChange={onChange}
           />
         </Form.Item>
 
@@ -59,20 +62,55 @@ const RefoundRequest = () => {
         </Form.Item>
 
         <Form.Item name={["user", "introduction"]} label="Descrição">
-          <Input.TextArea />
+          <StyledInput />
         </Form.Item>
 
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <Button type="primary" htmlType="submit">
-            Cancelar
-          </Button>
-          <Button type="primary" htmlType="submit">
-            Enviar
-          </Button>
+          <StyledButton type="primary" htmlType="submit">
+            <StyledTriagle1 />
+          </StyledButton>
+          <StyledButton type="primary" htmlType="submit">
+            <StyledTriagle2 />
+          </StyledButton>
         </Form.Item>
-      </Form>
+      </StyledForm>
     </div>
   );
 };
 
 export default RefoundRequest;
+
+const StyledRefound = styled.div`
+  /* width: 100% */
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  justify-content: space-between;
+  margin-top: 2%;
+  margin-right: 5%;
+  float: right;
+  // width: 23vw;
+  // height: 40vw;
+  // @media (min-width: 300px) and (max-width: 500px){
+  //   width: 100%;
+  // }
+`;
+const StyledFormRefound = styled(StyledRefound)`
+  display: flex;
+  flex-direction: row;
+  @media (min-width: 501px) and (max-width: 800px) {
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 100vw;
+    margin-left: 0%;
+    margin-top: 20%;
+  }
+
+  @media (min-width: 319px) and (max-width: 500px) {
+    margin: 20%;
+    flex-direction: column;
+    top: -50%;
+    left: 15%;
+  }
+`;

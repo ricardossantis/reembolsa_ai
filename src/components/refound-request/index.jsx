@@ -1,14 +1,13 @@
 import React from "react";
-import { Form, Input, Select, Button, DatePicker, InputNumber } from "antd";
+import { Form, Input, Select, DatePicker, InputNumber } from "antd";
 import styled from "styled-components";
+import { CloseCircleOutlined, CheckCircleOutlined } from "@ant-design/icons";
 import {
-  StyledTriagle1,
-  StyledTriagle2,
-  StyledAside,
+  StyledNumber,
   StyledInput,
   StyledForm,
+  StyledDenyButton,
   StyledConfirmButton,
-  StyledButton,
   StyledH1,
 } from "./styled-refound";
 
@@ -47,31 +46,31 @@ const RefoundRequest = () => {
           </Input.Group>
         </Form.Item>
 
-        <Form.Item label="Valor">
+        <Form.Item label="Valor R$">
           <InputNumber
-            defaultValue={0}
+            defaultValue={"0"}
             formatter={(value) =>
-              `R$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
+              ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
             parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
           />
         </Form.Item>
-
-        <Form.Item label="Data">
-          <DatePicker />
-        </Form.Item>
-
+        <StyledData>
+          <Form.Item label="Data">
+            <DatePicker />
+          </Form.Item>
+        </StyledData>
         <Form.Item name={["user", "introduction"]} label="Descrição">
           <StyledInput />
         </Form.Item>
 
         <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <StyledButton type="primary" htmlType="submit">
-            <StyledTriagle1 />
-          </StyledButton>
-          <StyledButton type="primary" htmlType="submit">
-            <StyledTriagle2 />
-          </StyledButton>
+          <StyledDenyButton type="primary" htmlType="submit">
+            <CloseCircleOutlined />
+          </StyledDenyButton>
+          <StyledConfirmButton type="primary" htmlType="submit">
+            <CheckCircleOutlined />
+          </StyledConfirmButton>
         </Form.Item>
       </StyledForm>
     </div>
@@ -80,37 +79,6 @@ const RefoundRequest = () => {
 
 export default RefoundRequest;
 
-const StyledRefound = styled.div`
-  /* width: 100% */
-  display: flex;
-  position: relative;
-  flex-direction: column;
-  justify-content: space-between;
-  margin-top: 2%;
-  margin-right: 5%;
-  float: right;
-  // width: 23vw;
-  // height: 40vw;
-  // @media (min-width: 300px) and (max-width: 500px){
-  //   width: 100%;
-  // }
-`;
-const StyledFormRefound = styled(StyledRefound)`
-  display: flex;
-  flex-direction: row;
-  @media (min-width: 501px) and (max-width: 800px) {
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 100vw;
-    margin-left: 0%;
-    margin-top: 20%;
-  }
-
-  @media (min-width: 319px) and (max-width: 500px) {
-    margin: 20%;
-    flex-direction: column;
-    top: -50%;
-    left: 15%;
-  }
+const StyledData = styled.div`
+  margin-left: 5px;
 `;

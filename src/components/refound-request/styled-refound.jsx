@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Form, Input } from "antd";
+import { Form, DatePicker } from "antd";
 
 const StyledAside = styled.aside`
   height: 100vh;
@@ -14,7 +14,7 @@ const StyledAside = styled.aside`
   }
 `;
 
-const StyledButton = styled.button`
+const StyledButton1 = styled.button`
   border: none;
   background-color: transparent;
   padding-top: 6px;
@@ -35,7 +35,7 @@ const StyledButton = styled.button`
   }
 `;
 
-const StyledConfirmButton = styled(StyledButton)`
+const StyledDenyButton = styled(StyledButton1)`
   margin-top: 40%;
   @media (min-width: 351px) and (max-width: 800px) {
     width: 80vw;
@@ -46,29 +46,46 @@ const StyledConfirmButton = styled(StyledButton)`
   }
 `;
 
-const StyledTriagle1 = styled.div`
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #eb5757;
+const StyledButton2 = styled.button`
+  border: none;
+  background-color: transparent;
+  padding-top: 6px;
+  padding-bottom: 6px;
+  padding-left: 10px;
+  padding-right: 10px;
+  margin-top: 30px;
+  text-align: center;
+  @media (min-width: 501px) and (max-width: 800px) {
+    width: 25%;
+    margin-left: 45%;
+    margin-top: 3%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 25%;
+    margin-left: -30%;
+    margin-top: 3%;
+  }
 `;
 
-const StyledTriagle2 = styled.div`
-  width: 0;
-  height: 0;
-  border-left: 25px solid transparent;
-  border-right: 25px solid transparent;
-  border-bottom: 50px solid #6fcf97;
+const StyledConfirmButton = styled(StyledButton2)`
+  margin-top: 40%;
+  @media (min-width: 351px) and (max-width: 800px) {
+    width: 80vw;
+    align-self: center;
+    text-align: center;
+    margin-top: 35%;
+    margin-left: 10%;
+  }
 `;
 
-const StyledInput = styled(Input)`
+const StyledInput = styled.input`
   margin-left: 5px;
 `;
 
 const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
+  width: 200vh;
   height: 10vh;
   margin-bottom: 40%;
 
@@ -78,9 +95,7 @@ const StyledForm = styled(Form)`
 `;
 
 const StyledH1 = styled.h1`
-  width: 23vw;
   text-align: center;
-  height: 25vh;
   display: flex;
   @media screen and (max-width: 800px) {
     text-align: center;
@@ -91,13 +106,16 @@ const StyledH1 = styled.h1`
   }
 `;
 
+const StyledNumber = styled.input`
+  margin-left: 5px;
+`;
+
 export {
-  StyledTriagle1,
-  StyledTriagle2,
+  StyledNumber,
   StyledAside,
   StyledInput,
   StyledForm,
+  StyledDenyButton,
   StyledConfirmButton,
-  StyledButton,
   StyledH1,
 };

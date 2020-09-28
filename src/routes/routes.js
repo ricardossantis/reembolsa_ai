@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
+import CadastroGerente from "../componets/cadastro-gerente/index";
 
 const Routes = () => {
   let history = useHistory();
@@ -49,7 +50,7 @@ const Routes = () => {
             <div>Login</div>
           </Route>
           <Route exact path="/cadastro">
-            <div>cadastro</div>
+            <CadastroGerente />
           </Route>
         </Switch>
       );

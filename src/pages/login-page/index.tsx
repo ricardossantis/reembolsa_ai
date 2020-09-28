@@ -10,11 +10,11 @@ import StyledInputPassword from "../../components/styled-input-password/index";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 const { Option } = DefaultSelect;
-function App() {
-  const onFinish = (values:any) => {
+const LoginPage = () => {
+  const onFinish = (values: any) => {
     console.log("Success:", values);
   };
-  const onFinishFailed = (errorInfo:any) => {
+  const onFinishFailed = (errorInfo: any) => {
     console.log("Failed:", errorInfo);
   };
   return (
@@ -22,7 +22,8 @@ function App() {
       <DefaultForm onFinish={onFinish} onFinishFailed={onFinishFailed}>
         <DefaultH1>Área de login</DefaultH1>
         <DefaultLabel>Gerente ou colaborador</DefaultLabel>
-        <DefaultFormItem name="categoria"
+        <DefaultFormItem
+          name="categoria"
           rules={[
             {
               required: true,
@@ -56,8 +57,8 @@ function App() {
               message: "Por favor insira uma senha",
             },
             {
-              min:6,
-              message:"Verifique sua senha"
+              min: 6,
+              message: "Verifique sua senha",
             },
           ]}
         >
@@ -71,6 +72,6 @@ function App() {
       </DefaultForm>
     </StyledContent>
   );
-}
+};
 
-export default App;
+export default LoginPage;

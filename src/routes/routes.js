@@ -3,7 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
-
+import LoginPage from "../pages/login-page/index"
 const Routes = () => {
   let history = useHistory();
   const [role, setRole] = useState("none");
@@ -46,7 +46,7 @@ const Routes = () => {
             <div>Home</div>
           </Route>
           <Route exact path="/login">
-            <div>Login</div>
+            <LoginPage/>
           </Route>
           <Route exact path="/cadastro">
             <div>cadastro</div>

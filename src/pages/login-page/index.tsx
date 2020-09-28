@@ -1,21 +1,20 @@
 import React from "react";
-import "./App.css";
-import DefaultForm from "./components/default-form";
-import DefaultFormItem from "./components/default-form-item";
-import DefaultInput from "./components/default-input";
-import DefaultH1 from "./components/defaultH1/index";
-import DefaultSelect from "./components/default-select/index";
-import DefaultLabel from "./components/default-label/index";
-import StyledContent from "./components/styled-content/index";
+import DefaultForm from "../../components/default-form/index";
+import DefaultFormItem from "../../components/default-form-item/index";
+import DefaultInput from "../../components/default-input/index";
+import DefaultH1 from "../../components/defaultH1/index";
+import DefaultSelect from "../../components/default-select/index";
+import DefaultLabel from "../../components/default-label/index";
+import StyledContent from "../../components/styled-content/index";
+import StyledInputPassword from "../../components/styled-input-password/index";
 import { Button } from "antd";
 import "antd/dist/antd.css";
-import StyledInputPassword from "./components/styled-input-password";
 const { Option } = DefaultSelect;
 function App() {
-  const onFinish = (values) => {
+  const onFinish = (values:any) => {
     console.log("Success:", values);
   };
-  const onFinishFailed = (errorInfo) => {
+  const onFinishFailed = (errorInfo:any) => {
     console.log("Failed:", errorInfo);
   };
   return (

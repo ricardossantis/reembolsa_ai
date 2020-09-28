@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
+import ManagerHistory from "../pages/manager-history";
 
 const Routes = () => {
   let history = useHistory();
@@ -43,7 +44,7 @@ const Routes = () => {
       return (
         <Switch>
           <Route exact path="/">
-            <div>Home</div>
+            <ManagerHistory />
           </Route>
           <Route exact path="/login">
             <div>Login</div>

@@ -1,0 +1,137 @@
+{
+  "users": [
+    {
+      "email": "edson@kenzieacademybrasil.com.br",
+      "password": "$2a$10$NQBQurNDqfKj1zEpjgsX2OWEr3SaTbjL1kUAQbTu5PMZa/hlKhN6G",
+      "id": 1,
+      "full-name": "edson",
+      "user": "edson",
+      "access-level": 1,
+      "company": "kenzie academy brasil",
+      "roll": "Scrum master"
+    },
+    {
+      "email": "pamella@kenzieacademybrasil.com.br",
+      "password": "$2a$10$doAHGHlomdeOBOwAOjiXYejjS.oJD1urAKkM7JUcABryJ6yp6aso2",
+      "id": 2,
+      "full-name": "pamella",
+      "user": "pamella",
+      "access-level": 2,
+      "company": "kenzie academy brasil",
+      "roll": "Human Resources Analyst"
+    }
+  ],
+  "refunds": [
+    {
+      "category": "alimentacao",
+      "value": 85.95,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "id": 1
+    },
+    {
+      "category": "alimentacao",
+      "value": 85.95,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "id": 9
+    },
+    {
+      "category": "combustivel",
+      "value": 185.95,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "id": 10
+    },
+    {
+      "category": "farmacia",
+      "value": 97.94,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 2,
+      "id": 11
+    },
+    {
+      "category": "hotel",
+      "value": 385.9,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "id": 12
+    },
+    {
+      "category": "transporte",
+      "value": 90.6,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 2,
+      "id": 13
+    }
+  ],
+  "feedback-refund": [
+    {
+      "category": "transporte",
+      "value": 90.6,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 2,
+      "status": "aproved"
+    },
+    {
+      "category": "alimentacao",
+      "value": 85.95,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "id": 1,
+      "status": "aproved"
+    },
+    {
+      "category": "alimentacao",
+      "value": 85.95,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "status": "pending",
+      "id": 2
+    },
+    {
+      "category": "combustivel",
+      "value": 185.95,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "status": "pending",
+      "id": 3
+    },
+    {
+      "category": "farmacia",
+      "value": 97.94,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 2,
+      "status": "aproved",
+      "id": 4
+    },
+    {
+      "category": "hotel",
+      "value": 385.9,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 1,
+      "status": "pending",
+      "id": 5
+    },
+    {
+      "category": "transporte",
+      "value": 90.6,
+      "date": 25022020,
+      "description": "Lorem ipsum dolor sit amet",
+      "userId": 2,
+      "status": "aproved",
+      "id": 6
+    }
+  ]
+}

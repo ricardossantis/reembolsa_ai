@@ -9,7 +9,7 @@ import Home from "../pages/home";
 
 const Routes = () => {
   let history = useHistory();
-  const [role, setRole] = useState("manager");
+  const [role, setRole] = useState("none");
 
   switch (role) {
     case "manager":

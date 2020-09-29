@@ -29,6 +29,9 @@ export const ZLink = styled(Link)`
     color: #2cd3b5;
   }
 `;
+export const MLink = styled(Link)`
+  color: #ffffff;
+`;
 
 export const Hamburguer = styled(MenuOutlined)`
   margin-right: 1.5rem;
@@ -47,7 +50,6 @@ export const MenuItem = styled(Menu.Item)`
   font-size: 24px;
 
   :hover {
-    background-color: #f5f5f5;
-    color: #365083;
+    background-color: #2CD3B5;
   }
 `;

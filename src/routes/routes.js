@@ -3,57 +3,103 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
-import Home from "../components/home";
+import Header from "../components/header";
+import Button from "../components/home-button";
+import Home from "../pages/home";
 
 const Routes = () => {
   let history = useHistory();
-  const [role, setRole] = useState("none");
+  const [role, setRole] = useState("manager");
 
   switch (role) {
     case "manager":
       return (
-        <Switch>
-          <Route path="/novocolaborador">
-            <div>novocolaborador</div>
-          </Route>
-          <Route path="/pedidospendentes">
-            <div>pedidospendentes</div>
-          </Route>
-          <Route path="/historico">
-            <div>historicogerente</div>
-          </Route>
-        </Switch>
+        <>
+          <Header
+            maxColor="#365083"
+            minColor="F5F5F5"
+            burguerColor="#365083"
+            title1="Novo colaborador"
+            title2="Pedidos pendentes"
+            title3="Histórico"
+            exit="Sair"
+            logout={() => setRole("none")}
+            link1="/novocolaborador"
+            link2="/pedidospendentes"
+            link3="/historico"
+          />
+          <Switch>
+            <Route path="/novocolaborador">
+              <div>novocolaborador</div>
+            </Route>
+            <Route path="/pedidospendentes">
+              <div>pedidospendentes</div>
+            </Route>
+            <Route path="/historico">
+              <div>historicogerente</div>
+            </Route>
+          </Switch>
+        </>
       );
 
     case "employee":
       return (
-        <Switch>
-          <Route path="/novopedido">
-            <div>novopedido</div>
-          </Route>
-          <Route path="/pedidospendentes">
-            <div>saldo</div>
-          </Route>
-          <Route path="/historico">
-            <div>historicocolaborador</div>
-          </Route>
-        </Switch>
+        <>
+          <Header
+            maxColor="#365083"
+            minColor="F5F5F5"
+            burguerColor="#365083"
+            title1="Novo pedido"
+            title2="Saldo"
+            title3="Histórico"
+            exit="Sair"
+            logout={() => setRole("none")}
+            link1="/novopedido"
+            link2="/saldo"
+            link3="/historico"
+          />
+          <Switch>
+            <Route path="/novopedido">
+              <div>novopedido</div>
+            </Route>
+            <Route path="/saldo">
+              <div>saldo</div>
+            </Route>
+            <Route path="/historico">
+              <div>historicocolaborador</div>
+            </Route>
+          </Switch>
+        </>
       );
 
     case "none":
       return (
-        <Switch>
-          <Route exact path="/">
-            <Home />
-            <div>Home</div>
-          </Route>
-          <Route exact path="/login">
-            <div>Login</div>
-          </Route>
-          <Route exact path="/cadastro">
-            <div>cadastro</div>
-          </Route>
-        </Switch>
+        <>
+          <Header
+            maxColor="#365083"
+            minColor="#365083"
+            burguerColor="#FFFFFF"
+            title1="Cadastro"
+            title2="Login"
+            title3="Contato"
+            link1="/cadastro"
+            link2="/login"
+            link3="contato"
+            homeButton={<Button bckButton="#2cbfd3" />}
+          />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+              <div>Home</div>
+            </Route>
+            <Route exact path="/login">
+              <div>Login</div>
+            </Route>
+            <Route exact path="/cadastro">
+              <div>cadastro</div>
+            </Route>
+          </Switch>
+        </>
       );
 
     default:

@@ -1,17 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import styled from "styled-components";
 
 const Button = (props) => {
   return (
-    <ZButton style={{ backgroundColor: props.bckButton }}>
-      Quero participar
-    </ZButton>
+    <Link to="/cadastro">
+      <ZButton style={{ backgroundColor: props.bckButton }}>
+        Quero participar
+      </ZButton>
+    </Link>
   );
 };
 
 export default Button;
 
 const ZButton = styled.button`
+  cursor: pointer;
   width: 200px;
   height: 35px;
   left: 1186px;

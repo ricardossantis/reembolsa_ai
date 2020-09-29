@@ -6,6 +6,7 @@ import {
   MaxHeader,
   MinHeader,
   ZLink,
+  MLink,
   Hamburguer,
   ZMenu,
   MenuItem,
@@ -16,14 +17,20 @@ const Header = (props) => {
 
   const menuHamburguer = (
     <ZMenu>
-      <MenuItem key="1" onClick={props.onClick1}>
-        {props.title1}
+      <MenuItem key="1">
+        <ZLink to={props.link1} style={{ color: "#FFFFFF" }}>
+          {props.title1}
+        </ZLink>
       </MenuItem>
-      <MenuItem key="2" onClick={props.onClick2}>
-        {props.title2}
+      <MenuItem key="2">
+        <MLink to={props.link2} style={{ color: "#FFFFFF" }}>
+          {props.title2}
+        </MLink>
       </MenuItem>
-      <MenuItem key="3" onClick={props.onClick3}>
-        {props.title3}
+      <MenuItem key="3">
+        <MLink to={props.link3} style={{ color: "#FFFFFF" }}>
+          {props.title3}
+        </MLink>
       </MenuItem>
     </ZMenu>
   );
@@ -33,10 +40,10 @@ const Header = (props) => {
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           <ZLink>{props.logo || props.input}</ZLink>
-          <ZLink onClick={props.onClick1}>{props.title1}</ZLink>
-          <ZLink onClick={props.onClick2}>{props.title2}</ZLink>
-          <ZLink onClick={props.onClick3}>{props.title3}</ZLink>
-          <ZLink>{props.exit || props.homeButton}</ZLink>
+          <ZLink to={props.link1}>{props.title1}</ZLink>
+          <ZLink to={props.link2}>{props.title2}</ZLink>
+          <ZLink to={props.link3}>{props.title3}</ZLink>
+          <ZLink onClick={props.logout}>{props.exit || props.homeButton}</ZLink>
         </MaxHeader>
       )) || (
         <MinHeader style={{ backgroundColor: props.minColor }}>

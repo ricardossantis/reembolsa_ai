@@ -1,8 +1,14 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import styled from "styled-components";
-import { Menu, Dropdown, message } from "antd";
-import { DownOutlined, MenuOutlined } from "@ant-design/icons";
+import { Dropdown } from "antd";
+import {
+  MaxHeader,
+  MinHeader,
+  ZLink,
+  Hamburguer,
+  ZMenu,
+  MenuItem,
+} from "./header-style.js";
 
 const useWindowSize = () => {
   const initialState = {
@@ -67,52 +73,3 @@ const Header = (props) => {
 };
 
 export default Header;
-
-const MaxHeader = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-  width: 100%;
-  height: 97px;
-  color: #ffffff;
-  font-size: 24px;
-`;
-
-const MinHeader = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-  align-items: center;
-  width: 100%;
-  height: 97px;
-`;
-
-const ZLink = styled(Link)`
-  color: #ffffff;
-  :hover {
-    color: #2cd3b5;
-  }
-`;
-
-const Hamburguer = styled(MenuOutlined)`
-  margin-right: 1.5rem;
-  font-size: 3rem;
-  :hover {
-    color: #2cd3b5;
-  }
-`;
-const ZMenu = styled(Menu)`
-  background-color: #365083;
-`;
-
-const MenuItem = styled(Menu.Item)`
-  padding: 1.5rem;
-  color: #ffffff;
-  font-size: 24px;
-
-  :hover {
-    background-color: #f5f5f5;
-    color: #365083;
-  }
-`;

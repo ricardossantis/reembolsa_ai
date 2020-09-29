@@ -3,6 +3,7 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
+import Home from "../components/home";
 
 const Routes = () => {
   let history = useHistory();
@@ -43,6 +44,7 @@ const Routes = () => {
       return (
         <Switch>
           <Route exact path="/">
+            <Home />
             <div>Home</div>
           </Route>
           <Route exact path="/login">

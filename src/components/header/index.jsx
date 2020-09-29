@@ -1,5 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
+import { useWindowSize } from "./hookWindowSize.js";
 import { Dropdown } from "antd";
 import {
   MaxHeader,
@@ -10,32 +11,10 @@ import {
   MenuItem,
 } from "./header-style.js";
 
-const useWindowSize = () => {
-  const initialState = {
-    width: 0,
-    height: 0,
-  };
-
-  const [windowSize, setWindowSize] = useState(initialState);
-
-  useEffect(() => {
-    const handleSize = () => {
-      setWindowSize({
-        width: window.innerWidth,
-        height: window.innerHeight,
-      });
-    };
-    window.addEventListener("resize", handleSize);
-    handleSize();
-    return () => window.removeEventListener("resize", handleSize);
-  }, []);
-  return windowSize;
-};
-
 const Header = (props) => {
   const width = useWindowSize().width;
 
-  const menu = (
+  const menuHamburguer = (
     <ZMenu>
       <MenuItem key="1" onClick={props.onClick1}>
         {props.title1}
@@ -61,7 +40,7 @@ const Header = (props) => {
         </MaxHeader>
       )) || (
         <MinHeader style={{ backgroundColor: props.minColor }}>
-          <Dropdown overlay={menu}>
+          <Dropdown overlay={menuHamburguer}>
             <Link onClick={(e) => e.preventDefault()}>
               <Hamburguer style={{ color: props.burguerColor }} />
             </Link>

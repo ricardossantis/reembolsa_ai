@@ -1,10 +1,10 @@
-import React, { Fragment } from "react";
+import React from "react";
 import Button from "../../components/home-button";
 import ClientCard from "../../components/card-feed";
 const Home = () => {
   return (
     <>
-      <ClientCard />{" "}
+      <ClientCard />
     </>
   );
 };

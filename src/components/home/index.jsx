@@ -1,5 +1,6 @@
 import React from "react";
 import Header from "../../components/header";
+import Button from "../../components/home-button";
 const Home = () => {
   return (
     <>
@@ -13,7 +14,10 @@ const Home = () => {
         onClick1={() => console.log("rota cadastro")}
         onClick2={() => console.log("rota login")}
         onClick3={() => console.log("rota contato")}
+        homeButton={<Button bckButton="#2cbfd3"/>}
       />
+      <br />
+    
     </>
   );
 };

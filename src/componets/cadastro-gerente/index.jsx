@@ -1,57 +1,122 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { Form, Input, Button } from "antd";
+import {Titulo, Container} from './styledCadastro';
 
-const CadastroGerente = () => {
-    const layout = {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 16 },
+const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 8,
+      span: 16,
+    },
+  };
+  
+  const CadastroGerente = () => {
+    const onFinish = (values) => {
+      console.log('Success:', values);
     };
-    const tailLayout = {
-        wrapperCol: { offset: 8, span: 16 },
+  
+    const onFinishFailed = (errorInfo) => {
+      console.log('Failed:', errorInfo);
     };
+  
+    return (
+        <Container>
+        <Titulo>Cadastro</Titulo>
+      <Form
+        {...layout}
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <Form.Item
+          label="Nome Completo"
+          name="nomeCompleto"
+          rules={[
+            {
+              required: true,
+              message: 'Digite seu nome completo',
+            },
+          ]}
+        >
+          <Input placeholder="Nome Completo"/>
+        </Form.Item>
+        <Form.Item
+          label="Usuário"
+          name="usuario"
+          rules={[
+            {
+              required: true,
+              message: 'Digite seu nome de usuário',
+            },
+          ]}
+        >
+          <Input placeholder="Usuário"/>
+        </Form.Item>
 
-    const Demo = () => {
-        const onFinish = values => {
-            console.log('Success:', values);
-        };
+        <Form.Item
+          label="Empresa"
+          name="empresa"
+          rules={[
+            {
+              required: true,
+              message: 'Digite o nome da sua empresa',
+            },
+          ]}
+        >
+          <Input placeholder="Empresa"/>
+        </Form.Item>
 
-        const onFinishFailed = errorInfo => {
-            console.log('Failed:', errorInfo);
-        };
-  return (
-    <div>
-      <h2>Cadastro</h2>
-          <Form
-              {...layout}
-              name="basic"
-              initialValues={{ remember: true }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-          >
-              <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={[{ required: true, message: 'Please input your username!' }]}
-              >
-                  <Input />
-              </Form.Item>
+        <Form.Item
+          label="E-mail"
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Digite um e-mail válido',
+            },
+          ]}
+        >
+          <Input placeholder="E-mail" />
+        </Form.Item>
+  
+        <Form.Item
+          label="Senha"
+          name="senha"
+          rules={[
+            {
+              required: true,
+              message: 'Digite uma senha',
+            },
+          ]}
+        >
+          <Input.Password placeholder="Senha"/>
+        </Form.Item>
 
-              <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[{ required: true, message: 'Please input your password!' }]}
-              >
-                  <Input.Password />
-              </Form.Item>
-
-              <Form.Item {...tailLayout}>
-                  <Button type="primary" htmlType="submit">
-                      Submit
-        </Button>
-              </Form.Item>
-          </Form>
-    </div>
-  );
-};
-
+        <Form.Item
+          label="Confirme sua senha"
+          name="confirmarSenha"
+          rules={[
+            {
+              required: true,
+              message: 'Confirme sua senha',
+            },
+          ]}
+        >
+          <Input.Password placeholder="Confirmar Senha"/>
+        </Form.Item>
+  
+      </Form>
+      </Container>
+    );
+  };
 export default CadastroGerente;

@@ -2,7 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import SituationCard from "../situation-card";
 
-function SituationList({ header }) {
+function SituationList({ header, list = [] }) {
   return (
     <MainContainer>
       <Header>{header}</Header>
@@ -11,7 +11,11 @@ function SituationList({ header }) {
           <TitleParagraph>Situação</TitleParagraph>
           <TitleParagraph>Reembolso</TitleParagraph>
         </Title>
-        <SituationCard color="red">No. Ref 13 | Cat: Combustível</SituationCard>
+        {list.map((item, index) => (
+          <SituationCard key={index} color={item.color}>
+            {item.info}
+          </SituationCard>
+        ))}
       </SituationContainer>
     </MainContainer>
   );

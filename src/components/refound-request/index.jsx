@@ -1,14 +1,22 @@
 import React from "react";
-import { Form, Input, Select, DatePicker, InputNumber } from "antd";
-import styled from "styled-components";
-import { CloseCircleOutlined, CheckCircleOutlined } from "@ant-design/icons";
+import { Form, Input, Select } from "antd";
+import { CloseOutlined, CheckOutlined } from "@ant-design/icons";
 import {
-  StyledNumber,
-  StyledInput,
-  StyledForm,
-  StyledDenyButton,
-  StyledConfirmButton,
-  StyledH1,
+  PageTitle,
+  CategoryTitle,
+  ValueTitle,
+  DataTitle,
+  JustifyTitle,
+  CategoryInfo,
+  FormCategory,
+  InputCategory,
+  ValueInfo,
+  DataInfo,
+  JustifyInfo,
+  NoButton,
+  OkButton,
+  PageForm,
+  ButtonContainer,
 } from "./styled-refound";
 
 const layout = {
@@ -22,63 +30,78 @@ const layout = {
 
 const { Option } = Select;
 
+const { TextArea } = Input;
+
 const RefoundRequest = () => {
   return (
     <div>
-      <StyledForm {...layout} name="nest-messages">
-        <StyledH1>Novo Reembolso</StyledH1>
+      <PageForm {...layout} name="nest-messages">
+        <PageTitle>Novo Reembolso</PageTitle>
 
-        <Form.Item label="Categoria">
-          <Input.Group compact>
-            <Form.Item
+        <CategoryTitle>Categorias</CategoryTitle>
+
+        <FormCategory.Item>
+          <InputCategory.Group compact>
+            <FormCategory.Item
               name={["Categoria", "tipos"]}
               noStyle
               rules={[{ required: true, message: "Categoria é necessária" }]}
             >
-              <Select placeholder="Escolha uma categoria">
+              <CategoryInfo placeholder="Escolha uma categoria">
                 <Option value="Transporte">Transporte</Option>
                 <Option value="Alimentacao">Alimentação</Option>
                 <Option value="Hospedagem">Hospedagem</Option>
                 <Option value="Combustivel">Combustível</Option>
                 <Option value="Outros">Outros</Option>
-              </Select>
-            </Form.Item>
-          </Input.Group>
-        </Form.Item>
+              </CategoryInfo>
+            </FormCategory.Item>
+          </InputCategory.Group>
+        </FormCategory.Item>
 
-        <Form.Item label="Valor R$">
-          <InputNumber
-            defaultValue={"0"}
+        <ValueTitle>Valor R$</ValueTitle>
+        <Form.Item>
+          <ValueInfo
+            defaultValue={""}
             formatter={(value) =>
               ` ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ",")
             }
             parser={(value) => value.replace(/\$\s?|(,*)/g, "")}
+            rules={[{ required: true, message: "Valor é necessário" }]}
           />
         </Form.Item>
-        <StyledData>
-          <Form.Item label="Data">
-            <DatePicker />
-          </Form.Item>
-        </StyledData>
-        <Form.Item name={["user", "introduction"]} label="Descrição">
-          <StyledInput />
+
+        <DataTitle>Data</DataTitle>
+        <Form.Item rules={[{ required: true, message: "Data é necessária" }]}>
+          <DataInfo placeholder="Escolha data" />
         </Form.Item>
 
-        <Form.Item wrapperCol={{ ...layout.wrapperCol, offset: 8 }}>
-          <StyledDenyButton type="primary" htmlType="submit">
-            <CloseCircleOutlined />
-          </StyledDenyButton>
-          <StyledConfirmButton type="primary" htmlType="submit">
-            <CheckCircleOutlined />
-          </StyledConfirmButton>
+        <JustifyTitle>Descrição</JustifyTitle>
+        <Form.Item
+          name={["user", "introduction"]}
+          rules={[{ required: true, message: "Descrição é necessária" }]}
+        >
+          <JustifyInfo
+            placeholder="Descreva a natureza do reembolso"
+            autoSize={{ minRows: 3, maxRows: 5 }}
+          />
         </Form.Item>
-      </StyledForm>
+
+        <ButtonContainer>
+          <Form.Item>
+            <NoButton type="primary" htmlType="submit">
+              <CloseOutlined />
+            </NoButton>
+          </Form.Item>
+
+          <Form.Item>
+            <OkButton type="primary" htmlType="submit">
+              <CheckOutlined />
+            </OkButton>
+          </Form.Item>
+        </ButtonContainer>
+      </PageForm>
     </div>
   );
 };
 
 export default RefoundRequest;
-
-const StyledData = styled.div`
-  margin-left: 5px;
-`;

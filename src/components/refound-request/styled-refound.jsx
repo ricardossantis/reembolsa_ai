@@ -1,121 +1,360 @@
 import styled from "styled-components";
-import { Form, DatePicker } from "antd";
+import { Form, Input, DatePicker, InputNumber, Select } from "antd";
+import TextArea from "antd/lib/input/TextArea";
 
-const StyledAside = styled.aside`
-  height: 100vh;
-  position: absolute;
-  width: 40%;
-  float: left;
+const PageTitle = styled.h1`
+  width: 519px;
+  height: 134px;
 
-  @media screen and (max-width: 800px) {
-    width: 100%;
-    height: 15vh;
-    position: relative;
-  }
-`;
-
-const StyledButton1 = styled.button`
-  border: none;
-  background-color: transparent;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 30px;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 25px;
+  line-height: 29px;
+  display: flex;
+  align-items: center;
   text-align: center;
-  @media (min-width: 501px) and (max-width: 800px) {
-    width: 25%;
-    margin-left: 45%;
-    margin-top: 3%;
-  }
-  @media screen and (max-width: 500px) {
-    width: 25%;
-    margin-left: -30%;
-    margin-top: 3%;
-  }
-`;
 
-const StyledDenyButton = styled(StyledButton1)`
-  margin-top: 40%;
-  @media (min-width: 351px) and (max-width: 800px) {
-    width: 80vw;
-    align-self: center;
+  color: #365083;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 236px;
+    height: 95px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 25px;
+    line-height: 29px;
+    display: flex;
+    align-items: center;
     text-align: center;
-    margin-top: 35%;
-    margin-left: 10%;
+
+    color: #365083;
   }
 `;
 
-const StyledButton2 = styled.button`
+const CategoryTitle = styled.h2`
+  width: 255px;
+  height: 42px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+
+  color: #365083;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 116px;
+    height: 29px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+
+    color: #365083;
+  }
+`;
+
+const ValueTitle = styled.h2`
+  width: 255px;
+  height: 42px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+
+  color: #365083;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 116px;
+    height: 29px;
+    left: 64px;
+    top: 230px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+
+    color: #365083;
+  }
+`;
+
+const DataTitle = styled.h2`
+  width: 255px;
+  height: 41px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+
+  color: #365083;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 116px;
+    height: 29px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+
+    color: #365083;
+  }
+`;
+
+const JustifyTitle = styled.h2`
+  width: 519px;
+  height: 41px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 15px;
+  line-height: 18px;
+  display: flex;
+  align-items: center;
+
+  color: #365083;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 236px;
+    height: 29px;
+
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 18px;
+    display: flex;
+    align-items: center;
+
+    color: #365083;
+  }
+`;
+
+const FormCategory = styled(Form)`
+  width: 521px;
+  height: 30px;
+
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 237px;
+    height: 35px;
+
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+`;
+
+const InputCategory = styled(Input)`
+  width: 521px;
+  height: 30px;
+
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 237px;
+    height: 35px;
+
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+`;
+
+const CategoryInfo = styled(Select)`
+  width: 521px;
+  height: 30px;
+
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 237px;
+    height: 35px;
+
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+`;
+
+const ValueInfo = styled(InputNumber)`
+  width: 521px;
+  height: 49px;
+
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 237px;
+    height: 35px;
+
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+`;
+
+const DataInfo = styled(DatePicker)`
+  width: 521px;
+  height: 50px;
+
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 237px;
+    height: 35px;
+
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+`;
+
+const JustifyInfo = styled(TextArea)`
+  height: 170px;
+  text-align: top;
+  width: 521px !important;
+
+  background: #f5f5f5;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+  box-sizing: border-box;
+  box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 237px;
+    height: 120px;
+
+    background: #f5f5f5;
+    border: 1px solid rgba(0, 0, 0, 0.25);
+    box-sizing: border-box;
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.25);
+    border-radius: 5px;
+  }
+`;
+
+const ButtonStyles = styled.button`
   border: none;
+  font-size: 50px;
   background-color: transparent;
-  padding-top: 6px;
-  padding-bottom: 6px;
-  padding-left: 10px;
-  padding-right: 10px;
-  margin-top: 30px;
   text-align: center;
-  @media (min-width: 501px) and (max-width: 800px) {
-    width: 25%;
-    margin-left: 45%;
-    margin-top: 3%;
-  }
-  @media screen and (max-width: 500px) {
-    width: 25%;
-    margin-left: -30%;
-    margin-top: 3%;
-  }
 `;
 
-const StyledConfirmButton = styled(StyledButton2)`
-  margin-top: 40%;
-  @media (min-width: 351px) and (max-width: 800px) {
-    width: 80vw;
-    align-self: center;
-    text-align: center;
-    margin-top: 35%;
-    margin-left: 10%;
+const NoButton = styled(ButtonStyles)`
+  width: 82px;
+  height: 57px;
+  color: #f15454;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 46px;
+    height: 40px;
   }
 `;
 
-const StyledInput = styled.input`
-  margin-left: 5px;
+const OkButton = styled(ButtonStyles)`
+  width: 79px;
+  height: 57px;
+  color: #2cd3b5;
+
+  @media (min-width: 351px) and (max-width: 768px) {
+    width: 46px;
+    height: 40px;
+  }
 `;
 
-const StyledForm = styled(Form)`
+const PageForm = styled(Form)`
   display: flex;
   flex-direction: column;
-  width: 200vh;
-  height: 10vh;
-  margin-bottom: 40%;
+  justify-content: center;
+  align-items: center;
+  width: 770px;
+  border: 2px solid red;
+  background: #f5f5f5;
 
-  @media screen and (max-width: 800px) {
-    width: 100vw;
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 360px;
+    height: 640px;
+    background: #f5f5f5;
   }
 `;
 
-const StyledH1 = styled.h1`
-  text-align: center;
+const ButtonContainer = styled.div`
   display: flex;
-  @media screen and (max-width: 800px) {
-    text-align: center;
-    margin: auto;
-    width: 80vw;
-    margin-left: 10%;
-    margin-top: 70%;
-  }
-`;
-
-const StyledNumber = styled.input`
-  margin-left: 5px;
+  justify-content: space-around;
+  width: 300px;
+  border: 2px solid green;
 `;
 
 export {
-  StyledNumber,
-  StyledAside,
-  StyledInput,
-  StyledForm,
-  StyledDenyButton,
-  StyledConfirmButton,
-  StyledH1,
+  PageTitle,
+  CategoryTitle,
+  ValueTitle,
+  DataTitle,
+  JustifyTitle,
+  CategoryInfo,
+  FormCategory,
+  InputCategory,
+  ValueInfo,
+  DataInfo,
+  JustifyInfo,
+  NoButton,
+  OkButton,
+  PageForm,
+  ButtonContainer,
 };

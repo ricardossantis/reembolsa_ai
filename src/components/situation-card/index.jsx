@@ -19,14 +19,15 @@ const Card = styled.div`
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid black;
   border-radius: 20px;
 `;
 
 const DisplayInfo = styled.div`
   width: 50%;
   height: 60px;
-  background-color: #ccc;
   border: 1px solid black;
   border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 `;

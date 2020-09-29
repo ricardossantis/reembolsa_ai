@@ -4,6 +4,7 @@ import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
 import ManagerHistory from "../pages/manager-history";
+import ManagerPending from "../pages/manager-pending";
 
 const Routes = () => {
   let history = useHistory();
@@ -47,7 +48,7 @@ const Routes = () => {
             <ManagerHistory />
           </Route>
           <Route exact path="/login">
-            <div>Login</div>
+            <ManagerPending />
           </Route>
           <Route exact path="/cadastro">
             <div>cadastro</div>

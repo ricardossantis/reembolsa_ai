@@ -36,7 +36,7 @@ const Header = (props) => {
   );
 
   return (
-    <div>
+    <>
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           <ZLink>{props.logo || props.input}</ZLink>
@@ -54,7 +54,7 @@ const Header = (props) => {
           </Dropdown>
         </MinHeader>
       )}
-    </div>
+    </>
   );
 };
 

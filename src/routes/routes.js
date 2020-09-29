@@ -90,7 +90,6 @@ const Routes = () => {
           <Switch>
             <Route exact path="/">
               <Home />
-              <div>Home</div>
             </Route>
             <Route exact path="/login">
               <div>Login</div>

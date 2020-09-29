@@ -4,22 +4,32 @@ import { Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 
 export const MaxHeader = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-  width: 100%;
+
   height: 97px;
   color: #ffffff;
   font-size: 24px;
 `;
 
 export const MinHeader = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 1030;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   align-items: center;
-  width: 100%;
+
   height: 97px;
 `;
 
@@ -50,6 +60,6 @@ export const MenuItem = styled(Menu.Item)`
   font-size: 24px;
 
   :hover {
-    background-color: #2CD3B5;
+    background-color: #2cd3b5;
   }
 `;

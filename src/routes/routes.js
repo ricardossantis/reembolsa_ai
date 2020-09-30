@@ -5,6 +5,7 @@ import api from "../services/api";
 import styled from "styled-components";
 import Header from "../components/header";
 import Button from "../components/home-button";
+import InputHeader from "../components/input";
 import Home from "../pages/home";
 
 const Routes = () => {
@@ -27,16 +28,15 @@ const Routes = () => {
             link1="/novocolaborador"
             link2="/pedidospendentes"
             link3="/historico"
+            input={<InputHeader />}
           />
           <Switch>
             <Route path="/novocolaborador">
-              <div>novocolaborador</div>
+              
             </Route>
-            <Route path="/pedidospendentes">
-              <div>pedidospendentes</div>
-            </Route>
+            <Route path="/pedidospendentes"></Route>
             <Route path="/historico">
-              <div>historicogerente</div>
+              
             </Route>
           </Switch>
         </>
@@ -57,6 +57,7 @@ const Routes = () => {
             link1="/novopedido"
             link2="/saldo"
             link3="/historico"
+            input={<InputHeader />}
           />
           <Switch>
             <Route path="/novopedido">
@@ -65,9 +66,7 @@ const Routes = () => {
             <Route path="/saldo">
               <div>saldo</div>
             </Route>
-            <Route path="/historico">
-              <div>historicocolaborador</div>
-            </Route>
+            <Route path="/historico"></Route>
           </Switch>
         </>
       );

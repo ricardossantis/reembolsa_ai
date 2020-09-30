@@ -27,9 +27,9 @@ export const MinHeader = styled.div`
   z-index: 1030;
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-end;
+  justify-content: space-around;
   align-items: center;
-
+  padding: 1rem;
   height: 97px;
 `;
 
@@ -44,7 +44,6 @@ export const MLink = styled(Link)`
 `;
 
 export const Hamburguer = styled(MenuOutlined)`
-  margin-right: 1.5rem;
   font-size: 3rem;
   :hover {
     color: #2cd3b5;

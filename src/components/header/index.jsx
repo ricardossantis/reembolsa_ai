@@ -47,6 +47,7 @@ const Header = (props) => {
         </MaxHeader>
       )) || (
         <MinHeader style={{ backgroundColor: props.minColor }}>
+          {props.input}
           <Dropdown overlay={menuHamburguer}>
             <Link onClick={(e) => e.preventDefault()}>
               <Hamburguer style={{ color: props.burguerColor }} />

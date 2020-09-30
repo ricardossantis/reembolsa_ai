@@ -1,11 +1,12 @@
 import React from "react";
-import DefaultForm from "../../components/default-form/index";
+import DefaultForm from "../../components/default-form/index.jsx";
 import DefaultFormItem from "../../components/default-form-item/index";
 import DefaultInput from "../../components/default-input/index";
 import DefaultH1 from "../../components/defaultH1/index";
 import DefaultLabel from "../../components/default-label/index";
 import StyledContent from "../../components/styled-content/index";
 import StyledInputPassword from "../../components/styled-input-password/index";
+import StyledSuccess from "../../components/styled-success/index";
 import StyledError from "../../components/styled-error/index";
 import { resquestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
@@ -62,7 +63,7 @@ const LoginPage = () => {
             Submit
           </Button>
           {err !== "" && <StyledError>{err}</StyledError>}
-          {success !== "" && <DefaultLabel>{success}</DefaultLabel>}
+          {success !== "" && <StyledSuccess>{success}</StyledSuccess>}
         </DefaultFormItem>
       </DefaultForm>
     </StyledContent>

@@ -10,6 +10,7 @@ export const resquestLogin = ({ email, password }) => (dispatch) => {
       password: password,
     })
     .then((response) => {
+      console.log()
       localStorage.setItem("token", response.data.accessToken);
       dispatch(login(response.data.accessToken));
     })

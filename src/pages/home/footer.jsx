@@ -12,7 +12,7 @@ const ZFooter = styled.footer`
   justify-content: center;
   align-items: center;
 
-  height: 97px;
+  height: 80px;
   background-color: #365083;
   color: #ffffff;
   font-weight: bold;

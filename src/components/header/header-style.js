@@ -4,7 +4,7 @@ import { Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 
 export const MaxHeader = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   right: 0;
   left: 0;
@@ -20,7 +20,7 @@ export const MaxHeader = styled.div`
 `;
 
 export const MinHeader = styled.div`
-  position: fixed;
+  position: sticky;
   top: 0;
   right: 0;
   left: 0;

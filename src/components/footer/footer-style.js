@@ -1,12 +1,6 @@
-import React from "react";
 import styled from "styled-components";
 
-const Footer = (props) => {
-  return <ZFooter>{props.children}</ZFooter>;
-};
-export default Footer;
-
-const ZFooter = styled.footer`
+export const ZFooter = styled.footer`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;

@@ -5,6 +5,12 @@ import api from "../services/api";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
+import styled from "styled-components";
+import LoginPage from "../pages/login-page/index";
+import Header from "../components/header";
+import Button from "../components/home-button";
+import InputHeader from "../components/input";
+import Home from "../pages/home";
 
 const Routes = () => {
   let history = useHistory();
@@ -20,7 +26,7 @@ const Routes = () => {
       case "manager":
         return (
           <>
-            {/* <Header
+            <Header
               maxColor="#365083"
               minColor="F5F5F5"
               burguerColor="#365083"
@@ -33,7 +39,7 @@ const Routes = () => {
               link2="/pedidospendentes"
               link3="/historico"
               input={<InputHeader />}
-            /> */}
+            />
             <Switch>
               <Route path="/novocolaborador"></Route>
               <Route path="/pedidospendentes"></Route>
@@ -45,7 +51,7 @@ const Routes = () => {
       case "employee":
         return (
           <>
-            {/* <Header
+            <Header
               maxColor="#365083"
               minColor="F5F5F5"
               burguerColor="#365083"
@@ -58,7 +64,7 @@ const Routes = () => {
               link2="/saldo"
               link3="/historico"
               input={<InputHeader />}
-            /> */}
+            />
             <Switch>
               <Route path="/novopedido">
                 <div>novopedido</div>
@@ -74,7 +80,7 @@ const Routes = () => {
   } else if (auth === false) {
     return (
       <>
-        {/* <Header
+        <Header
           maxColor="#365083"
           minColor="#365083"
           burguerColor="#FFFFFF"
@@ -85,7 +91,7 @@ const Routes = () => {
           link2="/login"
           link3="contato"
           homeButton={<Button bckButton="#2CBFD3" />}
-        /> */}
+        />
         <Switch>
           <Route exact path="/">
             <ManagerHistory />

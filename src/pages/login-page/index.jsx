@@ -13,11 +13,11 @@ import { Button } from "antd";
 import "antd/dist/antd.css";
 
 const LoginPage = () => {
-  const stateAuth = useSelector((state: any) => state.authentication);
+  const stateAuth = useSelector((state) => state.authentication);
   const { err } = stateAuth;
   const { success } = stateAuth;
   const dispatch = useDispatch();
-  const onFinish = (values: any) => {
+  const onFinish = (values) => {
     dispatch(resquestLogin(values));
     console.log(stateAuth);
   };

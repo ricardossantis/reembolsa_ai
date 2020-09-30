@@ -13,7 +13,7 @@ export const MaxHeader = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-
+|
   height: 97px;
   color: #ffffff;
   font-size: 24px;

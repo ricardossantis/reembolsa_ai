@@ -3,46 +3,39 @@ import DefaultForm from "../../components/default-form/index";
 import DefaultFormItem from "../../components/default-form-item/index";
 import DefaultInput from "../../components/default-input/index";
 import DefaultH1 from "../../components/defaultH1/index";
-import DefaultSelect from "../../components/default-select/index";
 import DefaultLabel from "../../components/default-label/index";
 import StyledContent from "../../components/styled-content/index";
 import StyledInputPassword from "../../components/styled-input-password/index";
+import StyledError from "../../components/styled-error/index";
+import { resquestLogin } from "../../redux/actions/auth";
+import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import "antd/dist/antd.css";
-const { Option } = DefaultSelect;
+
 const LoginPage = () => {
+  const stateAuth = useSelector((state: any) => state.authentication);
+  const { err } = stateAuth;
+  const { success } = stateAuth;
+  const dispatch = useDispatch();
   const onFinish = (values: any) => {
-    console.log("Success:", values);
-  };
-  const onFinishFailed = (errorInfo: any) => {
-    console.log("Failed:", errorInfo);
+    dispatch(resquestLogin(values));
+    console.log(stateAuth);
   };
   return (
     <StyledContent>
-      <DefaultForm onFinish={onFinish} onFinishFailed={onFinishFailed}>
+      <DefaultForm onFinish={onFinish}>
         <DefaultH1>Área de login</DefaultH1>
-        <DefaultLabel>Gerente ou colaborador</DefaultLabel>
+        <DefaultLabel>E-mail</DefaultLabel>
         <DefaultFormItem
-          name="categoria"
+          name="email"
           rules={[
             {
               required: true,
-              message: "Por favor escolha uma categoria",
+              message: "Por favor insira um e-mail",
             },
-          ]}
-        >
-          <DefaultSelect placeholder="Escolha uma categoria">
-            <Option value="gerente">Gerente</Option>
-            <Option value="colaborador">Colaborador</Option>
-          </DefaultSelect>
-        </DefaultFormItem>
-        <DefaultLabel>Usuário</DefaultLabel>
-        <DefaultFormItem
-          name="username"
-          rules={[
             {
-              required: true,
-              message: "Por favor insira um usuário",
+              type: "email",
+              message: "Insira um e-mail válido",
             },
           ]}
         >
@@ -68,6 +61,8 @@ const LoginPage = () => {
           <Button type="primary" htmlType="submit">
             Submit
           </Button>
+          {err !== "" && <StyledError>{err}</StyledError>}
+          {success !== "" && <StyledError>{success}</StyledError>}
         </DefaultFormItem>
       </DefaultForm>
     </StyledContent>

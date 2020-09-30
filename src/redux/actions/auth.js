@@ -1,11 +1,11 @@
 import axios from "axios";
-
 export const LOGIN = "LOGIN";
 export const ERROR = "ERROR";
 export const LOGOUT = "LOGOUT";
 
 export const resquestLogin = ({ email, password }) => (dispatch) => {
-    axios.post("https://reembolsa-ai-api.herokuapp.com/login", {
+  axios
+    .post("https://reembolsa-ai-api.herokuapp.com/login", {
       email: email,
       password: password,
     })

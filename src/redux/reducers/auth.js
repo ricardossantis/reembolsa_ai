@@ -5,13 +5,13 @@ const token = localStorage.getItem("token");
 const defaultState = {
   auth: token ? token : "",
   err: "",
-  success:"",
+  success: "",
 };
 
 const authentication = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN:
-    return { ...state, auth: action.auth, err: "",success:"Bem vindo" };
+      return { ...state, auth: action.auth, err: "", success: "Bem vindo" };
     case ERROR:
       return { ...state, err: action.error };
     case LOGOUT:

@@ -1,6 +1,6 @@
 import React from "react";
 import Card from "./card.jsx";
-import { useWindowSize } from "../header/hookWindowSize.js";
+import { useWindowSize } from "../../header/hookWindowSize.js";
 import { MaxFeed, MinFeed } from "./card-style.js";
 
 const ClientCard = () => {

@@ -5,7 +5,7 @@ import api from "../services/api";
 import styled from "styled-components";
 import LoginPage from "../pages/login-page/index";
 import Header from "../components/header";
-import Button from "../components/home-button";
+import Button from "../components/main-page/home-button";
 import InputHeader from "../components/input";
 import Home from "../pages/home";
 

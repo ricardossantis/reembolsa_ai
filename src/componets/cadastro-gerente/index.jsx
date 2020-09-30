@@ -71,8 +71,14 @@ const layout = {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
+<<<<<<< HEAD
         <StyledLabel>Empresa</StyledLabel>
         <Form.Item
+=======
+
+        <Form.Item
+          label="Empresa"
+>>>>>>> 2f9e8c61816a84b9f64d2eeba080b916d06a7dff
           name="company"
           rules={[
             {
@@ -98,6 +104,10 @@ const layout = {
   
         <StyledLabel>Senha</StyledLabel>
         <Form.Item
+<<<<<<< HEAD
+=======
+          label="Senha"
+>>>>>>> 2f9e8c61816a84b9f64d2eeba080b916d06a7dff
           name="password"
           rules={[
             {
@@ -111,6 +121,10 @@ const layout = {
 
         <StyledLabel>Confirme sua senha</StyledLabel>
         <Form.Item
+<<<<<<< HEAD
+=======
+          label="Confirme sua senha"
+>>>>>>> 2f9e8c61816a84b9f64d2eeba080b916d06a7dff
           name="confirmPassword"
           rules={[
             {
@@ -119,6 +133,7 @@ const layout = {
             },
           ]}
         >
+<<<<<<< HEAD
           <StyledInputPassword placeholder="Confirme sua Senha"/>
           </Form.Item>
           <ContainerButtons>
@@ -129,6 +144,15 @@ const layout = {
             </Form.Item>
           </ContainerButtons>
         
+=======
+          <Input.Password placeholder="Confirmar Senha"/>
+        </Form.Item>
+        <Form.Item {...tailLayout} >
+        <Button style={{backgroundColor:'green', borderRadius:'100px', border:'none'}} type="primary" htmlType="submit">
+        >
+        </Button>
+      </Form.Item>
+>>>>>>> 2f9e8c61816a84b9f64d2eeba080b916d06a7dff
       </StyledForm>
       </Container>
     );

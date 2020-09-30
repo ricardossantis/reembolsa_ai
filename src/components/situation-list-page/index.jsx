@@ -2,20 +2,21 @@ import React from "react";
 import styled from "styled-components";
 import SituationCard from "../situation-card";
 
-function SituationList({ header, list = [] }) {
+function SituationList({ header, list, title }) {
   return (
     <MainContainer>
       <Header>{header}</Header>
       <SituationContainer>
         <Title>
-          <TitleParagraph>Situação</TitleParagraph>
-          <TitleParagraph>Reembolso</TitleParagraph>
+          {title && <TitleParagraph>Situação</TitleParagraph>}
+          {title && <TitleParagraph>Reembolso</TitleParagraph>}
         </Title>
-        {list.map((item, index) => (
-          <SituationCard key={index} color={item.color}>
-            {item.info}
-          </SituationCard>
-        ))}
+        {list &&
+          list.map((item, index) => (
+            <SituationCard key={index} color={item.color}>
+              {item.description}
+            </SituationCard>
+          ))}
       </SituationContainer>
     </MainContainer>
   );

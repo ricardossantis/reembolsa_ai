@@ -1,14 +1,39 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SituationList from "../../components/situation-list-page";
-
-let list = [
-  { color: "red", info: "No. Ref 13 | Cat: Combustível" },
-  { color: "green", info: "No. Ref 15 | Cat: Combustível" },
-  { color: "yellow", info: "No. Ref 13 | Cat: Combustível" },
-];
+import api from "../../services/api.js";
 
 function History() {
-  return <SituationList header="Histórico de Movimentações" list={list} />;
+  const [list, setList] = useState();
+
+  useEffect(() => {
+    api
+      .get("/refunds")
+      .then((res) => {
+        setList(
+          res.data.map((item) => {
+            console.log(item.status);
+            switch (item.status) {
+              case "pending":
+                item.color = "yellow";
+                break;
+              case "aproved":
+                item.color = "green";
+                break;
+              default:
+                item.color = "red";
+                break;
+            }
+            return item;
+          })
+        );
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
+  console.log(list);
+  return (
+    <SituationList header="Histórico de Movimentações" list={list} title />
+  );
 }
 
 export default History;

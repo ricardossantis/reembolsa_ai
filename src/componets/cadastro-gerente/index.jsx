@@ -1,6 +1,16 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { Form, Input, Button } from "antd";
-import {Titulo, Container} from './styledCadastro';
+import { 
+  Titulo, 
+  Container,
+  StyledForm,
+  StyledLabel,
+  StyledInput,
+  StyledInputPassword,
+  ContainerButtons
+} from './styledCadastro';
+
+import axios from "axios";
 
 const layout = {
     labelCol: {
@@ -16,20 +26,43 @@ const layout = {
       span: 16,
     },
   };
+
+  
+  
   
   const CadastroGerente = () => {
-    const onFinish = (values) => {
-      console.log('Success:', values);
-    };
+
+    const [manager, setManager] = useState({
+    email: "",
+    password: "",
+    confirmPassword: "",
+    accessLevel: 2,
+    company: "",
+  })
   
-    const onFinishFailed = (errorInfo) => {
-      console.log('Failed:', errorInfo);
-    };
+  console.log(manager)
+
+  const handleSubmit = (values) => {
+      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, manager)
+      .then(res => setManager(res))
+      .catch(error => console.log(error))
+  }
+    
+  const onFinish = (values) => {
+    handleSubmit(values)
+  };
+
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
+      
+
   
     return (
+      
         <Container>
         <Titulo>Cadastro</Titulo>
-      <Form
+      <StyledForm
         {...layout}
         name="basic"
         initialValues={{
@@ -38,34 +71,9 @@ const layout = {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
+        <StyledLabel>Empresa</StyledLabel>
         <Form.Item
-          label="Nome Completo"
-          name="nomeCompleto"
-          rules={[
-            {
-              required: true,
-              message: 'Digite seu nome completo',
-            },
-          ]}
-        >
-          <Input placeholder="Nome Completo"/>
-        </Form.Item>
-        <Form.Item
-          label="Usuário"
-          name="usuario"
-          rules={[
-            {
-              required: true,
-              message: 'Digite seu nome de usuário',
-            },
-          ]}
-        >
-          <Input placeholder="Usuário"/>
-        </Form.Item>
-
-        <Form.Item
-          label="Empresa"
-          name="empresa"
+          name="company"
           rules={[
             {
               required: true,
@@ -73,11 +81,10 @@ const layout = {
             },
           ]}
         >
-          <Input placeholder="Empresa"/>
+          <StyledInput placeholder="Insira o nome da sua empresa" value={manager.company}/>
         </Form.Item>
-
+        <StyledLabel>E-mail</StyledLabel>
         <Form.Item
-          label="E-mail"
           name="email"
           rules={[
             {
@@ -86,12 +93,12 @@ const layout = {
             },
           ]}
         >
-          <Input placeholder="E-mail" />
+          <StyledInput placeholder="Insira seu e-mail" value={manager.email} />
         </Form.Item>
   
+        <StyledLabel>Senha</StyledLabel>
         <Form.Item
-          label="Senha"
-          name="senha"
+          name="password"
           rules={[
             {
               required: true,
@@ -99,12 +106,12 @@ const layout = {
             },
           ]}
         >
-          <Input.Password placeholder="Senha"/>
+          <StyledInputPassword placeholder="Insira sua senha" value={manager.password}/>
         </Form.Item>
 
+        <StyledLabel>Confirme sua senha</StyledLabel>
         <Form.Item
-          label="Confirme sua senha"
-          name="confirmarSenha"
+          name="confirmPassword"
           rules={[
             {
               required: true,
@@ -112,10 +119,17 @@ const layout = {
             },
           ]}
         >
-          <Input.Password placeholder="Confirmar Senha"/>
-        </Form.Item>
-  
-      </Form>
+          <StyledInputPassword placeholder="Confirme sua Senha"/>
+          </Form.Item>
+          <ContainerButtons>
+            <Form.Item {...tailLayout} >
+            <Button style={{backgroundColor:"green", border:"none"}} type="primary" htmlType="submit">
+              >
+            </Button>
+            </Form.Item>
+          </ContainerButtons>
+        
+      </StyledForm>
       </Container>
     );
   };

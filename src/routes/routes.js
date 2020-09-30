@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
-import api from "../services/api";
-import styled from "styled-components";
 import CadastroGerente from "../componets/cadastro-gerente/index";
 
 const Routes = () => {

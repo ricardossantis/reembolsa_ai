@@ -1,4 +1,5 @@
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 export const LOGIN = "LOGIN";
 export const ERROR = "ERROR";
 export const LOGOUT = "LOGOUT";
@@ -10,9 +11,18 @@ export const resquestLogin = ({ email, password }) => (dispatch) => {
       password: password,
     })
     .then((response) => {
-      console.log()
-      localStorage.setItem("token", response.data.accessToken);
-      dispatch(login(response.data.accessToken));
+      const token = response.data.accessToken;
+      const decoded = jwt_decode(token);
+      const id = decoded.sub;
+      localStorage.setItem("token", token);
+      axios
+        .get("https://reembolsa-ai-api.herokuapp.com/users/" + id, {
+          headers: { authorization: "Bearer " + token },
+        })
+        .then((response) => {
+          localStorage.setItem("user", JSON.stringify(response.data));
+          dispatch(login(token, response.data));
+        });
     })
     .catch(({ response: { data: { error } } }) => dispatch(err(error)));
 };

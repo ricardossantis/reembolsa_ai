@@ -1,9 +1,11 @@
 import { LOGIN, ERROR, LOGOUT } from "../actions/auth";
 
 const token = localStorage.getItem("token");
+const user = JSON.parse(localStorage.getItem("user"));
 
 const defaultState = {
   auth: token ? token : "",
+  user: token ? user : {},
   err: "",
   success: "",
 };

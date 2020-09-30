@@ -11,16 +11,22 @@ import StyledError from "../../components/styled-error/index";
 import { resquestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
+import { Link,useHistory } from "react-router-dom";
 import "antd/dist/antd.css";
 
 const LoginPage = () => {
-  const stateAuth = useSelector((state: any) => state.authentication);
-  const { err } = stateAuth;
-  const { success } = stateAuth;
+  const stateAuth = useSelector((state) => state.authentication);
+  const { err, success } = stateAuth;
+  let history = useHistory();
   const dispatch = useDispatch();
-  const onFinish = (values: any) => {
+  const onFinish = (values) => {
     dispatch(resquestLogin(values));
-    console.log(stateAuth);
+    if(stateAuth.user["access-level"]==1){
+      setTimeout(()=>history.replace("/novocolaborador"),2000)
+    }
+    else if(stateAuth.user["access-level"]==2){
+      setTimeout(()=>history.replace("/novopedido"),2000)
+    }
   };
   return (
     <StyledContent>
@@ -58,13 +64,16 @@ const LoginPage = () => {
         >
           <StyledInputPassword />
         </DefaultFormItem>
-        <DefaultFormItem>
-          <Button type="primary" htmlType="submit">
-            Submit
+        <div>
+          <Button style={{margin:"0px 20px"}} type="primary" htmlType="submit">
+            Login
           </Button>
+          <Link to="/">
+            <Button>Voltar</Button>
+          </Link>
           {err !== "" && <StyledError>{err}</StyledError>}
           {success !== "" && <StyledSuccess>{success}</StyledSuccess>}
-        </DefaultFormItem>
+        </div>
       </DefaultForm>
     </StyledContent>
   );

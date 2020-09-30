@@ -31,13 +31,9 @@ const Routes = () => {
             input={<InputHeader />}
           />
           <Switch>
-            <Route path="/novocolaborador">
-              
-            </Route>
+            <Route path="/novocolaborador"></Route>
             <Route path="/pedidospendentes"></Route>
-            <Route path="/historico">
-              
-            </Route>
+            <Route path="/historico"></Route>
           </Switch>
         </>
       );

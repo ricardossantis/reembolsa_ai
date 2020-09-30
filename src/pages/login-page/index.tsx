@@ -62,7 +62,7 @@ const LoginPage = () => {
             Submit
           </Button>
           {err !== "" && <StyledError>{err}</StyledError>}
-          {success !== "" && <StyledError>{success}</StyledError>}
+          {success !== "" && <DefaultLabel>{success}</DefaultLabel>}
         </DefaultFormItem>
       </DefaultForm>
     </StyledContent>

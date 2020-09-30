@@ -28,7 +28,6 @@ const Routes = () => {
             link1="/novocolaborador"
             link2="/pedidospendentes"
             link3="/historico"
-            input={<InputHeader />}
           />
           <Switch>
             <Route path="/novocolaborador"></Route>
@@ -53,7 +52,6 @@ const Routes = () => {
             link1="/novopedido"
             link2="/saldo"
             link3="/historico"
-            input={<InputHeader />}
           />
           <Switch>
             <Route path="/novopedido">

@@ -1,6 +1,7 @@
-import React from "react";
+import React, { useState, useEffect} from "react";
 import { Form, Input, Button } from "antd";
-import {Titulo, Container} from './styledCadastro';
+import { Titulo, Container, StyledForm } from './styledCadastro';
+import axios from "axios";
 
 const layout = {
     labelCol: {
@@ -16,20 +17,46 @@ const layout = {
       span: 16,
     },
   };
+
+  
+  
   
   const CadastroGerente = () => {
-    const onFinish = (values) => {
-      console.log('Success:', values);
-    };
+
+    const [manager, setManager] = useState({
+    email: "",
+    password: "",
+    fullName: "",
+    user: "",
+    accessLevel: 2,
+    company: "",
+    roll: "manager",
+    amountLimit: "",
+
+  })
+
+ 
   
+
+  useEffect(() => {
+    axios.post('https://reembolsa-ai-api.herokuapp.com/register', manager)
+   .then(response => setManager(response))
+   .then(data => console.log(data))
+}, [manager]);
+    
+    const onFinish = (values) => {
+  
+    };
+
     const onFinishFailed = (errorInfo) => {
       console.log('Failed:', errorInfo);
     };
   
     return (
+      
         <Container>
         <Titulo>Cadastro</Titulo>
-      <Form
+      <StyledForm
         {...layout}
         name="basic"
         initialValues={{
@@ -38,34 +65,10 @@ const layout = {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
-        <Form.Item
-          label="Nome Completo"
-          name="nomeCompleto"
-          rules={[
-            {
-              required: true,
-              message: 'Digite seu nome completo',
-            },
-          ]}
-        >
-          <Input placeholder="Nome Completo"/>
-        </Form.Item>
-        <Form.Item
-          label="Usuário"
-          name="usuario"
-          rules={[
-            {
-              required: true,
-              message: 'Digite seu nome de usuário',
-            },
-          ]}
-        >
-          <Input placeholder="Usuário"/>
-        </Form.Item>
 
         <Form.Item
           label="Empresa"
-          name="empresa"
+          name="company"
           rules={[
             {
               required: true,
@@ -91,7 +94,7 @@ const layout = {
   
         <Form.Item
           label="Senha"
-          name="senha"
+          name="password"
           rules={[
             {
               required: true,
@@ -104,7 +107,7 @@ const layout = {
 
         <Form.Item
           label="Confirme sua senha"
-          name="confirmarSenha"
+          name="confirmPassword"
           rules={[
             {
               required: true,
@@ -114,8 +117,12 @@ const layout = {
         >
           <Input.Password placeholder="Confirmar Senha"/>
         </Form.Item>
-  
-      </Form>
+        <Form.Item {...tailLayout} >
+        <Button style={{backgroundColor:'green', borderRadius:'100px', border:'none'}} type="primary" htmlType="submit">
+        >
+        </Button>
+      </Form.Item>
+      </StyledForm>
       </Container>
     );
   };

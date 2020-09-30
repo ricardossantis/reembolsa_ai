@@ -5,7 +5,9 @@ import ClientCard from "../../components/card-feed";
 import Footer from "../../components/footer/index.jsx";
 
 const Home = () => {
-  return <></>;
+  return <>
+  <ClientCard />
+  </>;
 };
 
 export default Home;

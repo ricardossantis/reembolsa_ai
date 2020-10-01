@@ -38,8 +38,8 @@ export const SituationCardContainer = styled.div`
 
   :hover {
     cursor: pointer;
-    background-color: rgba(74, 100, 151, 0.5);
-    border: 1px solid rgba(74, 100, 151, 0.8);
+    background-color: rgba(154, 180, 231, 0.5);
+    border: 1px solid rgba(154, 180, 231, 0.8);
     border-radius: 20px;
   }
 `;
@@ -62,6 +62,16 @@ export const TitleParagraph = styled.p`
 `;
 
 export const StyledModal = styled(Modal)`
+  .ant-modal-content {
+    height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+`;
+
+export const StyledModal2 = styled(Modal)`
   .ant-modal-content {
     height: 400px;
     display: flex;

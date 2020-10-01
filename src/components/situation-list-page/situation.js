@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Modal } from "antd";
 
-const MainContainer = styled.div`
+export const MainContainer = styled.div`
   width: 100%;
   height: 100vh;
   display: flex;
@@ -9,7 +9,8 @@ const MainContainer = styled.div`
   justify-content: space-around;
   align-items: center;
 `;
-const Header = styled.div`
+
+export const Header = styled.div`
   width: 80%;
   height: 10%;
   font-size: 1.8rem;
@@ -22,7 +23,7 @@ const Header = styled.div`
   font-family: "Roboto";
 `;
 
-const SituationContainer = styled.div`
+export const SituationContainer = styled.div`
   width: 100%;
   height: 80%;
   font-size: 1rem;
@@ -31,7 +32,7 @@ const SituationContainer = styled.div`
   align-items: center;
 `;
 
-const SituationCardContainer = styled.div`
+export const SituationCardContainer = styled.div`
   width: 80%;
   height: 80px;
 
@@ -43,7 +44,7 @@ const SituationCardContainer = styled.div`
   }
 `;
 
-const Title = styled.div`
+export const Title = styled.div`
   width: 80%;
   height: 40px;
   font-size: 1.1rem;
@@ -56,11 +57,11 @@ const Title = styled.div`
   font-family: "Roboto";
 `;
 
-const TitleParagraph = styled.p`
+export const TitleParagraph = styled.p`
   width: 50%;
 `;
 
-const StyledModal = styled(Modal)`
+export const StyledModal = styled(Modal)`
   .ant-modal-content {
     height: 400px;
     display: flex;

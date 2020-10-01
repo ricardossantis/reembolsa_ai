@@ -13,7 +13,7 @@ function Pending() {
           res.data
             .map((item) => {
               if (item.status === "pending") {
-                item.color = "yellow";
+                item.color = "#F2C94C";
                 return item;
               }
             })

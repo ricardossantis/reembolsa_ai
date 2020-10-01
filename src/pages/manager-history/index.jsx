@@ -13,13 +13,13 @@ function History() {
           res.data.map((item) => {
             switch (item.status) {
               case "pending":
-                item.color = "yellow";
+                item.color = "#F9BB1D";
                 break;
               case "aproved":
-                item.color = "green";
+                item.color = "#2CD3B5";
                 break;
               default:
-                item.color = "red";
+                item.color = "#F15454";
                 break;
             }
             return item;

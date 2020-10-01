@@ -11,7 +11,7 @@ function Employees() {
         console.log(res);
         setList(
           res.data.map((item) => {
-            item.color = "blue";
+            item.color = "#365083";
             return item;
           })
         );

@@ -26,7 +26,6 @@ const Home = () => {
 
       <Button bckButton="#F1548D" />
       <ClientCard />
-
       <Footer children="Reembolsa.ai Soluções LTDA." />
     </>
   );

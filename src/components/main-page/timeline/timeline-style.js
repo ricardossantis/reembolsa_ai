@@ -8,4 +8,5 @@ export const MaxTimeline = styled.div`
 export const MinTimeline = styled.div`
   display: flex;
   justify-content: center;
+  padding: 1rem;
 `;

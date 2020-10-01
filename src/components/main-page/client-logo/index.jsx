@@ -1,7 +1,7 @@
 import React from "react";
 import { MaxLogo, MinLogo, CLogo, CpLogo } from "./client-style.js";
 
-import { useWindowSize } from "../../header/hookWindowSize.js";
+import { useWindowSize } from "../../system-general/header/hookWindowSize.js";
 
 const ClientLogo = (props) => {
   const width = useWindowSize().width;

@@ -1,17 +1,16 @@
 import React from "react";
-import DefaultForm from "../../components/default-form/index";
-import DefaultFormItem from "../../components/default-form-item/index";
-import DefaultInput from "../../components/default-input/index";
-import DefaultH1 from "../../components/defaultH1/index";
-import DefaultLabel from "../../components/default-label/index";
-import StyledContent from "../../components/styled-content/index";
-import StyledInputPassword from "../../components/styled-input-password/index";
-import StyledError from "../../components/styled-error/index";
+import DefaultForm from "../../components/login/default-form/index";
+import DefaultFormItem from "../../components/login/default-form-item/index";
+import DefaultInput from "../../components/login/default-input/index";
+import DefaultH1 from "../../components/login/defaultH1/index";
+import DefaultLabel from "../../components/login/default-label/index";
+import StyledContent from "../../components/login/styled-content/index";
+import StyledInputPassword from "../../components/login/styled-input-password/index";
+import StyledError from "../../components/login/styled-error/index";
 import { resquestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Button } from "antd";
 import "antd/dist/antd.css";
-import SystemButton from "../../components/system-button";
 
 const LoginPage = () => {
   const stateAuth = useSelector((state) => state.authentication);

@@ -1,5 +1,5 @@
 import React from "react";
-import { useWindowSize } from "../../header/hookWindowSize.js";
+import { useWindowSize } from "../../system-general/header/hookWindowSize.js";
 import { Timeline } from "antd";
 import { MaxTimeline, MinTimeline } from "./timeline-style.js";
 

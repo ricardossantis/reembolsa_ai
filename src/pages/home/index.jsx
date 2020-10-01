@@ -4,12 +4,13 @@ import ClientCard from "../../components/main-page/card-feed";
 import Footer from "../../components/main-page/footer/index.jsx";
 import ClientLogo from "../../components/main-page/client-logo";
 import MainTimeline from "../../components/main-page/timeline";
+import CancelButton from "../../components/system-general/cancel-button";
 import { GithubFilled } from "@ant-design/icons";
 
 const Home = () => {
   return (
     <>
-      <ClientLogo logo1={<GithubFilled />} />
+      {/* <ClientLogo logo1={<GithubFilled />} />
       <MainTimeline
         item1="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
         item2="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
@@ -22,11 +23,12 @@ const Home = () => {
         item9="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
         item10="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
       />
-      <h1>pagina em construção</h1>
 
+      <h1>pagina em construção</h1>
+      <CancelButton />
       <Button bckButton="#F1548D" />
       <ClientCard />
-      <Footer children="Reembolsa.ai Soluções LTDA." />
+      <Footer children="Reembolsa.ai Soluções LTDA." /> */}
     </>
   );
 };

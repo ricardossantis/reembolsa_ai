@@ -4,9 +4,8 @@ import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
 import LoginPage from "../pages/login-page/index";
-import Header from "../components/header";
+import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
-import InputHeader from "../components/input";
 import Home from "../pages/home";
 
 const Routes = () => {

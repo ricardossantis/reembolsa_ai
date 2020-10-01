@@ -1,6 +1,6 @@
 import React from "react";
 import "./App.css";
-import RefoundRequest from "./components/refound-request";
+import RefoundRequest from "./pages/refound-request";
 
 function App() {
   return <RefoundRequest />;

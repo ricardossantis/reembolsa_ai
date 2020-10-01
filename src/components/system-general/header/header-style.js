@@ -4,7 +4,7 @@ import { Menu } from "antd";
 import { MenuOutlined } from "@ant-design/icons";
 
 export const MaxHeader = styled.div`
-  position: sticky;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;
@@ -13,14 +13,13 @@ export const MaxHeader = styled.div`
   flex-wrap: wrap;
   justify-content: space-evenly;
   align-items: center;
-
   height: 97px;
   color: #ffffff;
   font-size: 24px;
 `;
 
 export const MinHeader = styled.div`
-  position: sticky;
+  position: fixed;
   top: 0;
   right: 0;
   left: 0;

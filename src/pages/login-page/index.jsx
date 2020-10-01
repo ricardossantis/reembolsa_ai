@@ -2,7 +2,7 @@ import React from "react";
 import DefaultForm from "../../components/default-form/index";
 import DefaultFormItem from "../../components/default-form-item/index.jsx";
 import DefaultInput from "../../components/default-input/index";
-import DefaultH1 from "../../components/defaultH1/index";
+import DefaultH1 from "../../components/page-login/default-h1";
 import DefaultLabel from "../../components/default-label/index";
 import StyledContent from "../../components/styled-content/index";
 import StyledInputPassword from "../../components/styled-input-password/index";
@@ -13,11 +13,11 @@ import { Button } from "antd";
 import "antd/dist/antd.css";
 
 const LoginPage = () => {
-  const stateAuth = useSelector((state: any) => state.authentication);
+  const stateAuth = useSelector((state) => state.authentication);
   const { err } = stateAuth;
   const { success } = stateAuth;
   const dispatch = useDispatch();
-  const onFinish = (values: any) => {
+  const onFinish = (values) => {
     dispatch(resquestLogin(values));
     console.log(stateAuth);
   };

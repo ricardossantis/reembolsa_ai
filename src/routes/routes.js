@@ -15,6 +15,8 @@ const Routes = () => {
   let history = useHistory();
   const [role, setRole] = useState("none");
   const [auth, setAuth] = useState(null);
+  const stateAuth = useSelector((state) => state.authentication);
+  console.log(stateAuth);
 
   useEffect(() => {
     setAuth(false);
@@ -40,9 +42,16 @@ const Routes = () => {
               input={<InputHeader />}
             />
             <Switch>
-              <Route path="/novocolaborador"></Route>
-              <Route path="/pedidospendentes"></Route>
-              <Route path="/historico"></Route>
+              <Route path="/novocolaboradore"></Route>
+              <Route path="/colaboradores">
+                <Employees />
+              </Route>
+              <Route path="/pedidospendentes">
+                <ManagerPending />
+              </Route>
+              <Route path="/historico">
+                <ManagerHistory />
+              </Route>
             </Switch>
           </>
         );
@@ -93,13 +102,13 @@ const Routes = () => {
         />
         <Switch>
           <Route exact path="/">
-            <ManagerHistory />
+            <Home />
           </Route>
           <Route exact path="/login">
-            <ManagerPending />
+            <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <Employees />
+            <div>cadastro</div>
           </Route>
         </Switch>
       </>

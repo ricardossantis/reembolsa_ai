@@ -3,17 +3,18 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import { useSelector } from "react-redux";
 import api from "../services/api";
 import styled from "styled-components";
+import NewUser from "../pages/new-user";
 
 const Routes = () => {
   let history = useHistory();
   const [role, setRole] = useState("none");
 
   switch (role) {
-    case "manager":
+    case "none": //alterar para manager
       return (
         <Switch>
           <Route path="/novocolaborador">
-            <div>novocolaborador</div>
+            <NewUser />
           </Route>
           <Route path="/pedidospendentes">
             <div>pedidospendentes</div>

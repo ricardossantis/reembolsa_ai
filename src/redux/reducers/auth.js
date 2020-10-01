@@ -5,7 +5,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const defaultState = {
   auth: token ? token : "",
-  user: token ? user : {},
+  user: user ? user : {},
   err: "",
   success: "",
 };

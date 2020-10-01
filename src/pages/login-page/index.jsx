@@ -2,7 +2,7 @@ import React from "react";
 import DefaultForm from "../../components/login/default-form/index";
 import DefaultFormItem from "../../components/login/default-form-item/index";
 import DefaultInput from "../../components/login/default-input/index";
-import DefaultH1 from "../../components/login/defaultH1/index";
+import DefaultH1 from "../../components/login/default-h1/index";
 import DefaultLabel from "../../components/login/default-label/index";
 import StyledContent from "../../components/login/styled-content/index";
 import StyledSuccess from "../../components/login/styled-success/index";
@@ -22,10 +22,10 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const onFinish = (values) => {
     dispatch(resquestLogin(values));
-    if(stateAuth.user["access-level"]===1){
+    if(stateAuth.user.accessLevel===1){
       setTimeout(()=>history.replace("/novocolaborador"),2000)
     }
-    else if(stateAuth.user["access-level"]===2){
+    else if(stateAuth.user.accessLevel===2){
       setTimeout(()=>history.replace("/novopedido"),2000)
     }
   };

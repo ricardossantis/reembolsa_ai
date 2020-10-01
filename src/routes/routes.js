@@ -19,7 +19,15 @@ const Routes = () => {
   console.log(stateAuth);
 
   useEffect(() => {
-    setAuth(false);
+    if (stateAuth.auth === "") {
+      setAuth(false);
+    } else if (stateAuth.user.accessLevel === 1) {
+      setRole("manager");
+      setAuth(true);
+    } else if (stateAuth.user.accessLevel === 2) {
+      setRole("employee");
+      setAuth(true);
+    }
   }, []);
 
   if (auth === true) {
@@ -34,11 +42,13 @@ const Routes = () => {
               title1="Novo colaborador"
               title2="Pedidos pendentes"
               title3="Histórico"
+              title4="colaboradores"
               exit="Sair"
               logout={() => setRole("none")}
               link1="/novocolaborador"
               link2="/pedidospendentes"
               link3="/historico"
+              link4="/colaboradores"
               input={<InputHeader />}
             />
             <Switch>

@@ -13,7 +13,7 @@ const authentication = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN:
       console.log(user)
-      return { ...state, auth: action.auth, err: "", success: "Bem vindo "+user.user };
+      return { ...state, auth: action.auth, err: "", success: "Bem vindo "};
     case ERROR:
       return { ...state, err: action.error };
     case LOGOUT:

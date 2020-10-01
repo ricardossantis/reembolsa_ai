@@ -6,9 +6,9 @@ import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
 import LoginPage from "../pages/login-page/";
-import Header from "../components/header";
-import Button from "../components/home-button";
-import InputHeader from "../components/input";
+import Header from "../components/system-general/header";
+import Button from "../components/main-page/home-button";
+import InputHeader from "../components/system-general/input-header";
 import Home from "../pages/home";
 
 const Routes = () => {
@@ -97,6 +97,7 @@ const Routes = () => {
           </Route>
           <Route exact path="/login">
             <ManagerPending />
+            <LoginPage/>
           </Route>
           <Route exact path="/cadastro">
             <Employees />

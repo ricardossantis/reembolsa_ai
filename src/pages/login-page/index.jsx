@@ -1,25 +1,33 @@
 import React from "react";
-import DefaultForm from "../../components/default-form/index";
-import DefaultFormItem from "../../components/default-form-item/index";
-import DefaultInput from "../../components/default-input/index";
-import DefaultH1 from "../../components/defaultH1/index";
-import DefaultLabel from "../../components/default-label/index";
-import StyledContent from "../../components/styled-content/index";
-import StyledInputPassword from "../../components/styled-input-password/index";
-import StyledError from "../../components/styled-error/index";
+import DefaultForm from "../../components/login/default-form/index";
+import DefaultFormItem from "../../components/login/default-form-item/index";
+import DefaultInput from "../../components/login/default-input/index";
+import DefaultH1 from "../../components/login/default-h1/index";
+import DefaultLabel from "../../components/login/default-label/index";
+import StyledContent from "../../components/login/styled-content/index";
+import StyledSuccess from "../../components/login/styled-success/index";
+import StyledInputPassword from "../../components/login/styled-input-password/index";
+import StyledError from "../../components/login/styled-error/index";
 import { resquestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
+import { Link,useHistory } from "react-router-dom";
 import { Button } from "antd";
 import "antd/dist/antd.css";
 
+
 const LoginPage = () => {
-  const stateAuth = useSelector((state: any) => state.authentication);
-  const { err } = stateAuth;
-  const { success } = stateAuth;
+  const stateAuth = useSelector((state) => state.authentication);
+  const { err, success } = stateAuth;
+  let history = useHistory();
   const dispatch = useDispatch();
-  const onFinish = (values: any) => {
+  const onFinish = (values) => {
     dispatch(resquestLogin(values));
-    console.log(stateAuth);
+    if(stateAuth.user.accessLevel===1){
+      setTimeout(()=>history.replace("/novocolaborador"),2000)
+    }
+    if(stateAuth.user.accessLevel===2){
+      setTimeout(()=>history.replace("/novopedido"),2000)
+    }
   };
   return (
     <StyledContent>
@@ -57,13 +65,16 @@ const LoginPage = () => {
         >
           <StyledInputPassword />
         </DefaultFormItem>
-        <DefaultFormItem>
-          <Button type="primary" htmlType="submit">
-            Submit
+        <div>
+          <Button style={{margin:"0px 20px"}} type="primary" htmlType="submit">
+            Login
           </Button>
+          <Link to="/">
+            <Button>Voltar</Button>
+          </Link>
           {err !== "" && <StyledError>{err}</StyledError>}
-          {success !== "" && <DefaultLabel>{success}</DefaultLabel>}
-        </DefaultFormItem>
+          {success !== "" && <StyledSuccess>{success}</StyledSuccess>}
+        </div>
       </DefaultForm>
     </StyledContent>
   );

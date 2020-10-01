@@ -5,7 +5,7 @@ import api from "../services/api";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
-import LoginPage from "../pages/login-page/";
+import LoginPage from "../pages/login-page";
 import Header from "../components/header";
 import Button from "../components/home-button";
 import InputHeader from "../components/input";

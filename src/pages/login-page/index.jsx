@@ -1,6 +1,6 @@
 import React from "react";
 import DefaultForm from "../../components/default-form/index";
-import DefaultFormItem from "../../components/default-form-item/index";
+import DefaultFormItem from "../../components/default-form-item/index.jsx";
 import DefaultInput from "../../components/default-input/index";
 import DefaultH1 from "../../components/defaultH1/index";
 import DefaultLabel from "../../components/default-label/index";

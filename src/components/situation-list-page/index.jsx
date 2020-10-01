@@ -46,14 +46,17 @@ function SituationList({ header, list, title }) {
           ))}
       </SituationContainer>
       <StyledModal visible={visible} onOk={handleOk} onCancel={handleCancel}>
-        {modalList && (
-          <div>
-            <p>Categoria: {modalList.category}</p>
-            <p>Valor: {modalList.value}</p>
-            <p>Data: {modalList.date}</p>
-            <p>Descrição: {modalList.description}</p>
-          </div>
-        )}
+        {list &&
+          list[0].color !== "#365083" &&
+          modalList &&
+          modalList.category !== undefined && (
+            <div>
+              <p>Categoria: {modalList.category}</p>
+              <p>Valor: {modalList.value}</p>
+              <p>Data: {modalList.date}</p>
+              <p>Descrição: {modalList.description}</p>
+            </div>
+          )}
       </StyledModal>
     </MainContainer>
   );

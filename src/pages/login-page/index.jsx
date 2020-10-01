@@ -25,7 +25,7 @@ const LoginPage = () => {
     if(stateAuth.user.accessLevel===1){
       setTimeout(()=>history.replace("/novocolaborador"),2000)
     }
-    else if(stateAuth.user.accessLevel===2){
+    if(stateAuth.user.accessLevel===2){
       setTimeout(()=>history.replace("/novopedido"),2000)
     }
   };

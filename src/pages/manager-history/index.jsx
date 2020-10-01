@@ -28,7 +28,7 @@ function History() {
       })
       .catch((err) => console.log(err));
   }, []);
-  console.log(list);
+
   return (
     <SituationList header="Histórico de Movimentações" list={list} title />
   );

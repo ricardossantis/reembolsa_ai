@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import SituationList from "../../components/situation-list-page";
-
-let list = [
-  { color: "blue", info: "No. Ref 13 | Cat: Combustível" },
-  { color: "blue", info: "No. Ref 15 | Cat: Combustível" },
-  { color: "blue", info: "No. Ref 13 | Cat: Combustível" },
-];
+import api from "../../services/api.js";
 
 function Employees() {
+  const [list, setList] = useState();
+  useEffect(() => {
+    api
+      .get("/users")
+      .then((res) => {
+        console.log(res);
+        setList(
+          res.data.map((item) => {
+            item.color = "blue";
+            return item;
+          })
+        );
+      })
+      .catch((err) => console.log(err));
+  }, []);
+
   return <SituationList header="Histórico de Movimentações" list={list} />;
 }
 

@@ -1,20 +1,13 @@
 import React from "react";
-<<<<<<< HEAD
-import "./App.css";
-import RefoundRequest from "./components/refound-request";
-
-function App() {
-  return <RefoundRequest />;
-=======
 import Routes from "./routes/routes.js";
+import RefundRequest from "../src/components/refund-request";
 
 function App() {
   return (
     <div>
-      <Routes />
+      <RefundRequest></RefundRequest>
     </div>
   );
->>>>>>> master
 }
 
 export default App;

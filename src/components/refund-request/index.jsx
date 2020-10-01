@@ -1,21 +1,23 @@
 import React, { useState } from "react";
+import api from "../../services/api";
 import { Form, Input, Cascader, DatePicker, InputNumber } from "antd";
 import {
   RefoundPage,
   Body,
   Title,
   SubTitle,
-  CategoryContainer,
-  ValueContainer,
-  DataContainer,
-  DescriptionContainer,
   ButtonNo,
   ButtonYes,
   ButtonContainer,
   NewForm,
-} from "./refound-style";
+} from "./refund-style";
 
-const RefoundRequest = () => {
+const onFinish = (values) => {
+  api.post("https://reembolsa-ai-api.herokuapp.com/refunds", values);
+  console.log("Valores para o reembolso", values);
+};
+
+const RefundRequest = () => {
   const [componentSize, setComponentSize] = useState("default");
 
   const onFormLayoutChange = ({ size }) => {
@@ -92,7 +94,7 @@ const RefoundRequest = () => {
             <Form.Item>
               <ButtonContainer>
                 <ButtonNo />
-                <ButtonYes />
+                <ButtonYes onFinish={onFinish} />
               </ButtonContainer>
             </Form.Item>
           </>
@@ -102,4 +104,4 @@ const RefoundRequest = () => {
   );
 };
 
-export default RefoundRequest;
+export default RefundRequest;

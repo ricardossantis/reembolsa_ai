@@ -8,6 +8,7 @@ import Header from "../components/header";
 import Button from "../components/home-button";
 import InputHeader from "../components/input";
 import Home from "../pages/home";
+import RefundRequest from "../components/refund-request";
 
 const Routes = () => {
   let history = useHistory();
@@ -56,7 +57,7 @@ const Routes = () => {
           />
           <Switch>
             <Route path="/novopedido">
-              <div>novopedido</div>
+              <RefundRequest />
             </Route>
             <Route path="/saldo">
               <div>saldo</div>

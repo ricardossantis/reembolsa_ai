@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const Card = styled.div`
-  width: 80%;
   height: 80px;
   display: flex;
   justify-content: space-around;

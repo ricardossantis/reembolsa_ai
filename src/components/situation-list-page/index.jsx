@@ -12,7 +12,7 @@ import SituationCard from "../situation-card";
 
 function SituationList({ header, list, title }) {
   const [visible, setVisibility] = useState(false);
-  const [modalList, setModalList] = useState({});
+  const [modalList, setModalList] = useState();
 
   const showModal = (item) => {
     setModalList(item);
@@ -27,6 +27,7 @@ function SituationList({ header, list, title }) {
     setVisibility(false);
   };
 
+  console.log(modalList);
   return (
     <MainContainer>
       <Header>{header}</Header>
@@ -39,7 +40,7 @@ function SituationList({ header, list, title }) {
           list.map((item, index) => (
             <SituationCardContainer onClick={() => showModal(item)} key={index}>
               <SituationCard color={item.color}>
-                {item.color !== "blue" ? item.description : item.full_name}
+                {item.color !== "#365083" ? item.description : item.email}
               </SituationCard>
             </SituationCardContainer>
           ))}

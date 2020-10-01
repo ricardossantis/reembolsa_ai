@@ -1,5 +1,4 @@
 import React from "react";
-
 import Button from "../../components/main-page/home-button";
 import ClientCard from "../../components/main-page/card-feed";
 import Footer from "../../components/main-page/footer/index.jsx";
@@ -27,6 +26,7 @@ const Home = () => {
 
       <Button bckButton="#F1548D" />
       <ClientCard />
+
       <Footer children="Reembolsa.ai Soluções LTDA." />
     </>
   );

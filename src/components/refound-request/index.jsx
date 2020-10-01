@@ -44,7 +44,7 @@ const RefoundRequest = () => {
 
           <Form.Item background-color="#f5f5f5">
             <Cascader
-              placeholder="Escolha a categoria"
+              placeholder="Escolha uma categoria"
               options={[
                 {
                   value: "Alimentação",
@@ -73,19 +73,19 @@ const RefoundRequest = () => {
           <SubTitle>Valor</SubTitle>
 
           <Form.Item>
-            <InputNumber placeholder="Insira o valor a reembolsar" />
+            <InputNumber placeholder="Insira um valor de reembolso" />
           </Form.Item>
 
           <SubTitle>Data</SubTitle>
 
           <Form.Item>
-            <DatePicker placeholder="Data da despesa" />
+            <DatePicker placeholder="Insira a data" />
           </Form.Item>
 
           <SubTitle>Descrição da despesa</SubTitle>
 
           <Form.Item>
-            <Input.TextArea placeholder="Qual a natureza de sua solicitação?" />
+            <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
           </Form.Item>
 
           <>

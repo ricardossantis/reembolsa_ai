@@ -9,7 +9,7 @@ import {
   StyledInputPassword,
   ContainerButtons
 } from './styledCadastro';
-
+import api from '../../services/api';
 import axios from "axios";
 
 const layout = {
@@ -33,11 +33,12 @@ const layout = {
   const CadastroGerente = () => {
 
     const [manager, setManager] = useState({
-    email: "tester1@gmail.com",
-    password: "tester",
-    confirmPassword: "tester",
-    accessLevel: 2,
-    company: "Test",
+      company: "Test",
+      email: "sampleuser@sample.com",
+      password: "123456",
+      user: "sampleuser",
+      accessLevel:1
+    
   })
   
   console.log(manager)

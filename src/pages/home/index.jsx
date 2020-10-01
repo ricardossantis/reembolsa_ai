@@ -10,7 +10,7 @@ import { GithubFilled } from "@ant-design/icons";
 const Home = () => {
   return (
     <>
-      {/* <ClientLogo logo1={<GithubFilled />} />
+      <ClientLogo logo1={<GithubFilled />} />
       <MainTimeline
         item1="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
         item2="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
@@ -25,10 +25,10 @@ const Home = () => {
       />
 
       <h1>pagina em construção</h1>
-      <CancelButton />
+      <CancelButton cancel={() => console.log("cancelar button")} />
       <Button bckButton="#F1548D" />
       <ClientCard />
-      <Footer children="Reembolsa.ai Soluções LTDA." /> */}
+      <Footer children="Reembolsa.ai Soluções LTDA." />
     </>
   );
 };

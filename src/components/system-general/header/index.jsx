@@ -39,7 +39,6 @@ const Header = (props) => {
     <>
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
-          <ZLink>{props.logo || props.input}</ZLink>
           <ZLink to={props.link1}>{props.title1}</ZLink>
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
@@ -49,9 +48,7 @@ const Header = (props) => {
         <MinHeader style={{ backgroundColor: props.minColor }}>
           {props.input}
           <Dropdown overlay={menuHamburguer}>
-            <Link onClick={(e) => e.preventDefault()}>
               <Hamburguer style={{ color: props.burguerColor }} />
-            </Link>
           </Dropdown>
         </MinHeader>
       )}

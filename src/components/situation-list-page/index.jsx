@@ -1,26 +1,53 @@
 import React, { useState } from "react";
-import styled from "styled-components";
+import {
+  MainContainer,
+  Header,
+  SituationContainer,
+  SituationCardContainer,
+  Title,
+  TitleParagraph,
+  StyledModal,
+  StyledModal2,
+} from "./situation.js";
 import SituationCard from "../situation-card";
-import { Modal } from "antd";
 
 function SituationList({ header, list, title }) {
   const [visible, setVisibility] = useState(false);
-  const [modalList, setModalList] = useState({});
+  const [visible2, setVisibility2] = useState(false);
+  const [modalList, setModalList] = useState();
+  const [input, setInput] = useState();
 
   const showModal = (item) => {
-    console.log("aqui");
     setModalList(item);
     setVisibility(true);
   };
 
+  const showModal2 = () => {
+    setVisibility2(true);
+  };
+
   const handleOk = (e) => {
-    console.log(e);
     setVisibility(false);
   };
 
   const handleCancel = (e) => {
-    console.log(e);
+    if (list[0].color !== "#365083") {
+      showModal2();
+    }
     setVisibility(false);
+  };
+
+  const handleOk2 = (e) => {
+    console.log(input);
+    setVisibility2(false);
+  };
+
+  const handleCancel2 = (e) => {
+    setVisibility2(false);
+  };
+
+  const handleChange = (e) => {
+    setInput(e.target.value);
   };
 
   return (
@@ -35,92 +62,42 @@ function SituationList({ header, list, title }) {
           list.map((item, index) => (
             <SituationCardContainer onClick={() => showModal(item)} key={index}>
               <SituationCard color={item.color}>
-                {item.description}
+                {item.color !== "#365083" ? item.description : item.fullName}
               </SituationCard>
             </SituationCardContainer>
           ))}
       </SituationContainer>
       <StyledModal visible={visible} onOk={handleOk} onCancel={handleCancel}>
-        {modalList && (
-          <div>
-            <p>Categoria: {modalList.category}</p>
-            <p>Valor: {modalList.value}</p>
-            <p>Data: {modalList.date}</p>
-            <p>Descrição: {modalList.description}</p>
-          </div>
-        )}
+        {list &&
+          list[0].color !== "#365083" &&
+          modalList &&
+          modalList.category !== undefined && (
+            <div>
+              <p>Categoria: {modalList.category}</p>
+              <p>Valor: {modalList.value}</p>
+              <p>Data: {modalList.date}</p>
+              <p>Descrição: {modalList.description}</p>
+            </div>
+          )}
+        {list &&
+          list[0].color === "#365083" &&
+          modalList &&
+          modalList.category === undefined && (
+            <div>
+              <p>Valor disponível: {modalList.amountLimit}</p>
+            </div>
+          )}
       </StyledModal>
+      <StyledModal2
+        visible={visible2}
+        onOk={handleOk2}
+        onCancel={handleCancel2}
+      >
+        <p>Descreva o motivo da rejeição:</p>
+        <textarea onChange={handleChange} />
+      </StyledModal2>
     </MainContainer>
   );
 }
 
 export default SituationList;
-
-const MainContainer = styled.div`
-  width: 100%;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-`;
-const Header = styled.div`
-  width: 80%;
-  height: 10%;
-  font-size: 1.8rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  color: rgba(54, 80, 131, 1);
-  font-family: "Roboto";
-`;
-
-const SituationContainer = styled.div`
-  width: 100%;
-  height: 80%;
-  font-size: 1rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-const SituationCardContainer = styled.div`
-  width: 80%;
-  height: 80px;
-
-  :hover {
-    cursor: pointer;
-    background-color: rgba(54, 80, 131, 0.5);
-    border: 1px solid rgba(54, 80, 131, 0.8);
-    border-radius: 20px;
-  }
-`;
-
-const Title = styled.div`
-  width: 80%;
-  height: 40px;
-  font-size: 1.1rem;
-  font-weight: 700;
-  display: flex;
-  justify-content: center;
-  border-bottom: 1px solid black;
-  margin-bottom: 20px;
-  color: rgba(54, 80, 131, 1);
-  font-family: "Roboto";
-`;
-
-const TitleParagraph = styled.p`
-  width: 50%;
-`;
-
-const StyledModal = styled(Modal)`
-  .ant-modal-content {
-    height: 400px;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-  }
-`;

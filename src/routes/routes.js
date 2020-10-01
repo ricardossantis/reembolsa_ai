@@ -15,9 +15,19 @@ const Routes = () => {
   let history = useHistory();
   const [role, setRole] = useState("none");
   const [auth, setAuth] = useState(null);
+  const stateAuth = useSelector((state) => state.authentication);
+  console.log(stateAuth);
 
   useEffect(() => {
-    setAuth(false);
+    if (stateAuth.auth === "") {
+      setAuth(false);
+    } else if (stateAuth.user.accessLevel === 1) {
+      setRole("manager");
+      setAuth(true);
+    } else if (stateAuth.user.accessLevel === 2) {
+      setRole("employee");
+      setAuth(true);
+    }
   }, []);
 
   if (auth === true) {
@@ -32,17 +42,26 @@ const Routes = () => {
               title1="Novo colaborador"
               title2="Pedidos pendentes"
               title3="Histórico"
+              title4="colaboradores"
               exit="Sair"
               logout={() => setRole("none")}
               link1="/novocolaborador"
               link2="/pedidospendentes"
               link3="/historico"
+              link4="/colaboradores"
               input={<InputHeader />}
             />
             <Switch>
-              <Route path="/novocolaborador"></Route>
-              <Route path="/pedidospendentes"></Route>
-              <Route path="/historico"></Route>
+              <Route path="/novocolaboradore"></Route>
+              <Route path="/colaboradores">
+                <Employees />
+              </Route>
+              <Route path="/pedidospendentes">
+                <ManagerPending />
+              </Route>
+              <Route path="/historico">
+                <ManagerHistory />
+              </Route>
             </Switch>
           </>
         );
@@ -93,14 +112,13 @@ const Routes = () => {
         />
         <Switch>
           <Route exact path="/">
-            <ManagerHistory />
+            <Home />
           </Route>
           <Route exact path="/login">
-            <ManagerPending />
-            <LoginPage/>
+            <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <Employees />
+            <div>cadastro</div>
           </Route>
         </Switch>
       </>

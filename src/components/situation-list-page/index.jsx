@@ -79,6 +79,14 @@ function SituationList({ header, list, title }) {
               <p>Descrição: {modalList.description}</p>
             </div>
           )}
+        {list &&
+          list[0].color === "#365083" &&
+          modalList &&
+          modalList.category === undefined && (
+            <div>
+              <p>Valor disponível: {modalList.amountLimit}</p>
+            </div>
+          )}
       </StyledModal>
       <StyledModal2
         visible={visible2}

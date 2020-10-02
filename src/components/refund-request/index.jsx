@@ -40,6 +40,7 @@ const RefundRequest = () => {
           }}
           onValuesChange={onFormLayoutChange}
           size={componentSize}
+          onFinish={onFinish}
         >
           <Title>Novo Pedido de Reembolso</Title>
           <SubTitle>Categoria</SubTitle>
@@ -94,7 +95,7 @@ const RefundRequest = () => {
             <Form.Item>
               <ButtonContainer>
                 <ButtonNo />
-                <ButtonYes onFinish={onFinish} />
+                <ButtonYes />
               </ButtonContainer>
             </Form.Item>
           </>

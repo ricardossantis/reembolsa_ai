@@ -5,7 +5,7 @@ import RefundRequest from "../src/components/refund-request";
 function App() {
   return (
     <div>
-      <RefundRequest></RefundRequest>
+      <Routes />
     </div>
   );
 }

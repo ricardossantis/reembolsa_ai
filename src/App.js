@@ -3,11 +3,7 @@ import Routes from "./routes/routes.js";
 import RefundRequest from "../src/components/refund-request";
 
 function App() {
-  return (
-    <div>
-      <Routes />
-    </div>
-  );
+  return <Routes />;
 }
 
 export default App;

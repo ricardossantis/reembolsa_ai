@@ -1,18 +1,19 @@
 import React from "react";
-import DefaultForm from "../../components/page-login/default-form/index";
-import DefaultFormItem from "../../components/page-login/default-form-item/index";
-import DefaultInput from "../../components/page-login/default-input/index";
-import DefaultH1 from "../../components/page-login/default-h1/index";
-import DefaultLabel from "../../components/page-login/default-label/index";
-import StyledContent from "../../components/page-login/styled-content/index";
-import StyledInputPassword from "../../components/page-login/styled-input-password/index";
-import StyledSuccess from "../../components/page-login/styled-success/index";
-import StyledError from "../../components/page-login/styled-error/index";
+import DefaultForm from "../../components/login/default-form/index";
+import DefaultFormItem from "../../components/login/default-form-item/index";
+import DefaultInput from "../../components/login/default-input/index";
+import DefaultH1 from "../../components/login/default-h1/index";
+import DefaultLabel from "../../components/login/default-label/index";
+import StyledContent from "../../components/login/styled-content/index";
+import StyledSuccess from "../../components/login/styled-success/index";
+import StyledInputPassword from "../../components/login/styled-input-password/index";
+import StyledError from "../../components/login/styled-error/index";
 import { resquestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "antd";
 import { Link,useHistory } from "react-router-dom";
+import { Button } from "antd";
 import "antd/dist/antd.css";
+
 
 const LoginPage = () => {
   const stateAuth = useSelector((state) => state.authentication);
@@ -21,10 +22,10 @@ const LoginPage = () => {
   const dispatch = useDispatch();
   const onFinish = (values) => {
     dispatch(resquestLogin(values));
-    if(stateAuth.user["access-level"]===1){
+    if(stateAuth.user.accessLevel===1){
       setTimeout(()=>history.replace("/novocolaborador"),2000)
     }
-    else if(stateAuth.user["access-level"]===2){
+    if(stateAuth.user.accessLevel===2){
       setTimeout(()=>history.replace("/novopedido"),2000)
     }
   };

@@ -33,10 +33,10 @@ const layout = {
   const CadastroGerente = () => {
 
     const [manager, setManager] = useState({
-      company: "Test",
-      email: "sampleuser@sample.com",
-      password: "123456",
-      user: "sampleuser",
+      company: "",
+      email: "",
+      password: "",
+      user: "",
       accessLevel:1
     
   })

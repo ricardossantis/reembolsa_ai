@@ -19,6 +19,7 @@ const Routes = () => {
 
   useEffect(() => {
     if (stateAuth.auth === "") {
+      history.replace("/login");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");

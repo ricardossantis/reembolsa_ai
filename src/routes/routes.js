@@ -86,7 +86,7 @@ const Routes = () => {
             />
             <Switch>
               <Route path="/novopedido">
-                <div>novopedido</div>
+                <RefundRequest />
               </Route>
               <Route path="/saldo">
                 <div>saldo</div>

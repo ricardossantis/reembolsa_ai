@@ -4,6 +4,7 @@ import { Form } from "antd";
 const Body = styled.div`
   background: #f5f5f5;
   width: 100%;
+  padding-top: 5rem;
   
 
   @media (min-width: 320px) and (max-width: 768px) {
@@ -92,66 +93,6 @@ const SubTitle = styled.h3`
   }
 `;
 
-const CategoryContainer = styled(Form)`
-  width: 521px;
-  height: 50px;
-  left: 458px;
-  top: 293px;
-  background: #f5f5f5;
-
-  @media (min-width: 320px) and (max-width: 768px) {
-    width: 237px;
-    height: 35px;
-    left: 60px;
-    top: 177px;
-  }
-`;
-const ValueContainer = styled(Form)`
-  width: 521px;
-  height: 49px;
-  left: 460px;
-  top: 410px;
-  background: #f5f5f5;
-
-  @media (min-width: 320px) and (max-width: 768px) {
-    width: 237px;
-    height: 35px;
-    left: 61px;
-    top: 259px;
-  }
-`;
-
-const DataContainer = styled(Form)`
-  width: 521px;
-  height: 50px;
-  left: 458px;
-  top: 521px;
-  background: #f5f5f5;
-
-  @media (min-width: 320px) and (max-width: 768px) {
-    width: 237px;
-    height: 35px;
-    left: 60px;
-    top: 338px;
-  }
-`;
-
-const DescriptionContainer = styled(Form)`
-  width: 521px;
-  height: 170px;
-  left: 460px;
-  top: 644px;
-  background: #f5f5f5;
-
-  @media (min-width: 320px) and (max-width: 768px) {
-    position: absolute;
-    width: 237px;
-    height: 120px;
-    left: 61px;
-    top: 425px;
-  }
-`;
-
 const Button = styled.button`
   width: 50px;
   height: 50px;
@@ -189,10 +130,6 @@ export {
   Body,
   Title,
   SubTitle,
-  CategoryContainer,
-  ValueContainer,
-  DataContainer,
-  DescriptionContainer,
   ButtonNo,
   ButtonYes,
   ButtonContainer,

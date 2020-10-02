@@ -6,14 +6,13 @@ import {
   Body,
   Title,
   SubTitle,
-  ButtonNo,
   ButtonYes,
   ButtonContainer,
   NewForm,
 } from "./refund-style";
 
 const onFinish = (values) => {
-  api.post("https://reembolsa-ai-api.herokuapp.com/refunds", values);
+  api.post("/refunds", values);
   console.log("Valores para o reembolso", values);
 };
 
@@ -45,7 +44,11 @@ const RefundRequest = () => {
           <Title>Novo Pedido de Reembolso</Title>
           <SubTitle>Categoria</SubTitle>
 
-          <Form.Item background-color="#f5f5f5">
+          <Form.Item
+            background-color="#f5f5f5"
+            name="category"
+            value="category"
+          >
             <Cascader
               placeholder="Escolha uma categoria"
               options={[
@@ -75,27 +78,31 @@ const RefundRequest = () => {
 
           <SubTitle>Valor</SubTitle>
 
-          <Form.Item>
-            <InputNumber placeholder="Insira um valor de reembolso" />
+          <Form.Item name="value" value="value">
+            <Input
+              oninput="validity.valid||(value='');"
+              type="number"
+              min="0"
+              placeholder="Insira um valor de reembolso"
+            />
           </Form.Item>
 
           <SubTitle>Data</SubTitle>
 
-          <Form.Item>
+          <Form.Item name="data" value="data">
             <DatePicker placeholder="Insira a data" />
           </Form.Item>
 
           <SubTitle>Descrição da despesa</SubTitle>
 
-          <Form.Item>
+          <Form.Item name="text" value="text">
             <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
           </Form.Item>
 
           <>
-            <Form.Item>
+            <Form.Item name="confirm" value="confirm">
               <ButtonContainer>
-                <ButtonNo />
-                <ButtonYes />
+                <ButtonYes type="primary" htmlType="submit" />
               </ButtonContainer>
             </Form.Item>
           </>

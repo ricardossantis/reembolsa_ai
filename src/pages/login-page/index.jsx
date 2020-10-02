@@ -23,7 +23,6 @@ const LoginPage = () => {
     dispatch(requestLogin(values));
   };
   useEffect(() => {
-    console.log(stateAuth)
     if (stateAuth.user.accessLevel === 1) {
       history.replace("/novocolaborador");
     }

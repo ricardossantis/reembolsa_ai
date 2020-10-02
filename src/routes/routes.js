@@ -18,7 +18,8 @@ const Routes = () => {
   const dispatch = useDispatch();
   const [auth, setAuth] = useState(null);
   const stateAuth = useSelector((state) => state.authentication);
-
+  const token = localStorage.getItem("token");
+  console.log(token)
   useEffect(() => {
     if (stateAuth.auth === "") {
       history.replace("/login");

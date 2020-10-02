@@ -1,13 +1,25 @@
 import api from "../../services/api";
 
-const postRequest = (values, employerId, employerName, setStatusResponse) => {
+const postRequest = (
+  token,
+  values,
+  employerId,
+  employerName,
+  setStatusResponse
+) => {
   api
-    .post("/register", {
-      ...values,
-      accessLevel: 2,
-      userId: employerId,
-      company: employerName,
-    })
+    .post(
+      "/register",
+      {
+        headers: { authorization: `Bearer ${token}` },
+      },
+      {
+        ...values,
+        accessLevel: 2,
+        userId: employerId,
+        company: employerName,
+      }
+    )
     .then((response) => {
       console.log(response.data);
       console.log(response.status);

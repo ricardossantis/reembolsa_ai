@@ -46,13 +46,14 @@ const NewUser = () => {
   const employerState = useSelector((state) => state.authentication);
   const employerId = employerState.user.id;
   const employerName = employerState.user.user;
+  const token = employerState.auth;
 
   console.log(
     `Token ativo da sessão: Empresa: ${employerName}, id: ${employerId}`
   );
 
   const onFinish = (values) => {
-    postRequest(values, employerId, employerName, setStatusResponse);
+    postRequest(token, values, employerId, employerName, setStatusResponse);
   };
 
   return (

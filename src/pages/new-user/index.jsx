@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import { useSelector } from "react-redux";
+import jwt_decode from "jwt-decode";
 import { Form, Input, Tooltip, Select, Checkbox, Button } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import api from "../../services/api";
@@ -39,10 +41,15 @@ const NewUser = () => {
   const [form] = Form.useForm();
   const [statusResponse, setStatusResponse] = useState(null);
 
+  const token = localStorage.getItem("token");
+  const decoded = jwt_decode(token);
+  const id = decoded.sub;
+  console.log(`Token ativo da sessão: ${id}`);
+
   const onFinish = (values) => {
     api
-      .post("/register", { ...values, accessLevel: 2 })
-      .then(function (response) {
+      .post("/register", { ...values, accessLevel: 2, userId: id })
+      .then((response) => {
         console.log(response.data);
         console.log(response.status);
 

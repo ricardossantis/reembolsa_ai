@@ -1,18 +1,7 @@
-import React, { useState } from "react";
-import {
-  Form,
-  Input,
-  Tooltip,
-  Select,
-  Checkbox,
-  Button,
-  AutoComplete,
-} from "antd";
+import React from "react";
+import { Form, Input, Tooltip, Select, Checkbox, Button } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import api from "../../services/api";
-
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
 
 const formItemLayout = {
   labelCol: {
@@ -47,43 +36,17 @@ const tailFormItemLayout = {
 };
 
 const NewUser = () => {
-  //const [serverResponse, setServerResponse] = useState();
-
   const [form] = Form.useForm();
 
   const onFinish = (values) => {
-    api.post("/register", values);
+    api
+      .post("/register", { ...values, accessLevel: 2 })
+      .then(function (response) {
+        console.log(response.data);
+        console.log(response.status);
+      });
     console.log("Received values of form: ", values);
   };
-
-  const prefixSelector = (
-    <Form.Item name="prefix" noStyle>
-      <Select
-        style={{
-          width: 70,
-        }}
-      >
-        <Option value="86">+86</Option>
-        <Option value="87">+87</Option>
-      </Select>
-    </Form.Item>
-  );
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-  const onWebsiteChange = (value) => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        [".com", ".org", ".net"].map((domain) => `${value}${domain}`)
-      );
-    }
-  };
-
-  const websiteOptions = autoCompleteResult.map((website) => ({
-    label: website,
-    value: website,
-  }));
 
   return (
     <Form
@@ -212,8 +175,8 @@ const NewUser = () => {
         label="Limite de reembolso"
         rules={[
           {
-            required: true,
-            message: "Please input your phone number!",
+            required: false,
+            message: "Você precisa definir o limite para este usuário.",
           },
         ]}
       >
@@ -224,23 +187,6 @@ const NewUser = () => {
         />
       </Form.Item>
 
-      <Form.Item
-        name="agreement"
-        valuePropName="checked"
-        rules={[
-          {
-            validator: (_, value) =>
-              value
-                ? Promise.resolve()
-                : Promise.reject("Should accept agreement"),
-          },
-        ]}
-        {...tailFormItemLayout}
-      >
-        <Checkbox>
-          I have read the <a href="">agreement</a>
-        </Checkbox>
-      </Form.Item>
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
           Register

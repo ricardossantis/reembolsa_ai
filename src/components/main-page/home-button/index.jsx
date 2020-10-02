@@ -5,9 +5,9 @@ import { ZButton } from "./home-button-style.js";
 const Button = (props) => {
   return (
     <Link to="/cadastro">
-      <ZButton style={{ backgroundColor: props.bckButton }}>
+      <button style={{ backgroundColor: props.bckButton }}>
         Quero participar
-      </ZButton>
+      </button>
     </Link>
   );
 };

@@ -7,10 +7,10 @@ import NewUser from "../pages/new-user";
 
 const Routes = () => {
   let history = useHistory();
-  const [role, setRole] = useState("none");
+  const [role, setRole] = useState("manager"); //retornar para none
 
   switch (role) {
-    case "none": //alterar para manager
+    case "manager":
       return (
         <Switch>
           <Route path="/novocolaborador">

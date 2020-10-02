@@ -48,11 +48,11 @@ const Routes = () => {
               link1="/novocolaborador"
               link2="/pedidospendentes"
               link3="/historico"
-              link4="/colaboradores"
+              link4="/colaboradores" 
               input={<InputHeader />}
             />
             <Switch>
-              <Route path="/novocolaboradore"></Route>
+              <Route path="/novocolaboradores"></Route>
               <Route path="/colaboradores">
                 <Employees />
               </Route>

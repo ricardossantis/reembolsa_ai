@@ -7,7 +7,7 @@ import DefaultLabel from "../../components/login/default-label/index";
 import StyledContent from "../../components/login/styled-content/index";
 import StyledInputPassword from "../../components/login/styled-input-password/index";
 import StyledError from "../../components/login/styled-error/index";
-import { resquestLogin } from "../../redux/actions/auth";
+import { requestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "antd";
@@ -20,7 +20,7 @@ const LoginPage = () => {
   let history = useHistory();
   const dispatch = useDispatch();
   const onFinish = (values) => {
-    dispatch(resquestLogin(values));
+    dispatch(requestLogin(values));
   };
   useEffect(() => {
     console.log(stateAuth)

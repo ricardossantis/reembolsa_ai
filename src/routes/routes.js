@@ -42,24 +42,24 @@ const Routes = () => {
               title1="Novo colaborador"
               title2="Pedidos pendentes"
               title3="Histórico"
-              title4="colaboradores"
+              title4="Colaboradores"
               exit="Sair"
               logout={() => setRole("none")}
               link1="/novocolaborador"
               link2="/pedidospendentes"
-              link3="/historico"
+              link3="/historicoempresa"
               link4="/colaboradores"
               input={<InputHeader />}
             />
             <Switch>
-              <Route path="/novocolaboradore"></Route>
+              <Route path="/novocolaborador"></Route>
               <Route path="/colaboradores">
                 <Employees />
               </Route>
               <Route path="/pedidospendentes">
                 <ManagerPending />
               </Route>
-              <Route path="/historico">
+              <Route path="/historicoempresa">
                 <ManagerHistory />
               </Route>
             </Switch>
@@ -80,7 +80,7 @@ const Routes = () => {
               logout={() => setRole("none")}
               link1="/novopedido"
               link2="/saldo"
-              link3="/historico"
+              link3="/historicocolaborador"
               input={<InputHeader />}
             />
             <Switch>
@@ -90,7 +90,7 @@ const Routes = () => {
               <Route path="/saldo">
                 <div>saldo</div>
               </Route>
-              <Route path="/historico"></Route>
+              <Route path="/historicocolaborador"></Route>
             </Switch>
           </>
         );

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form, Input, Tooltip, Select, Checkbox, Button } from "antd";
 import { QuestionCircleOutlined } from "@ant-design/icons";
 import api from "../../services/api";
@@ -17,7 +17,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 16,
+      span: 10,
     },
   },
 };
@@ -29,14 +29,15 @@ const tailFormItemLayout = {
       offset: 0,
     },
     sm: {
-      span: 16,
-      offset: 8,
+      span: 10,
+      offset: 12,
     },
   },
 };
 
 const NewUser = () => {
   const [form] = Form.useForm();
+  const [statusResponse, setStatusResponse] = useState(null);
 
   const onFinish = (values) => {
     api
@@ -44,6 +45,14 @@ const NewUser = () => {
       .then(function (response) {
         console.log(response.data);
         console.log(response.status);
+
+        if (response.status === 200) {
+          return setStatusResponse(response.status);
+        } else if (response.status === 400) {
+          setStatusResponse(response.status);
+        } else if (response.status === 500) {
+          setStatusResponse(response.status);
+        }
       });
     console.log("Received values of form: ", values);
   };
@@ -192,6 +201,13 @@ const NewUser = () => {
           Register
         </Button>
       </Form.Item>
+      {statusResponse === 201 ? (
+        <h2 style={{ color: "green" }}>Colaborador cadastrado com sucesso!</h2>
+      ) : statusResponse === null ? (
+        <h2 style={{ color: "orange" }}>Aguardando cadastro...</h2>
+      ) : (
+        <h2 style={{ color: "red" }}>Erro no cadastro!</h2>
+      )}
     </Form>
   );
 };

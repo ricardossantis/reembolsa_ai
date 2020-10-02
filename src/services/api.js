@@ -4,7 +4,7 @@ const api = axios.create({
   baseURL: "https://reembolsa-ai-api.herokuapp.com",
   headers: {
     authorization:
-      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvdWcuYm93c2VyQG5pbnRlbmRvLmNvbSIsImlhdCI6MTYwMTYwOTI2NiwiZXhwIjoxNjAxNjEyODY2LCJzdWIiOiIxMiJ9.1HN_tqgtoLqdGb5573f68hh-vbbL8JN9TF5M8AzVGbI",
+      "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImRvdWcuYm93c2VyQG5pbnRlbmRvLmNvbSIsImlhdCI6MTYwMTYxMzAzMSwiZXhwIjoxNjAxNjE2NjMxLCJzdWIiOiIxMiJ9.e7hrbYSAUlvhKV0X9OgCUn8n5dPlHtex8wXbqGLzzAo",
   },
 });
 

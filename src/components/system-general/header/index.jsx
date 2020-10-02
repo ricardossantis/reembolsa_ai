@@ -33,7 +33,7 @@ const Header = (props) => {
         </MLink>
       </MenuItem>
       <MenuItem key="4">
-        <MLink to={props.link3} style={{ color: "#FFFFFF" }}>
+        <MLink to={props.link4} style={{ color: "#FFFFFF" }}>
           {props.title4}
         </MLink>
       </MenuItem>
@@ -54,7 +54,7 @@ const Header = (props) => {
         <MinHeader style={{ backgroundColor: props.minColor }}>
           {props.input}
           <Dropdown overlay={menuHamburguer}>
-              <Hamburguer style={{ color: props.burguerColor }} />
+            <Hamburguer style={{ color: props.burguerColor }} />
           </Dropdown>
         </MinHeader>
       )}

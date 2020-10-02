@@ -92,6 +92,7 @@ const Routes = () => {
             </Switch>
           </>
         );
+        //adicionei isto na rota e também o setAuth para logout
       default:
         return setRole("none");
     }

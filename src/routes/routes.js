@@ -16,10 +16,10 @@ const Routes = () => {
   const [role, setRole] = useState("none");
   const [auth, setAuth] = useState(null);
   const stateAuth = useSelector((state) => state.authentication);
-  console.log(stateAuth);
 
   useEffect(() => {
     if (stateAuth.auth === "") {
+      history.replace("/login");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");
@@ -28,7 +28,7 @@ const Routes = () => {
       setRole("employee");
       setAuth(true);
     }
-  }, []);
+  }, [stateAuth]);
 
   if (auth === true) {
     switch (role) {

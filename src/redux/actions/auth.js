@@ -14,22 +14,21 @@ export const resquestLogin = ({ email, password }) => (dispatch) => {
       const token = response.data.accessToken;
       const decoded = jwt_decode(token);
       const id = decoded.sub;
-      localStorage.setItem("token", token);
       axios
         .get("https://reembolsa-ai-api.herokuapp.com/users/" + id, {
           headers: { authorization: "Bearer " + token },
         })
         .then((response) => {
-          localStorage.setItem("user", JSON.stringify(response.data));
           dispatch(login(token, response.data));
         });
     })
     .catch(({ response: { data: { error } } }) => dispatch(err(error)));
 };
 
-const login = (token) => ({
+const login = (token, user) => ({
   type: LOGIN,
   auth: token,
+  user: user,
 });
 export const logout = () => ({
   type: LOGOUT,
@@ -39,4 +38,3 @@ const err = () => ({
   type: ERROR,
   error: "Verifique as informações de entrada",
 });
-

@@ -7,9 +7,15 @@ function Employees() {
   const [list, setList] = useState();
   const stateAuth = useSelector((state) => state.authentication);
   const id = stateAuth.user.id;
+  const token = stateAuth.auth;
+
   useEffect(() => {
     api
-      .get("/users")
+      .get("/users", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         console.log(res);
         setList(

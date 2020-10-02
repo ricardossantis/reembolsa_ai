@@ -11,7 +11,7 @@ import {
 } from "./situation.js";
 import SituationCard from "../situation-card";
 
-function SituationList({ header, list, title }) {
+function SituationList({ header, list = [], title }) {
   const [visible, setVisibility] = useState(false);
   const [visible2, setVisibility2] = useState(false);
   const [modalList, setModalList] = useState();
@@ -68,7 +68,7 @@ function SituationList({ header, list, title }) {
           ))}
       </SituationContainer>
       <StyledModal visible={visible} onOk={handleOk} onCancel={handleCancel}>
-        {list &&
+        {list.length > 0 &&
           list[0].color !== "#365083" &&
           modalList &&
           modalList.category !== undefined && (
@@ -79,7 +79,7 @@ function SituationList({ header, list, title }) {
               <p>Descrição: {modalList.description}</p>
             </div>
           )}
-        {list &&
+        {list.length > 0 &&
           list[0].color === "#365083" &&
           modalList &&
           modalList.category === undefined && (

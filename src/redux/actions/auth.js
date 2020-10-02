@@ -39,3 +39,4 @@ const err = () => ({
   type: ERROR,
   error: "Verifique as informações de entrada",
 });
+

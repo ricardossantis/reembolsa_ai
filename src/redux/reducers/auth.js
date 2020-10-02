@@ -5,7 +5,7 @@ const user = JSON.parse(localStorage.getItem("user"));
 
 const defaultState = {
   auth: token ? token : "",
-  user: token ? user : {},
+  user: user ? user : {},
   err: "",
   success: "",
 };
@@ -13,7 +13,7 @@ const authentication = (state = defaultState, action) => {
   switch (action.type) {
     case LOGIN:
       console.log(user)
-      return { ...state, auth: action.auth, err: "", success: "Bem vindo "+user.user };
+      return { ...state, auth: action.auth, err: "", success: "Bem vindo "};
     case ERROR:
       return { ...state, err: action.error };
     case LOGOUT:

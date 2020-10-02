@@ -1,10 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import { Form, Input, Tooltip, Button } from "antd";
+import { Form, Input, Button } from "antd";
 import {
   ContainerForm,
   Title,
-  InputRadius,
 } from "../../components/new-employee/styled-post";
 import postRequest from "../../components/new-employee/post-resquest";
 
@@ -81,10 +80,12 @@ const NewUser = () => {
           },
         ]}
       >
-        <Title>
-          <h3>E-mail</h3>
-        </Title>
-        <InputRadius />
+        <div>
+          <Title>
+            <h3>E-mail</h3>
+          </Title>
+          <Input />
+        </div>
       </Form.Item>
 
       <Form.Item
@@ -97,10 +98,12 @@ const NewUser = () => {
         ]}
         hasFeedback
       >
-        <Title>
-          <h3>Senha</h3>
-        </Title>
-        <Input.Password />
+        <div>
+          <Title>
+            <h3>Senha</h3>
+          </Title>
+          <Input.Password />
+        </div>
       </Form.Item>
 
       <Form.Item
@@ -113,10 +116,12 @@ const NewUser = () => {
           },
         ]}
       >
-        <Title>
-          <h3>Nome completo</h3>
-        </Title>
-        <InputRadius />
+        <div>
+          <Title>
+            <h3>Nome completo</h3>
+          </Title>
+          <Input />
+        </div>
       </Form.Item>
 
       <Form.Item
@@ -129,10 +134,12 @@ const NewUser = () => {
           },
         ]}
       >
-        <Title>
-          <h3>Nome de usuário</h3>
-        </Title>
-        <InputRadius />
+        <div>
+          <Title>
+            <h3>Nome de usuário</h3>
+          </Title>
+          <Input />
+        </div>
       </Form.Item>
 
       <Form.Item
@@ -145,10 +152,12 @@ const NewUser = () => {
           },
         ]}
       >
-        <Title>
-          <h3>Cargo</h3>
-        </Title>
-        <InputRadius />
+        <div>
+          <Title>
+            <h3>Cargo</h3>
+          </Title>
+          <Input />
+        </div>
       </Form.Item>
 
       <Form.Item
@@ -160,19 +169,21 @@ const NewUser = () => {
           },
         ]}
       >
-        <Title>
-          <h3>Limite de Reembolso</h3>
-        </Title>
-        <InputRadius
-          style={{
-            width: "100%",
-          }}
-        />
+        <div>
+          <Title>
+            <h3>Limite de Reembolso</h3>
+          </Title>
+          <Input
+            style={{
+              width: "100%",
+            }}
+          />
+        </div>
       </Form.Item>
 
       <Form.Item {...tailFormItemLayout}>
         <Button type="primary" htmlType="submit">
-          Register
+          Cadastrar
         </Button>
       </Form.Item>
     </ContainerForm>

@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Form, Input, Tooltip, Button } from "antd";
+import { Form } from "antd";
 
 const ContainerForm = styled(Form)`
   height: 100vh;
@@ -55,9 +55,4 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const InputRadius = styled(Input)`
-  border-radius: 5px;
-  background-color: #f5f5f5;
-`;
-
-export { ContainerForm, Title, StyledForm, InputRadius };
+export { ContainerForm, Title, StyledForm };

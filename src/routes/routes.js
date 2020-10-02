@@ -44,12 +44,11 @@ const Routes = () => {
               title3="Histórico"
               title4="colaboradores"
               exit="Sair"
-              logout={() => setRole("none")}
+              logout={() => setAuth(false)}
               link1="/novocolaborador"
               link2="/pedidospendentes"
               link3="/historico"
-              link4="/colaboradores" 
-              input={<InputHeader />}
+              link4="/colaboradores"
             />
             <Switch>
               <Route path="/novocolaboradores"></Route>
@@ -77,11 +76,10 @@ const Routes = () => {
               title2="Saldo"
               title3="Histórico"
               exit="Sair"
-              logout={() => setRole("none")}
+              logout={() => setAuth(false)}
               link1="/novopedido"
               link2="/saldo"
               link3="/historico"
-              input={<InputHeader />}
             />
             <Switch>
               <Route path="/novopedido">
@@ -94,6 +92,8 @@ const Routes = () => {
             </Switch>
           </>
         );
+      default:
+        return setRole("none");
     }
   } else if (auth === false) {
     return (

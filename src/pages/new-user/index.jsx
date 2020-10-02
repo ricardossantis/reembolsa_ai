@@ -100,7 +100,7 @@ const NewUser = () => {
         <Title>
           <h3>Senha</h3>
         </Title>
-        <InputRadius.Password />
+        <Input.Password />
       </Form.Item>
 
       <Form.Item
@@ -175,13 +175,6 @@ const NewUser = () => {
           Register
         </Button>
       </Form.Item>
-      {statusResponse === 201 ? (
-        <h2 style={{ color: "green" }}>Colaborador cadastrado com sucesso!</h2>
-      ) : statusResponse === null ? (
-        <h2 style={{ color: "orange" }}>Aguardando cadastro...</h2>
-      ) : (
-        <h2 style={{ color: "red" }}>Erro no cadastro!</h2>
-      )}
     </ContainerForm>
   );
 };

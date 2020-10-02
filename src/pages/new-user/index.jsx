@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
-import jwt_decode from "jwt-decode";
-import { Form, Input, Tooltip, Select, Checkbox, Button } from "antd";
+import { Form, Input, Tooltip, Button } from "antd";
+import { ContainerForm } from "../../components/new-employee/styled-post";
 import { QuestionCircleOutlined } from "@ant-design/icons";
-import api from "../../services/api";
+import postRequest from "../../components/new-employee/post-resquest";
 
 const formItemLayout = {
   labelCol: {
@@ -41,31 +41,20 @@ const NewUser = () => {
   const [form] = Form.useForm();
   const [statusResponse, setStatusResponse] = useState(null);
 
-  const token = localStorage.getItem("token");
-  const decoded = jwt_decode(token);
-  const id = decoded.sub;
-  console.log(`Token ativo da sessão: ${id}`);
+  const employerState = useSelector((state) => state.authentication);
+  const employerId = employerState.user.id;
+  const employerName = employerState.user.user;
+
+  console.log(
+    `Token ativo da sessão: Empresa: ${employerName}, id: ${employerId}`
+  );
 
   const onFinish = (values) => {
-    api
-      .post("/register", { ...values, accessLevel: 2, userId: id })
-      .then((response) => {
-        console.log(response.data);
-        console.log(response.status);
-
-        if (response.status === 200) {
-          return setStatusResponse(response.status);
-        } else if (response.status === 400) {
-          setStatusResponse(response.status);
-        } else if (response.status === 500) {
-          setStatusResponse(response.status);
-        }
-      });
-    console.log("Received values of form: ", values);
+    postRequest(values, employerId, employerName, setStatusResponse);
   };
 
   return (
-    <Form
+    <ContainerForm
       {...formItemLayout}
       form={form}
       name="register"
@@ -144,27 +133,7 @@ const NewUser = () => {
       >
         <Input />
       </Form.Item>
-      <Form.Item
-        name="company"
-        label={
-          <span>
-            Empresa&nbsp;
-            <Tooltip title="Para qual empresa você trabalha?">
-              <QuestionCircleOutlined />
-            </Tooltip>
-          </span>
-        }
-        rules={[
-          {
-            required: true,
-            message:
-              "Precisamos saber qual é a empresa para sua alocação em nosso sistema.",
-            whitespace: true,
-          },
-        ]}
-      >
-        <Input />
-      </Form.Item>
+
       <Form.Item
         name="roll"
         label={
@@ -215,7 +184,7 @@ const NewUser = () => {
       ) : (
         <h2 style={{ color: "red" }}>Erro no cadastro!</h2>
       )}
-    </Form>
+    </ContainerForm>
   );
 };
 

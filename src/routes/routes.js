@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import api from "../services/api";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
@@ -10,13 +10,16 @@ import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
 import Home from "../pages/home";
+import { logout } from "../redux/actions/auth";
 
 const Routes = () => {
   let history = useHistory();
   const [role, setRole] = useState("none");
+  const dispatch = useDispatch();
   const [auth, setAuth] = useState(null);
   const stateAuth = useSelector((state) => state.authentication);
-
+  const token = localStorage.getItem("token");
+  console.log(token)
   useEffect(() => {
     if (stateAuth.auth === "") {
       history.replace("/login");
@@ -44,7 +47,7 @@ const Routes = () => {
               title3="Histórico"
               title4="Colaboradores"
               exit="Sair"
-              logout={() => setRole("none")}
+              logout={() => dispatch(logout())}
               link1="/novocolaborador"
               link2="/pedidospendentes"
               link3="/historicoempresa"
@@ -77,7 +80,7 @@ const Routes = () => {
               title2="Saldo"
               title3="Histórico"
               exit="Sair"
-              logout={() => setRole("none")}
+              logout={() => dispatch(logout())}
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"

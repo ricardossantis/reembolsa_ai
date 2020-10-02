@@ -13,7 +13,7 @@ const authentication = (state = defaultState, action) => {
     case ERROR:
       return { ...state, err: action.error };
     case LOGOUT:
-      return { ...state, auth: "", err: "" };
+      return { ...state, auth: "",user:{}, err: "" };
 
     default:
       return state;

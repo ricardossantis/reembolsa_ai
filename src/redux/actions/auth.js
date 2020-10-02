@@ -4,7 +4,7 @@ export const LOGIN = "LOGIN";
 export const ERROR = "ERROR";
 export const LOGOUT = "LOGOUT";
 
-export const resquestLogin = ({ email, password }) => (dispatch) => {
+export const requestLogin = ({ email, password }) => (dispatch) => {
   axios
     .post("https://reembolsa-ai-api.herokuapp.com/login", {
       email: email,
@@ -14,6 +14,7 @@ export const resquestLogin = ({ email, password }) => (dispatch) => {
       const token = response.data.accessToken;
       const decoded = jwt_decode(token);
       const id = decoded.sub;
+      localStorage.setItem("token", token);
       axios
         .get("https://reembolsa-ai-api.herokuapp.com/users/" + id, {
           headers: { authorization: "Bearer " + token },
@@ -30,9 +31,12 @@ const login = (token, user) => ({
   auth: token,
   user: user,
 });
-export const logout = () => ({
-  type: LOGOUT,
-});
+export const logout = () => {
+  localStorage.setItem("token", ""); 
+  return {
+    type: LOGOUT,
+  };
+};
 
 const err = () => ({
   type: ERROR,

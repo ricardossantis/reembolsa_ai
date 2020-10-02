@@ -1,8 +1,11 @@
 import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Form, Input, Tooltip, Button } from "antd";
-import { ContainerForm } from "../../components/new-employee/styled-post";
-import { QuestionCircleOutlined } from "@ant-design/icons";
+import {
+  ContainerForm,
+  Title,
+  InputRadius,
+} from "../../components/new-employee/styled-post";
 import postRequest from "../../components/new-employee/post-resquest";
 
 const formItemLayout = {
@@ -19,7 +22,7 @@ const formItemLayout = {
       span: 24,
     },
     sm: {
-      span: 10,
+      span: 20,
     },
   },
 };
@@ -61,9 +64,12 @@ const NewUser = () => {
       onFinish={onFinish}
       scrollToFirstError
     >
+      <Title>
+        <h1>Novo Colaborador</h1>
+      </Title>
+
       <Form.Item
         name="email"
-        label="E-mail"
         rules={[
           {
             type: "email",
@@ -75,12 +81,14 @@ const NewUser = () => {
           },
         ]}
       >
-        <Input />
+        <Title>
+          <h3>E-mail</h3>
+        </Title>
+        <InputRadius />
       </Form.Item>
 
       <Form.Item
         name="password"
-        label="Senha"
         rules={[
           {
             required: true,
@@ -89,19 +97,14 @@ const NewUser = () => {
         ]}
         hasFeedback
       >
-        <Input.Password />
+        <Title>
+          <h3>Senha</h3>
+        </Title>
+        <InputRadius.Password />
       </Form.Item>
 
       <Form.Item
         name="fullName"
-        label={
-          <span>
-            Nome completo&nbsp;
-            <Tooltip title="Qual é o seu nome?">
-              <QuestionCircleOutlined />
-            </Tooltip>
-          </span>
-        }
         rules={[
           {
             required: true,
@@ -110,19 +113,14 @@ const NewUser = () => {
           },
         ]}
       >
-        <Input />
+        <Title>
+          <h3>Nome completo</h3>
+        </Title>
+        <InputRadius />
       </Form.Item>
 
       <Form.Item
         name="user"
-        label={
-          <span>
-            Usuário&nbsp;
-            <Tooltip title="Este será seu nome de usuário no sistema.">
-              <QuestionCircleOutlined />
-            </Tooltip>
-          </span>
-        }
         rules={[
           {
             required: true,
@@ -131,19 +129,14 @@ const NewUser = () => {
           },
         ]}
       >
-        <Input />
+        <Title>
+          <h3>Nome de usuário</h3>
+        </Title>
+        <InputRadius />
       </Form.Item>
 
       <Form.Item
         name="roll"
-        label={
-          <span>
-            Cargo&nbsp;
-            <Tooltip title="What do you want others to call you?">
-              <QuestionCircleOutlined />
-            </Tooltip>
-          </span>
-        }
         rules={[
           {
             required: true,
@@ -152,12 +145,14 @@ const NewUser = () => {
           },
         ]}
       >
-        <Input />
+        <Title>
+          <h3>Cargo</h3>
+        </Title>
+        <InputRadius />
       </Form.Item>
 
       <Form.Item
         name="amountLimit"
-        label="Limite de reembolso"
         rules={[
           {
             required: false,
@@ -165,7 +160,10 @@ const NewUser = () => {
           },
         ]}
       >
-        <Input
+        <Title>
+          <h3>Limite de Reembolso</h3>
+        </Title>
+        <InputRadius
           style={{
             width: "100%",
           }}

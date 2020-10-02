@@ -3,18 +3,50 @@ import { Form, Input, Tooltip, Button } from "antd";
 
 const ContainerForm = styled(Form)`
   border: 1px solid red;
-  margin-top: 25%;
-  height: 50%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   @media (min-width: 320px) and (max-width: 768px) {
-    margin-top: 15%;
-    padding-top: 10%;
+    padding-left: 5%;
+    padding-right: 5%;
+    padding-top: 20%;
 
     div {
-      width: 90%;
+      width: 100%;
       margin: 0.2rem auto;
     }
   }
 `;
 
-export { ContainerForm };
+const Title = styled.div`
+  width: 100%;
+
+  h1 {
+    text-align: center;
+    color: #365083;
+    font-weight: bold;
+  }
+
+  h3 {
+    color: #365083;
+    font-weight: bold;
+  }
+`;
+
+const StyledForm = styled(Form)`
+  border: 1px solid blue;
+
+  h1 {
+    text-align: center;
+    color: #365083;
+    font-weight: bold;
+  }
+`;
+
+const InputRadius = styled(Input)`
+  border-radius: 5px;
+`;
+
+export { ContainerForm, Title, StyledForm, InputRadius };

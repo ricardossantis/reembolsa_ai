@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React, { useEffect } from "react";
 import DefaultForm from "../../components/login/default-form/index";
 import DefaultFormItem from "../../components/login/default-form-item/index";
 import DefaultInput from "../../components/login/default-input/index";
@@ -14,7 +14,6 @@ import { Button } from "antd";
 import "antd/dist/antd.css";
 
 const LoginPage = () => {
- 
   const stateAuth = useSelector((state) => state.authentication);
   const { err } = stateAuth;
   let history = useHistory();

@@ -14,7 +14,7 @@ export const requestLogin = ({ email, password }) => (dispatch) => {
       const token = response.data.accessToken;
       const decoded = jwt_decode(token);
       const id = decoded.sub;
-      localStorage.setItem("token", token);
+
       axios
         .get("https://reembolsa-ai-api.herokuapp.com/users/" + id, {
           headers: { authorization: "Bearer " + token },
@@ -32,7 +32,6 @@ const login = (token, user) => ({
   user: user,
 });
 export const logout = () => {
-  localStorage.setItem("token", ""); 
   return {
     type: LOGOUT,
   };

@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const MaxLogo = styled.div`
-  margin-top: 15rem;
   display: flex;
   justify-content: space-evenly;
 `;

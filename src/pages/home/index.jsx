@@ -1,4 +1,5 @@
 import React from "react";
+import Banner from "../../components/main-page/banner";
 import Button from "../../components/main-page/home-button";
 import ClientCard from "../../components/main-page/card-feed";
 import Footer from "../../components/main-page/footer/index.jsx";
@@ -10,7 +11,12 @@ import { GithubFilled } from "@ant-design/icons";
 const Home = () => {
   return (
     <>
-      <ClientLogo logo1={<GithubFilled />} />
+      <Banner
+        bannerTxt1="Lorem Ipsum"
+        bannerTxt2="has been the"
+        bannerButton={<Button bckButton="#F1548D" />}
+      />
+      {/* <ClientLogo logo1={<GithubFilled />} />
       <MainTimeline
         item1="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
         item2="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
@@ -24,11 +30,11 @@ const Home = () => {
         item10="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
       />
 
-      <h1>pagina em construção</h1>
-      <CancelButton cancel={() => console.log("cancelar button")} />
+      
+     
       <Button bckButton="#F1548D" />
       <ClientCard />
-      <Footer children="Reembolsa.ai Soluções LTDA." />
+      <Footer children="Reembolsa.ai Soluções LTDA." /> */}
     </>
   );
 };

@@ -7,10 +7,15 @@ function History() {
   const [list, setList] = useState();
   const stateAuth = useSelector((state) => state.authentication);
   const id = stateAuth.user.id;
+  const token = stateAuth.auth;
 
   useEffect(() => {
     api
-      .get("/refunds")
+      .get("/refunds", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         setList(
           res.data
@@ -34,7 +39,6 @@ function History() {
       .catch((err) => console.log(err));
   }, []);
 
-  console.log(list);
   return (
     <SituationList header="Histórico de Movimentações" list={list} title />
   );

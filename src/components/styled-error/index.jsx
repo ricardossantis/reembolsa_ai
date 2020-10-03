@@ -1,8 +1,8 @@
 import styled from "styled-components"
-const StyledSuccess = styled.p`
+const StyledError = styled.p`
     margin-top: 3em;
-    color:green;
+    color:red;
     font-size:large;
     text-align:center;
 `
-export default StyledSuccess
+export default StyledError

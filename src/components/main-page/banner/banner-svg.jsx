@@ -3,9 +3,6 @@ import React from "react";
 const SVGbanner = (props) => {
   return (
     <svg
-      id="fb0462f1-4822-46c6-85a1-002b71cfcb82"
-      data-name="Layer 1"
-      xmlns="http://www.w3.org/2000/svg"
       width={props.widthSvg}
       height={props.heightSvg}
       viewBox="0 0 980.49384 751.89531"
@@ -27,16 +24,16 @@ const SVGbanner = (props) => {
         transform="translate(-109.75308 -74.05234)"
         fill="none"
         stroke="#3f3d56"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       />
       <path
         d="M623.24692,469.05234"
         transform="translate(-109.75308 -74.05234)"
         fill="none"
         stroke="#3f3d56"
-        stroke-miterlimit="10"
-        stroke-width="2"
+        strokeMiterlimit="10"
+        strokeWidth="2"
       />
       <rect x="691.49413" y="48.99986" width="2" height="101" fill="#3f3d56" />
       <rect

@@ -96,7 +96,7 @@ const Routes = () => {
             </Switch>
           </>
         );
-        //adicionei isto na rota e também o setAuth para logout
+      //adicionei isto na rota e também o setAuth para logout
       default:
         return setRole("none");
     }
@@ -107,12 +107,14 @@ const Routes = () => {
           maxColor="#365083"
           minColor="#365083"
           burguerColor="#FFFFFF"
-          title1="Cadastro"
-          title2="Login"
-          title3="Contato"
-          link1="/cadastro"
-          link2="/login"
-          link3="contato"
+          title2="Cadastro"
+          title3="Login"
+          title4="Contato"
+          link2="/cadastro"
+          link3="/login"
+          link4="/contato"
+          home="/"
+          logo="Reembolsa.ai"
           homeButton={<Button bckButton="#2CBFD3" />}
         />
         <Switch>

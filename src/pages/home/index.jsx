@@ -11,11 +11,16 @@ import { GithubFilled } from "@ant-design/icons";
 const Home = () => {
   return (
     <>
+      <div></div>
       <Banner
         bannerTxt1="Lorem Ipsum"
         bannerTxt2="has been the"
-        bannerButton={<Button bckButton="#F1548D" />}
+        info1="Somos uma empresa que facilitará os exaustivos procedimentos de reembolso dos seus colaboradores."
+        info2="Sed lorem purus, condimentum vel volutpat at, feugiat ut arcu. Donec pharetra tristique velit."
+        info3="Sed lorem purus, condimentum vel volutpat at, feugiat ut arcu."
+        
       />
+      <ClientCard />
       {/* <ClientLogo logo1={<GithubFilled />} />
       <MainTimeline
         item1="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
@@ -33,7 +38,7 @@ const Home = () => {
       
      
       <Button bckButton="#F1548D" />
-      <ClientCard />
+     
       <Footer children="Reembolsa.ai Soluções LTDA." /> */}
     </>
   );

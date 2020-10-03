@@ -51,10 +51,13 @@ export const ClientName = styled.div`
 `;
 
 export const MaxFeed = styled.div`
+background-color: #365083;
   display: flex;
   justify-content: space-around;
 `;
 export const MinFeed = styled.div`
+background-color: #365083;
+
   display: flex;
   flex-direction: column;
   align-items: center;

@@ -5,12 +5,14 @@ import api from "../services/api";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
+import Saldo from "../pages/employees-balance";
 import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
 import Home from "../pages/home";
 import { logout } from "../redux/actions/auth";
+import SituationCard from "../components/situation-card"
 
 const Routes = () => {
   let history = useHistory();
@@ -21,7 +23,7 @@ const Routes = () => {
 
   useEffect(() => {
     if (stateAuth.auth === "") {
-      history.replace("/");
+      history.replace("/cadastro");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");
@@ -125,7 +127,11 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <div>cadastro</div>
+            <Saldo />
+          </Route>
+          <Route exact path="/contato">
+            <ManagerHistory />
+            <SituationCard />
           </Route>
         </Switch>
       </>

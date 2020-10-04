@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const Box = styled.div`
   display: flex;
   flex-direction: column;
@@ -39,10 +38,10 @@ export const Circle = styled.div`
   align-items: center;
   width: 428px;
   height: 428px;
-  border: 10px solid #2cd3b5;
+  border: 10px solid ${(props) => props.color};
   border-radius: 14rem;
   box-sizing: border-box;
-  filter: drop-shadow(0px 0px 15px #2cd3b5);
+  filter: drop-shadow(0px 0px 15px ${(props) => props.color});
 `;
 
 export const MinCircle = styled(Circle)`
@@ -54,8 +53,8 @@ export const MinCircle = styled(Circle)`
   align-items: center;
   width: 300px;
   height: 300px;
-  border: 10px solid #2cd3b5;
+  border: 10px solid ${(props) => props.color};
   border-radius: 14rem;
   box-sizing: border-box;
-  filter: drop-shadow(0px 0px 15px #2cd3b5);
+  filter: drop-shadow(0px 0px 15px ${(props) => props.color});
 `;

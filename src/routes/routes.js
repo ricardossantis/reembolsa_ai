@@ -150,7 +150,7 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <div>cadastro</div>
+            <CadastroGerente/>
           </Route>
         </Switch>
       </>

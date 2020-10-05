@@ -29,7 +29,6 @@ const layout = {
 
   
   
-  
   const CadastroGerente = () => {
 
     const [manager, setManager] = useState({
@@ -43,14 +42,10 @@ const layout = {
   
   console.log(manager)
 
-  const handleSubmit = (values) => {
-      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, manager)
-      .then(res => setManager(res))
-      .catch(error => console.log(error))
-  }
+  
     
   const onFinish = (values) => {
-    handleSubmit(values)
+    setManager(values)
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -125,6 +120,11 @@ const layout = {
           <ContainerButtons>
             <Form.Item {...tailLayout} >
             <Button style={{backgroundColor:"green", border:"none"}} type="primary" htmlType="submit">
+              {'>'}
+            </Button>
+            </Form.Item>
+            <Form.Item {...tailLayout} >
+            <Button style={{backgroundColor:"red", border:"none"}} type="primary" htmlType="submit">
               {'>'}
             </Button>
             </Form.Item>

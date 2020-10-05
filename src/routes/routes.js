@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import api from "../services/api";
+import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
@@ -11,6 +12,7 @@ import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
 import CadastroGerente from "../componets/cadastro-gerente/index";
 import Home from "../pages/home";
+import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
 
 const Routes = () => {
@@ -55,7 +57,9 @@ const Routes = () => {
               input={<InputHeader />}
             />
             <Switch>
-              <Route path="/novocolaborador"></Route>
+              <Route path="/novocolaborador">
+                <NewUser />
+              </Route>
               <Route path="/colaboradores">
                 <Employees />
               </Route>
@@ -119,7 +123,7 @@ const Routes = () => {
             />
             <Switch>
               <Route path="/novopedido">
-                <div>novopedido</div>
+                <RefundRequest />
               </Route>
               <Route path="/saldo">
                 <div>saldo</div>

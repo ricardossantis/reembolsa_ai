@@ -7,10 +7,15 @@ function Pending() {
   const [list, setList] = useState();
   const stateAuth = useSelector((state) => state.authentication);
   const id = stateAuth.user.id;
+  const token = stateAuth.auth;
 
   useEffect(() => {
     api
-      .get("/refunds")
+      .get("/refunds", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
       .then((res) => {
         setList(
           res.data
@@ -20,6 +25,7 @@ function Pending() {
                 item.color = "#F2C94C";
                 return item;
               }
+              return undefined
             })
             .filter((item) => item !== undefined)
         );

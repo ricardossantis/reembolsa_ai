@@ -62,3 +62,10 @@ export const MinFeed = styled.div`
   flex-direction: column;
   align-items: center;
 `;
+
+export const BoxButton = styled.div`
+  padding: 2rem;
+  background-color: #365083;
+  display: flex;
+  justify-content: center;
+`;

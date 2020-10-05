@@ -13,7 +13,7 @@ import { GithubFilled } from "@ant-design/icons";
 const Home = () => {
   return (
     <>
-      <div></div>
+     
       <Banner
         bannerTxt1="Lorem Ipsum"
         bannerTxt2="has been the"
@@ -22,6 +22,7 @@ const Home = () => {
         info3="Sed lorem purus, condimentum vel volutpat at, feugiat ut arcu."
       />
       <Title bckTitle="#365083" colorTitle="#FFFFFF" children="Depoimentos" />
+     
       <ClientCard />
       <Title
         bckTitle="#FFFFFF"

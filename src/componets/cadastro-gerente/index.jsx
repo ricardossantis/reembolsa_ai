@@ -10,7 +10,8 @@ import {
   StyledInput,
   StyledInputPassword,
   ContainerButtons,
-  StyledButton
+  StyledButtonRed,
+  StyledButtonGreen
 } from './styledCadastro';
 import axios from "axios";
 
@@ -124,14 +125,14 @@ const onFinish = (values) => {
           </Form.Item>
           <ContainerButtons>
             <Form.Item {...tailLayout} >
-            <StyledButton to="/login" >
+            <StyledButtonRed to="/login" >
               <BiDownArrow/>
-            </StyledButton>
+            </StyledButtonRed>
             </Form.Item>
             <Form.Item {...tailLayout} >
-            <Button style={{color:"green", backgroundColor:"transparent", border: 'none', fontSize: '2rem'}} type="primary" htmlType="submit">
+            <StyledButtonGreen type="primary" htmlType="submit">
               <BiUpArrow/>
-            </Button>
+            </StyledButtonGreen>
             </Form.Item>
           </ContainerButtons>
         

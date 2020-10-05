@@ -13,7 +13,7 @@ import {
   StyledButtonRed,
   StyledButtonGreen
 } from './styledCadastro';
-import axios from "axios";
+import api from "../../services/api";
 
 const layout = {
     labelCol: {
@@ -38,6 +38,7 @@ const layout = {
       company: "" ,
       email: "",
       password: "",
+      confirmPassword: "",
       accessLevel:1
     
   })
@@ -45,13 +46,13 @@ const layout = {
   console.log(manager)
 
  const  handleSubmit = () => {
-      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, {manager})
+      api.post(`/register`, {manager})
       .then(res => console.log(res.data))
-      .catch(error => console.log(error))
+      .catch(error => console.log(error.res))
   }
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo);
+    console.log('Failed:', errorInfo.data);
   };
       
   const [form] = Form.useForm();
@@ -122,15 +123,27 @@ const layout = {
           rules={[
             {
               required: true,
-              message: 'Confirme sua senha',
+              message: "Confirme sua senha",
             },
+            ({ getFieldValue }) => ({
+              validator( rule, value) {
+                rule = rule;
+                if (!value || getFieldValue("password") === value) {
+                  return Promise.resolve();
+                }
+                return Promise.reject(
+                  "Senha e confirmar senha devem ser iguais"
+                );
+              },
+            }),
           ]}
         >
-          <StyledInputPassword placeholder="Confirme sua Senha"/>
+          <StyledInputPassword onChange={({target: {value}}) =>
+        setManager({...manager, confirmPassword: value})} placeholder="Insira sua senha" value={manager.confirmPassword} placeholder="Confirme sua Senha"/>
           </Form.Item>
           <ContainerButtons>
             <Form.Item {...tailLayout} >
-            <StyledButtonRed to="/login" >
+            <StyledButtonRed to="/" >
               <BiDownArrow/>
             </StyledButtonRed>
             </Form.Item>

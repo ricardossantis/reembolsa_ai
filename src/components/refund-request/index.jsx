@@ -1,23 +1,22 @@
 import React, { useState, createRef } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
-import { Form, Input, Cascader, DatePicker, InputNumber } from "antd";
+import { Form, Input, Cascader, DatePicker } from "antd";
 import {
   RefoundPage,
-  Body,
   Title,
   SubTitle,
   ButtonYes,
   ButtonContainer,
   NewForm,
+  FormContainer,
 } from "./refund-style";
 
 const RefundRequest = () => {
   const formRef = createRef();
-  const [componentSize, setComponentSize] = useState("default");
+  const componentSize = "default";
   const stateAuth = useSelector((state) => state.authentication);
   const token = stateAuth.auth;
-
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
   };
@@ -91,7 +90,6 @@ const RefundRequest = () => {
 
           <Form.Item name="value" value="value">
             <Input
-              oninput="validity.valid||(value='');"
               type="number"
               min="0"
               placeholder="Insira um valor de reembolso"

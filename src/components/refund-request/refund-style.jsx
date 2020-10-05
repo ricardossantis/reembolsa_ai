@@ -4,8 +4,6 @@ import { Form } from "antd";
 const FormContainer = styled.div`
   background: #f5f5f5;
   width: 100%;
-  padding-top: 5rem;
-  
 
   @media (min-width: 320px) and (max-width: 768px) {
     

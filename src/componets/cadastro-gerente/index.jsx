@@ -1,5 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Form, Input, Button } from "antd";
+import {Link} from 'react-router-dom';
+import {BiUpArrow, BiDownArrow} from 'react-icons/bi'
 import { 
   Titulo, 
   Container,
@@ -7,9 +9,9 @@ import {
   StyledLabel,
   StyledInput,
   StyledInputPassword,
-  ContainerButtons
+  ContainerButtons,
+  StyledButton
 } from './styledCadastro';
-import api from '../../services/api';
 import axios from "axios";
 
 const layout = {
@@ -32,20 +34,23 @@ const layout = {
   const CadastroGerente = () => {
 
     const [manager, setManager] = useState({
-      company: "",
+      company: "" ,
       email: "",
       password: "",
-      user: "",
       accessLevel:1
     
   })
   
   console.log(manager)
 
-  
-    
-  const onFinish = (values) => {
-    setManager(values)
+ const  handleSubmit = () => {
+      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, manager)
+      .then(res => setManager(res))
+      .catch(error => console.log(error))
+  }
+
+const onFinish = (values) => {
+    handleSubmit(values)
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -77,7 +82,7 @@ const layout = {
             },
           ]}
         >
-          <StyledInput placeholder="Insira o nome da sua empresa" value={manager.company}/>
+          <StyledInput  placeholder="Insira o nome da sua empresa" value={manager.company}/>
         </Form.Item>
         <StyledLabel>E-mail</StyledLabel>
         <Form.Item
@@ -89,7 +94,7 @@ const layout = {
             },
           ]}
         >
-          <StyledInput placeholder="Insira seu e-mail" value={manager.email} />
+          <StyledInput  placeholder="Insira seu e-mail" value={manager.email} />
         </Form.Item>
   
         <StyledLabel>Senha</StyledLabel>
@@ -102,7 +107,7 @@ const layout = {
             },
           ]}
         >
-          <StyledInputPassword placeholder="Insira sua senha" value={manager.password}/>
+          <StyledInputPassword  placeholder="Insira sua senha" value={manager.password}/>
         </Form.Item>
 
         <StyledLabel>Confirme sua senha</StyledLabel>
@@ -119,13 +124,13 @@ const layout = {
           </Form.Item>
           <ContainerButtons>
             <Form.Item {...tailLayout} >
-            <Button style={{backgroundColor:"green", border:"none"}} type="primary" htmlType="submit">
-              {'>'}
-            </Button>
+            <StyledButton to="/login" >
+              <BiDownArrow/>
+            </StyledButton>
             </Form.Item>
             <Form.Item {...tailLayout} >
-            <Button style={{backgroundColor:"red", border:"none"}} type="primary" htmlType="submit">
-              {'>'}
+            <Button style={{color:"green", backgroundColor:"transparent", border: 'none', fontSize: '2rem'}} type="primary" htmlType="submit">
+              <BiUpArrow/>
             </Button>
             </Form.Item>
           </ContainerButtons>

@@ -76,8 +76,8 @@ const LoginPage = () => {
           <Link to="/">
             <Button>Voltar</Button>
           </Link>
-          {err !== "" && <StyledError>{err}</StyledError>}
         </div>
+        {err !== "" && <StyledError>{err}</StyledError>}
       </DefaultForm>
     </StyledContent>
   );

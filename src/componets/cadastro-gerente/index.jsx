@@ -1,57 +1,137 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useEffect} from "react";
 import { Form, Input, Button } from "antd";
+import { 
+  Titulo, 
+  Container,
+  StyledForm,
+  StyledLabel,
+  StyledInput,
+  StyledInputPassword,
+  ContainerButtons
+} from './styledCadastro';
+import api from '../../services/api';
+import axios from "axios";
 
-const CadastroGerente = () => {
-    const layout = {
-        labelCol: { span: 8 },
-        wrapperCol: { span: 16 },
-    };
-    const tailLayout = {
-        wrapperCol: { offset: 8, span: 16 },
-    };
+const layout = {
+    labelCol: {
+      span: 8,
+    },
+    wrapperCol: {
+      span: 16,
+    },
+  };
+  const tailLayout = {
+    wrapperCol: {
+      offset: 8,
+      span: 16,
+    },
+  };
 
-    const Demo = () => {
-        const onFinish = values => {
-            console.log('Success:', values);
-        };
+  
+  
+  
+  const CadastroGerente = () => {
 
-        const onFinishFailed = errorInfo => {
-            console.log('Failed:', errorInfo);
-        };
-  return (
-    <div>
-      <h2>Cadastro</h2>
-          <Form
-              {...layout}
-              name="basic"
-              initialValues={{ remember: true }}
-              onFinish={onFinish}
-              onFinishFailed={onFinishFailed}
-          >
-              <Form.Item
-                  label="Username"
-                  name="username"
-                  rules={[{ required: true, message: 'Please input your username!' }]}
-              >
-                  <Input />
-              </Form.Item>
+    const [manager, setManager] = useState({
+      company: "",
+      email: "",
+      password: "",
+      user: "",
+      accessLevel:1
+    
+  })
+  
+  console.log(manager)
 
-              <Form.Item
-                  label="Password"
-                  name="password"
-                  rules={[{ required: true, message: 'Please input your password!' }]}
-              >
-                  <Input.Password />
-              </Form.Item>
+  const handleSubmit = (values) => {
+      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, manager)
+      .then(res => setManager(res))
+      .catch(error => console.log(error))
+  }
+    
+  const onFinish = (values) => {
+    handleSubmit(values)
+  };
 
-              <Form.Item {...tailLayout}>
-                  <Button type="primary" htmlType="submit">
-                      Submit
-        </Button>
-              </Form.Item>
-          </Form>
-    </div>
-  );
-};
+  const onFinishFailed = (errorInfo) => {
+    console.log('Failed:', errorInfo);
+  };
+      
 
+  
+    return (
+      
+        <Container>
+        <Titulo>Cadastro</Titulo>
+      <StyledForm
+        {...layout}
+        name="basic"
+        initialValues={{
+          remember: true,
+        }}
+        onFinish={onFinish}
+        onFinishFailed={onFinishFailed}
+      >
+        <StyledLabel>Empresa</StyledLabel>
+        <Form.Item
+          name="company"
+          rules={[
+            {
+              required: true,
+              message: 'Digite o nome da sua empresa',
+            },
+          ]}
+        >
+          <StyledInput placeholder="Insira o nome da sua empresa" value={manager.company}/>
+        </Form.Item>
+        <StyledLabel>E-mail</StyledLabel>
+        <Form.Item
+          name="email"
+          rules={[
+            {
+              required: true,
+              message: 'Digite um e-mail válido',
+            },
+          ]}
+        >
+          <StyledInput placeholder="Insira seu e-mail" value={manager.email} />
+        </Form.Item>
+  
+        <StyledLabel>Senha</StyledLabel>
+        <Form.Item
+          name="password"
+          rules={[
+            {
+              required: true,
+              message: 'Digite uma senha',
+            },
+          ]}
+        >
+          <StyledInputPassword placeholder="Insira sua senha" value={manager.password}/>
+        </Form.Item>
+
+        <StyledLabel>Confirme sua senha</StyledLabel>
+        <Form.Item
+          name="confirmPassword"
+          rules={[
+            {
+              required: true,
+              message: 'Confirme sua senha',
+            },
+          ]}
+        >
+          <StyledInputPassword placeholder="Confirme sua Senha"/>
+          </Form.Item>
+          <ContainerButtons>
+            <Form.Item {...tailLayout} >
+            <Button style={{backgroundColor:"green", border:"none"}} type="primary" htmlType="submit">
+              {'>'}
+            </Button>
+            </Form.Item>
+          </ContainerButtons>
+        
+      </StyledForm>
+      </Container>
+    );
+  };
 export default CadastroGerente;

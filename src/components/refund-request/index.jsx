@@ -1,5 +1,6 @@
 import React, { useState, createRef } from "react";
 import api from "../../services/api";
+import { useSelector } from "react-redux";
 import { Form, Input, Cascader, DatePicker, InputNumber } from "antd";
 import {
   RefoundPage,
@@ -11,23 +12,26 @@ import {
   NewForm,
 } from "./refund-style";
 
-
-
-
 const RefundRequest = () => {
   const formRef = createRef();
   const [componentSize, setComponentSize] = useState("default");
+  const stateAuth = useSelector((state) => state.authentication);
+  const token = stateAuth.auth;
 
-    const onFormLayoutChange = ({ size }) => {
+  const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
   };
 
   const onFinish = (values) => {
-    api.post("/refunds", values);
+    api.post("/refunds", values, {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    });
     console.log("Valores para o reembolso", values);
     formRef.current.resetFields();
   };
-  
+
   return (
     <Body>
       <RefoundPage>

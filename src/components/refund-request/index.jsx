@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, createRef } from "react";
 import api from "../../services/api";
 import { Form, Input, Cascader, DatePicker, InputNumber } from "antd";
 import {
@@ -11,18 +11,23 @@ import {
   NewForm,
 } from "./refund-style";
 
-const onFinish = (values) => {
-  api.post("/refunds", values);
-  console.log("Valores para o reembolso", values);
-};
+
+
 
 const RefundRequest = () => {
+  const formRef = createRef();
   const [componentSize, setComponentSize] = useState("default");
 
-  const onFormLayoutChange = ({ size }) => {
-    setComponentSize(size);
+    const onFormLayoutChange = ({ size }) => {
+    formRef.current.setFieldsValue(size);
   };
 
+  const onFinish = (values) => {
+    api.post("/refunds", values);
+    console.log("Valores para o reembolso", values);
+    formRef.current.resetFields();
+  };
+  
   return (
     <Body>
       <RefoundPage>
@@ -40,6 +45,8 @@ const RefundRequest = () => {
           onValuesChange={onFormLayoutChange}
           size={componentSize}
           onFinish={onFinish}
+          ref={formRef}
+          name="control-ref"
         >
           <Title>Novo Pedido de Reembolso</Title>
           <SubTitle>Categoria</SubTitle>

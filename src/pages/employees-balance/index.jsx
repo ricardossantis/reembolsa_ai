@@ -8,13 +8,13 @@ import {
   Circle,
   MinTitle,
   MinCircle,
-} from "./balance-style.js";
+} from "../../components/styled-balance/balance-style.js";
 
 const Saldo = () => {
   const amountLimit = useSelector(
     (state) => state.authentication.user.amountLimit
   );
-  //ajustar com integração da feature do gerente para diminuir o valor amountLimit com o valor do pedido de reembolso (se for aceito).
+
   const [circleColor, setCircleColor] = useState("");
   const colors = {
     red: "#F15454",

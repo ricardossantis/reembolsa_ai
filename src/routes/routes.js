@@ -13,7 +13,6 @@ import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
 import Home from "../pages/home";
 import { logout } from "../redux/actions/auth";
-import SituationCard from "../components/situation-card";
 
 const Routes = () => {
   let history = useHistory();

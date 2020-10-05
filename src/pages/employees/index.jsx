@@ -29,7 +29,7 @@ function Employees() {
       .catch((err) => console.log(err));
   }, []);
 
-  return <SituationList header="Histórico de Movimentações" list={list} />;
+  return <SituationList header="Colaboradores" list={list} />;
 }
 
 export default Employees;

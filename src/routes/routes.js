@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import api from "../services/api";
+import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
@@ -54,7 +55,9 @@ const Routes = () => {
               input={<InputHeader />}
             />
             <Switch>
-              <Route path="/novocolaborador"></Route>
+              <Route path="/novocolaborador">
+                <NewUser />
+              </Route>
               <Route path="/colaboradores">
                 <Employees />
               </Route>

@@ -6,6 +6,7 @@ import Footer from "../../components/main-page/footer/index.jsx";
 import ClientLogo from "../../components/main-page/client-logo";
 import MainTimeline from "../../components/main-page/timeline";
 import Title from "../../components/main-page/title";
+import HireUs from "../../components/main-page/our-services";
 import CancelButton from "../../components/system-general/cancel-button";
 import { GithubFilled } from "@ant-design/icons";
 
@@ -50,15 +51,13 @@ const Home = () => {
         colorTitle="#365083"
         children="Contrate nossos serviços"
       />
-       <Footer children="Reembolsa.ai Soluções LTDA." />
-      {/*
- 
-
-      
-     
-      <Button bckButton="#F1548D" />
-     
-      */}
+      <HireUs
+        text1="Contato"
+        text2="R. General Mario Tourinho, 1733 - 706, Seminário, Curitiba/PR"
+        text3="0800-000-000"
+        text4="contato@reembolsai.com.br"
+      />
+      <Footer children="Reembolsa.ai Soluções LTDA." />
     </>
   );
 };

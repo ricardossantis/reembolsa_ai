@@ -23,7 +23,7 @@ const Routes = () => {
 
   useEffect(() => {
     if (stateAuth.auth === "") {
-      history.replace("/cadastro");
+      history.replace("/");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");
@@ -130,8 +130,7 @@ const Routes = () => {
             <div>cadastro</div>
           </Route>
           <Route exact path="/contato">
-            <ManagerHistory />
-            <SituationCard />
+            <div>contato</div>
           </Route>
         </Switch>
       </>

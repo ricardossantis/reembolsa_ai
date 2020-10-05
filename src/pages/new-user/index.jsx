@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
 import {
@@ -41,7 +41,6 @@ const tailFormItemLayout = {
 
 const NewUser = () => {
   const [form] = Form.useForm();
-  const [statusResponse, setStatusResponse] = useState(null);
 
   const employerState = useSelector((state) => state.authentication);
   const employerId = employerState.user.id;
@@ -49,7 +48,7 @@ const NewUser = () => {
   const token = employerState.auth;
 
   const onFinish = (values) => {
-    postRequest(token, values, employerId, employerName, setStatusResponse);
+    postRequest(token, values, employerId, employerName);
   };
 
   return (

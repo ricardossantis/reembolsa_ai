@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { Form } from "antd";
 
-const Body = styled.div`
+const FormContainer = styled.div`
   background: #f5f5f5;
   width: 100%;
   padding-top: 5rem;
@@ -127,7 +127,7 @@ const ButtonContainer = styled.div`
 
 export {
   RefoundPage,
-  Body,
+  FormContainer,
   Title,
   SubTitle,
   ButtonNo,

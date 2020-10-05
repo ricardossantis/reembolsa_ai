@@ -33,7 +33,7 @@ const RefundRequest = () => {
   };
 
   return (
-    <Body>
+    <FormContainer>
       <RefoundPage>
         <NewForm
           labelCol={{
@@ -119,7 +119,7 @@ const RefundRequest = () => {
           </>
         </NewForm>
       </RefoundPage>
-    </Body>
+    </FormContainer>
   );
 };
 

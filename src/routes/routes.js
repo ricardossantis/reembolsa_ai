@@ -11,6 +11,7 @@ import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
 import Home from "../pages/home";
+import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
 
 const Routes = () => {
@@ -90,7 +91,7 @@ const Routes = () => {
             />
             <Switch>
               <Route path="/novopedido">
-                <div>novopedido</div>
+                <RefundRequest />
               </Route>
               <Route path="/saldo">
                 <div>saldo</div>

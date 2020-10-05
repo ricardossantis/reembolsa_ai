@@ -16,7 +16,6 @@ const ContainerForm = styled(Form)`
   @media (min-width: 320px) and (max-width: 1023px) {
     padding-left: 5%;
     padding-right: 5%;
-    padding-top: 20%;
   }
 
   @media (min-width: 1024px) and (max-width: 2400px) {

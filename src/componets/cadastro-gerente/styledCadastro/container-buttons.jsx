@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 
 const ContainerButtons = styled.div `
-@media(max-width: 670px ){
     display:flex;
+    justify-content: space-around;
+    flex-direction: row;
+@media(max-width: 670px ){
     justify-content: space-between;
     flex-direction: row;
 }

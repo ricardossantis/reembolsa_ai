@@ -4,6 +4,7 @@ import {Link} from 'react-router-dom';
 const StyledButton  = styled(Link) `
 color: red;
 font-size: 2rem;
+text-decoration: none;
 `
 
 export {StyledButton}

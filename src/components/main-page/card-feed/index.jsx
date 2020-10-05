@@ -1,7 +1,8 @@
 import React from "react";
 import Card from "./card.jsx";
 import { useWindowSize } from "../../system-general/header/hookWindowSize.js";
-import { MaxFeed, MinFeed } from "./card-style.js";
+import Button from "../home-button";
+import { MaxFeed, MinFeed, BoxButton } from "./card-style.js";
 
 const ClientCard = () => {
   const width = useWindowSize().width;
@@ -41,6 +42,9 @@ const ClientCard = () => {
               company="Kenzie Academy Brazil"
             />
           </MaxFeed>
+          <BoxButton>
+            <Button bckButton="#F1548D" />
+          </BoxButton>
         </>
       )) || (
         <MinFeed>

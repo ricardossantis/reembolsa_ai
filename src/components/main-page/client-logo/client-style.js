@@ -1,15 +1,21 @@
 import styled from "styled-components";
 
+export const Card = styled.div`
+  background-color: #365083;
+`;
 export const MaxLogo = styled.div`
-  margin-top: 15rem;
   display: flex;
   justify-content: space-evenly;
+  background-color: #365083;
+  height: 13rem;
 `;
 
 export const MinLogo = styled.div`
-  margin-top: 2rem;
   display: flex;
   justify-content: space-around;
+  background-color: #365083;
+  height: 14rem;
+  padding: 2rem;
 `;
 
 export const CLogo = styled.div`
@@ -25,5 +31,13 @@ export const CLogo = styled.div`
 `;
 
 export const CpLogo = styled.div`
+  font-size: 6rem;
+`;
+
+export const MinCLogo = styled(CLogo)`
+width: 120px;
+  height: 122px;
+`
+export const MinCpLogo = styled(CpLogo)`
   font-size: 6rem;
 `;

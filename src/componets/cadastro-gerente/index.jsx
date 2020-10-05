@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from "react";
 import { Form, Input, Button } from "antd";
 import {Link} from 'react-router-dom';
+import {Cancel, Confirm} from '../../components/system-general/system-button/button-style'
 import {BiUpArrow, BiDownArrow} from 'react-icons/bi'
 import { 
   Titulo, 
@@ -144,12 +145,12 @@ const layout = {
           <ContainerButtons>
             <Form.Item {...tailLayout} >
             <StyledButtonRed to="/" >
-              <BiDownArrow/>
+              <Cancel/>
             </StyledButtonRed>
             </Form.Item>
             <Form.Item {...tailLayout} >
             <StyledButtonGreen type="primary" htmlType="submit">
-              <BiUpArrow/>
+              <Confirm/>
             </StyledButtonGreen>
             </Form.Item>
           </ContainerButtons>

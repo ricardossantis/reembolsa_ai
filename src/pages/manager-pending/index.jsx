@@ -25,6 +25,7 @@ function Pending() {
                 item.color = "#F2C94C";
                 return item;
               }
+              return undefined
             })
             .filter((item) => item !== undefined)
         );

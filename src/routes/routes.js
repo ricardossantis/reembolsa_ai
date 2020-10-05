@@ -42,7 +42,7 @@ const Routes = () => {
           <>
             <Header
               maxColor="#365083"
-              minColor="F5F5F5"
+              minColor="#F5F5F5"
               burguerColor="#365083"
               title1="Novo colaborador"
               title2="Pedidos pendentes"
@@ -78,7 +78,7 @@ const Routes = () => {
           <>
             <Header
               maxColor="#365083"
-              minColor="F5F5F5"
+              minColor="#F5F5F5"
               burguerColor="#365083"
               title1="Novo pedido"
               title2="Saldo"

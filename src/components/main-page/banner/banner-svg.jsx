@@ -3,6 +3,7 @@ import React from "react";
 const SVGbanner = (props) => {
   return (
     <svg
+      style={{maxWidth:"100%"}}
       width={props.widthSvg}
       height={props.heightSvg}
       viewBox="0 0 980.49384 751.89531"

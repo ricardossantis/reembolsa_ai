@@ -45,19 +45,20 @@ const layout = {
   console.log(manager)
 
  const  handleSubmit = () => {
-      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, manager)
-      .then(res => setManager(res))
+      axios.post(`https://reembolsa-ai-api.herokuapp.com/register`, {manager})
+      .then(res => console.log(res.data))
       .catch(error => console.log(error))
   }
-
-const onFinish = (values) => {
-    handleSubmit(values)
-  };
 
   const onFinishFailed = (errorInfo) => {
     console.log('Failed:', errorInfo);
   };
       
+  const [form] = Form.useForm();
+  const onFinish = () => {
+    handleSubmit();
+    form.resetFields();
+  };
 
   
     return (
@@ -66,6 +67,7 @@ const onFinish = (values) => {
         <Titulo>Cadastro</Titulo>
       <StyledForm
         {...layout}
+        form={form}
         name="basic"
         initialValues={{
           remember: true,
@@ -83,7 +85,8 @@ const onFinish = (values) => {
             },
           ]}
         >
-          <StyledInput  placeholder="Insira o nome da sua empresa" value={manager.company}/>
+          <StyledInput onChange={({target: {value}}) =>
+        setManager({...manager, company: value})}  placeholder="Insira o nome da sua empresa" value={manager.company}/>
         </Form.Item>
         <StyledLabel>E-mail</StyledLabel>
         <Form.Item
@@ -95,7 +98,8 @@ const onFinish = (values) => {
             },
           ]}
         >
-          <StyledInput  placeholder="Insira seu e-mail" value={manager.email} />
+          <StyledInput onChange={({target: {value}}) =>
+        setManager({...manager, email: value})} placeholder="Insira seu e-mail" value={manager.email} />
         </Form.Item>
   
         <StyledLabel>Senha</StyledLabel>
@@ -108,7 +112,8 @@ const onFinish = (values) => {
             },
           ]}
         >
-          <StyledInputPassword  placeholder="Insira sua senha" value={manager.password}/>
+          <StyledInputPassword  onChange={({target: {value}}) =>
+        setManager({...manager, password: value})} placeholder="Insira sua senha" value={manager.password}/>
         </Form.Item>
 
         <StyledLabel>Confirme sua senha</StyledLabel>

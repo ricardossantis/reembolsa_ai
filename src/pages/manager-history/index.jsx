@@ -25,7 +25,7 @@ function History() {
                 case "pending":
                   item.color = "#F9BB1D";
                   break;
-                case "aproved":
+                case "approved":
                   item.color = "#2CD3B5";
                   break;
                 default:
@@ -40,7 +40,12 @@ function History() {
   }, []);
 
   return (
-    <SituationList header="Histórico de Movimentações" list={list} title />
+    <SituationList
+      header="Histórico de Movimentações"
+      list={list}
+      title
+      token={token}
+    />
   );
 }
 

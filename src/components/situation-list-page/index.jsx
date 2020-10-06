@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainContainer,
   Header,
@@ -8,15 +8,63 @@ import {
   TitleParagraph,
   StyledModal,
   StyledModal2,
+  ButtonBox,
+  ChangeButton,
+  ConfirmButton,
 } from "./situation.js";
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 
-function SituationList({ header, list = [], title, token }) {
+function SituationList({ header, list = [], title, token, setList, id }) {
   const [visible, setVisibility] = useState(false);
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
+  const [update, setUpdate] = useState();
+
+  useEffect(() => {
+    if (header === "Pedidos Pendentes") {
+      api
+        .get("/refunds", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setList(
+            res.data
+              .filter((item) => item.userId === id)
+              .map((item) => {
+                if (item.status === "pending") {
+                  item.color = "#F2C94C";
+                  return item;
+                }
+                return undefined;
+              })
+              .filter((item) => item !== undefined)
+          );
+        })
+        .catch((err) => console.log(err));
+    } else {
+      api
+        .get("/users", {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        })
+        .then((res) => {
+          setList(
+            res.data
+              .filter((item) => item.userId === id)
+              .map((item) => {
+                item.color = "#365083";
+                return item;
+              })
+          );
+        })
+        .catch((err) => console.log(err));
+    }
+  }, [update]);
 
   const showModal = (item) => {
     setModalItem(item);
@@ -28,21 +76,31 @@ function SituationList({ header, list = [], title, token }) {
   };
 
   const handleOk = (e) => {
-    if (list[0].color === "#365083") {
-      showModal2();
+    if (header === "Pedidos Pendentes") {
+      api.patch(
+        `refunds/${modalItem.id}`,
+        { status: "approved" },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setUpdate([]);
     }
     setVisibility(false);
   };
 
   const handleCancel = (e) => {
-    if (list[0].color !== "#365083") {
-      showModal2();
-    }
+    showModal2();
+    setVisibility(false);
+  };
+
+  const handleXClick = (e) => {
     setVisibility(false);
   };
 
   const handleOk2 = (e) => {
-    console.log(input);
     if (list[0].color === "#365083") {
       api.patch(
         `users/${modalItem.id}`,
@@ -53,6 +111,19 @@ function SituationList({ header, list = [], title, token }) {
           },
         }
       );
+      setUpdate([]);
+    }
+    if (header === "Pedidos Pendentes") {
+      api.patch(
+        `refunds/${modalItem.id}`,
+        { status: "reproved" },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      setUpdate([]);
     }
     setVisibility2(false);
   };
@@ -82,9 +153,10 @@ function SituationList({ header, list = [], title, token }) {
             </SituationCardContainer>
           ))}
       </SituationContainer>
-      <StyledModal visible={visible} onOk={handleOk} onCancel={handleCancel}>
+      <StyledModal visible={visible} footer={null} onCancel={handleXClick}>
         {list.length > 0 &&
           list[0].color !== "#365083" &&
+          header !== "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
             <div>
@@ -92,6 +164,21 @@ function SituationList({ header, list = [], title, token }) {
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
+              <ConfirmButton onClick={handleOk} />
+            </div>
+          )}
+        {list.length > 0 &&
+          list[0].color !== "#365083" &&
+          header === "Pedidos Pendentes" &&
+          modalItem &&
+          modalItem.category !== undefined && (
+            <div>
+              <p>Categoria: {modalItem.category}</p>
+              <p>Valor: {modalItem.value}</p>
+              <p>Data: {modalItem.date}</p>
+              <p>Descrição: {modalItem.description}</p>
+              <ChangeButton onClick={handleCancel} />
+              <ConfirmButton onClick={handleOk} />
             </div>
           )}
         {list.length > 0 &&
@@ -100,24 +187,24 @@ function SituationList({ header, list = [], title, token }) {
           modalItem.category === undefined && (
             <div>
               <p>Valor disponível: {modalItem.amountLimit}</p>
+              <ChangeButton onClick={handleCancel} />
+              <ConfirmButton onClick={handleOk} />
             </div>
           )}
       </StyledModal>
-      <StyledModal2
-        visible={visible2}
-        onOk={handleOk2}
-        onCancel={handleCancel2}
-      >
+      <StyledModal2 visible={visible2} footer={null} onCancel={handleCancel2}>
         {list.length > 0 && list[0].color !== "#365083" && (
           <div>
             <p>Descreva o motivo da rejeição:</p>
             <textarea onChange={handleChange} />
+            <ConfirmButton onClick={handleOk2} />
           </div>
         )}
         {list.length > 0 && list[0].color === "#365083" && (
           <div>
             <label>Novo valor:</label>
             <input placeholder="Novo valor" onChange={handleChange} />
+            <ConfirmButton onClick={handleOk2} />
           </div>
         )}
       </StyledModal2>

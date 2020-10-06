@@ -28,7 +28,16 @@ function Employees() {
       })
       .catch((err) => console.log(err));
   }, []);
-  return <SituationList header="Colaboradores" list={list} token={token} />;
+
+  return (
+    <SituationList
+      header="Colaboradores"
+      list={list}
+      token={token}
+      setList={setList}
+      id={id}
+    />
+  );
 }
 
 export default Employees;

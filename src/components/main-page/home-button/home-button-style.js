@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 export const ZButton = styled.button`
   cursor: pointer;
-  width: 200px;
+  width: 230px;
   height: 35px;
   left: 1186px;
   top: 34px;

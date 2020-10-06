@@ -1,11 +1,11 @@
 import React from "react";
-import { Link } from "react-router-dom";
 import { useWindowSize } from "./hookWindowSize.js";
 import { Dropdown } from "antd";
 import {
   MaxHeader,
   MinHeader,
   ZLink,
+  LogoLink,
   MLink,
   Hamburguer,
   ZMenu,
@@ -18,8 +18,8 @@ const Header = (props) => {
   const menuHamburguer = (
     <ZMenu>
       <MenuItem key="1">
-        <ZLink to={props.link1} style={{ color: "#FFFFFF" }}>
-          {props.title1}
+        <ZLink to={props.link1 || props.home} style={{ color: "#FFFFFF" }}>
+          {props.title1 || props.logo}
         </ZLink>
       </MenuItem>
       <MenuItem key="2">
@@ -33,7 +33,7 @@ const Header = (props) => {
         </MLink>
       </MenuItem>
       <MenuItem key="4">
-        <MLink to={props.link3} style={{ color: "#FFFFFF" }}>
+        <MLink to={props.link4} style={{ color: "#FFFFFF" }}>
           {props.title4}
         </MLink>
       </MenuItem>
@@ -44,17 +44,18 @@ const Header = (props) => {
     <>
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
-          <ZLink to={props.link1}>{props.title1}</ZLink>
+          <LogoLink to={props.home || "/"}>{props.logo}</LogoLink>
+          <ZLink to={props.link1 || "/"}>{props.title1}</ZLink>
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
-          <ZLink onClick={props.logout}>{props.exit || props.homeButton}</ZLink>
+          <ZLink to="/login" onClick={props.logout}>{props.exit || props.homeButton}</ZLink>
         </MaxHeader>
       )) || (
         <MinHeader style={{ backgroundColor: props.minColor }}>
           {props.input}
           <Dropdown overlay={menuHamburguer}>
-              <Hamburguer style={{ color: props.burguerColor }} />
+            <Hamburguer style={{ color: props.burguerColor }} />
           </Dropdown>
         </MinHeader>
       )}

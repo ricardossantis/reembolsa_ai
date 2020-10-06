@@ -1,5 +1,5 @@
 import React from "react";
-import { MaxLogo, MinLogo, CLogo, CpLogo } from "./client-style.js";
+import {Card, MaxLogo, MinLogo, CLogo, CpLogo, MinCLogo, MinCpLogo} from "./client-style.js";
 
 import { useWindowSize } from "../../system-general/header/hookWindowSize.js";
 
@@ -9,6 +9,7 @@ const ClientLogo = (props) => {
   return (
     <>
       {(width > 768 && (
+        <Card> 
         <MaxLogo>
           <CLogo>
             <CpLogo>{props.logo1}</CpLogo>
@@ -17,19 +18,24 @@ const ClientLogo = (props) => {
           <CLogo>{props.logo3}</CLogo>
           <CLogo>{props.logo4}</CLogo>
         </MaxLogo>
+        </Card>
       )) || (
-        <>
+        
+        <Card>
           <MinLogo>
-            <CLogo>
-              <CpLogo>{props.logo1}</CpLogo>
-            </CLogo>
-            <CLogo>{props.logo2}</CLogo>
+            <MinCLogo>
+              <MinCpLogo>{props.logo1}</MinCpLogo>
+            </MinCLogo>
+            <MinCLogo>{props.logo2}</MinCLogo>
           </MinLogo>
           <MinLogo>
-            <CLogo>{props.logo3}</CLogo>
-            <CLogo>{props.logo4}</CLogo>
+            <MinCLogo>
+              <MinCpLogo>{props.logo1}</MinCpLogo>
+            </MinCLogo>
+            <MinCLogo>{props.logo2}</MinCLogo>
           </MinLogo>
-        </>
+          </Card>
+      
       )}
     </>
   );

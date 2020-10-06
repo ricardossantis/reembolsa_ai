@@ -38,6 +38,16 @@ export const ZLink = styled(Link)`
     color: #2cd3b5;
   }
 `;
+export const LogoLink = styled(Link)`
+  @import url("https://fonts.googleapis.com/css2?family=Cinzel&display=swap");
+  font-family: "Cinzel", serif;
+  text-decoration-line: underline;
+  color: #ffffff;
+  :hover {
+    text-decoration-line: underline;
+    color: #2cd3b5;
+  }
+`;
 export const MLink = styled(Link)`
   color: #ffffff;
 `;

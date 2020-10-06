@@ -1,14 +1,13 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import {useHistory} from "react-router-dom";
 import { ZButton } from "./home-button-style.js";
 
 const Button = (props) => {
+  const history = useHistory()
   return (
-    <Link to="/cadastro">
-      <button style={{ backgroundColor: props.bckButton }}>
-        Quero participar
-      </button>
-    </Link>
+    <ZButton style={{ backgroundColor: props.bckButton }} onClick={() => history.push("/cadastro")}>
+      Quero participar
+    </ZButton>
   );
 };
 

@@ -22,11 +22,19 @@ const RefundRequest = () => {
   };
 
   const onFinish = (values) => {
-    api.post("/refunds", values, {
-      headers: {
-        authorization: `Bearer ${token}`,
+    api.post(
+      "/refunds",
+      {
+        ...values,
+        status: "pending",
+        denied: "none",
       },
-    });
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
     console.log("Valores para o reembolso", values);
     formRef.current.resetFields();
   };

@@ -32,8 +32,8 @@ const RefundRequest = () => {
         ...values,
         status: "pending",
         denied: "",
-        ownerId: employeeId,
-        ownerName: employeeName,
+        userId: employeeId,
+        userName: employeeName,
       },
       {
         headers: {

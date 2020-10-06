@@ -6,6 +6,7 @@ import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
+import Saldo from "../pages/employees-balance";
 import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
@@ -24,7 +25,7 @@ const Routes = () => {
 
   useEffect(() => {
     if (stateAuth.auth === "") {
-      history.replace("/login");
+      history.replace("/");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");
@@ -42,7 +43,7 @@ const Routes = () => {
           <>
             <Header
               maxColor="#365083"
-              minColor="F5F5F5"
+              minColor="#F5F5F5"
               burguerColor="#365083"
               title1="Novo colaborador"
               title2="Pedidos pendentes"
@@ -109,7 +110,7 @@ const Routes = () => {
           <>
             <Header
               maxColor="#365083"
-              minColor="F5F5F5"
+              minColor="#F5F5F5"
               burguerColor="#365083"
               title1="Novo pedido"
               title2="Saldo"
@@ -126,12 +127,15 @@ const Routes = () => {
                 <RefundRequest />
               </Route>
               <Route path="/saldo">
-                <div>saldo</div>
+                <Saldo />
               </Route>
               <Route path="/historicocolaborador"></Route>
             </Switch>
           </>
         );
+      //adicionei isto na rota e também o setAuth para logout
+      default:
+        return setRole("none");
     }
   } else if (auth === false) {
     return (
@@ -140,12 +144,14 @@ const Routes = () => {
           maxColor="#365083"
           minColor="#365083"
           burguerColor="#FFFFFF"
-          title1="Cadastro"
-          title2="Login"
-          title3="Contato"
-          link1="/cadastro"
-          link2="/login"
-          link3="contato"
+          title2="Cadastro"
+          title3="Login"
+          title4="Contato"
+          link2="/cadastro"
+          link3="/login"
+          link4="/contato"
+          home="/"
+          logo="Reembolsa.ai"
           homeButton={<Button bckButton="#2CBFD3" />}
         />
         <Switch>
@@ -157,6 +163,9 @@ const Routes = () => {
           </Route>
           <Route exact path="/cadastro">
             <CadastroGerente/>
+          </Route>
+          <Route exact path="/contato">
+            <div>contato</div>
           </Route>
         </Switch>
       </>

@@ -2,7 +2,7 @@ import styled from "styled-components";
 import { GithubFilled } from "@ant-design/icons";
 
 export const Card = styled.div`
-  margin-top: 7rem;
+  padding: 2rem;
 `;
 export const FeedPhoto = styled.div`
   position: absolute;
@@ -25,8 +25,8 @@ export const FeedText = styled.div`
   flex-wrap: wrap;
   margin-top: 3rem;
   margin-left: 2rem;
-  width: 200px;
-  height: 324px;
+  width: 230px;
+  height: 344px;
   background: #ffffff;
   border: 1px solid #000000;
   box-sizing: border-box;
@@ -51,11 +51,21 @@ export const ClientName = styled.div`
 `;
 
 export const MaxFeed = styled.div`
+  background-color: #365083;
   display: flex;
   justify-content: space-around;
 `;
 export const MinFeed = styled.div`
+  background-color: #365083;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+`;
+
+export const BoxButton = styled.div`
+  padding: 2rem;
+  background-color: #365083;
+  display: flex;
+  justify-content: center;
 `;

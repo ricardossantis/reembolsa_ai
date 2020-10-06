@@ -10,15 +10,16 @@ import {
   StyledModal2,
 } from "./situation.js";
 import SituationCard from "../situation-card";
+import api from "../../services/api.js";
 
-function SituationList({ header, list = [], title }) {
+function SituationList({ header, list = [], title, token }) {
   const [visible, setVisibility] = useState(false);
   const [visible2, setVisibility2] = useState(false);
-  const [modalList, setModalList] = useState();
+  const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
 
   const showModal = (item) => {
-    setModalList(item);
+    setModalItem(item);
     setVisibility(true);
   };
 
@@ -27,6 +28,9 @@ function SituationList({ header, list = [], title }) {
   };
 
   const handleOk = (e) => {
+    if (list[0].color === "#365083") {
+      showModal2();
+    }
     setVisibility(false);
   };
 
@@ -39,6 +43,17 @@ function SituationList({ header, list = [], title }) {
 
   const handleOk2 = (e) => {
     console.log(input);
+    if (list[0].color === "#365083") {
+      api.patch(
+        `users/${modalItem.id}`,
+        { amountLimit: input },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+    }
     setVisibility2(false);
   };
 
@@ -70,21 +85,21 @@ function SituationList({ header, list = [], title }) {
       <StyledModal visible={visible} onOk={handleOk} onCancel={handleCancel}>
         {list.length > 0 &&
           list[0].color !== "#365083" &&
-          modalList &&
-          modalList.category !== undefined && (
+          modalItem &&
+          modalItem.category !== undefined && (
             <div>
-              <p>Categoria: {modalList.category}</p>
-              <p>Valor: {modalList.value}</p>
-              <p>Data: {modalList.date}</p>
-              <p>Descrição: {modalList.description}</p>
+              <p>Categoria: {modalItem.category}</p>
+              <p>Valor: {modalItem.value}</p>
+              <p>Data: {modalItem.date}</p>
+              <p>Descrição: {modalItem.description}</p>
             </div>
           )}
         {list.length > 0 &&
           list[0].color === "#365083" &&
-          modalList &&
-          modalList.category === undefined && (
+          modalItem &&
+          modalItem.category === undefined && (
             <div>
-              <p>Valor disponível: {modalList.amountLimit}</p>
+              <p>Valor disponível: {modalItem.amountLimit}</p>
             </div>
           )}
       </StyledModal>
@@ -93,8 +108,18 @@ function SituationList({ header, list = [], title }) {
         onOk={handleOk2}
         onCancel={handleCancel2}
       >
-        <p>Descreva o motivo da rejeição:</p>
-        <textarea onChange={handleChange} />
+        {list.length > 0 && list[0].color !== "#365083" && (
+          <div>
+            <p>Descreva o motivo da rejeição:</p>
+            <textarea onChange={handleChange} />
+          </div>
+        )}
+        {list.length > 0 && list[0].color === "#365083" && (
+          <div>
+            <label>Novo valor:</label>
+            <input placeholder="Novo valor" onChange={handleChange} />
+          </div>
+        )}
       </StyledModal2>
     </MainContainer>
   );

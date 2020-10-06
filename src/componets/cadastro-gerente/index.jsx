@@ -36,12 +36,11 @@ const layout = {
   const CadastroGerente = () => {
 
     const [manager, setManager] = useState({
-      company: "" ,
-      email: "",
-      password: "",
-      confirmPassword: "",
-      accessLevel:1
-    
+      
+        email: "",
+        password: "",
+        company: "",
+        accessLevel: 1,   
   })
   
   console.log(manager)

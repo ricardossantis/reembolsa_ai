@@ -11,7 +11,7 @@ import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
-import CadastroGerente from "../componets/cadastro-gerente/index";
+import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
@@ -133,9 +133,6 @@ const Routes = () => {
             </Switch>
           </>
         );
-      //adicionei isto na rota e também o setAuth para logout
-      default:
-        return setRole("none");
     }
   } else if (auth === false) {
     return (

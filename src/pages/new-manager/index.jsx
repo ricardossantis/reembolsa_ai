@@ -1,8 +1,6 @@
-import React, { useState, useEffect} from "react";
-import { Form, Input, Button } from "antd";
-import {Link} from 'react-router-dom';
+import React, { useState } from "react";
+import { Form } from "antd";
 import {Cancel, Confirm} from '../../components/system-general/system-button/button-style'
-import {BiUpArrow, BiDownArrow} from 'react-icons/bi'
 import { 
   Titulo, 
   Container,
@@ -13,7 +11,7 @@ import {
   ContainerButtons,
   StyledButtonRed,
   StyledButtonGreen
-} from './styledCadastro';
+} from '../../components/new-manager';
 import api from "../../services/api";
 
 const layout = {
@@ -43,12 +41,11 @@ const layout = {
         accessLevel: 1,   
   })
   
-  console.log(manager)
 
- const  handleSubmit = () => {
-      api.post(`/register`, {manager})
+ const handleSubmit = () => {
+      api.post(`/register`, {...manager})
       .then(res => console.log(res.data))
-      .catch(error => console.log(error.res))
+      .catch(error => console.log(error))
   }
 
   const onFinishFailed = (errorInfo) => {
@@ -127,7 +124,6 @@ const layout = {
             },
             ({ getFieldValue }) => ({
               validator( rule, value) {
-                rule = rule;
                 if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
@@ -139,7 +135,7 @@ const layout = {
           ]}
         >
           <StyledInputPassword onChange={({target: {value}}) =>
-        setManager({...manager, confirmPassword: value})} placeholder="Insira sua senha" value={manager.confirmPassword} placeholder="Confirme sua Senha"/>
+        setManager({...manager, confirmPassword: value})} value={manager.confirmPassword} placeholder="Confirme sua Senha"/>
           </Form.Item>
           <ContainerButtons>
             <Form.Item {...tailLayout} >

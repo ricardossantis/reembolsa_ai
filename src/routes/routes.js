@@ -11,6 +11,7 @@ import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
+import CadastroGerente from "../componets/cadastro-gerente/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
@@ -73,6 +74,37 @@ const Routes = () => {
           </>
         );
 
+    case "none":
+      return (
+        <>
+          <Header
+            maxColor="#365083"
+            minColor="#365083"
+            burguerColor="#FFFFFF"
+            title1="Cadastro"
+            title2="Login"
+            title3="Contato"
+            link1="/cadastro"
+            link2="/login"
+            link3="contato"
+            homeButton={<Button bckButton="#2cbfd3" />}
+          />
+          <Switch>
+            <Route exact path="/">
+              <Home />
+            </Route>
+            <Route exact path="/login">
+
+            </Route>
+            <Route exact path="/cadastro">
+              <CadastroGerente />
+            </Route>
+          </Switch>
+        </>
+      );
+
+    default:
+      return <div>Loading</div>;
       case "employee":
         return (
           <>
@@ -130,7 +162,7 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <div>cadastro</div>
+            <CadastroGerente/>
           </Route>
           <Route exact path="/contato">
             <div>contato</div>

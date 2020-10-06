@@ -15,11 +15,15 @@ import {
 const RefundRequest = () => {
   const formRef = createRef();
   const componentSize = "default";
-  const stateAuth = useSelector((state) => state.authentication);
-  const token = stateAuth.auth;
+
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
   };
+
+  const employeeState = useSelector((state) => state.authentication);
+  const employeeId = employeeState.user.id;
+  const employeeName = employeeState.user.user;
+  const token = employeeState.auth;
 
   const onFinish = (values) => {
     api.post(
@@ -28,6 +32,8 @@ const RefundRequest = () => {
         ...values,
         status: "pending",
         denied: "",
+        ownerId: employeeId,
+        ownerName: employeeName,
       },
       {
         headers: {

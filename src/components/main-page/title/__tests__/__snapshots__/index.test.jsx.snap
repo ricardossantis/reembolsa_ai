@@ -1,5 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
+exports[`Title 1`] = `
+<div
+  className="sc-bdnylx ckyYMA"
+  style={
+    Object {
+      "backgroundColor": "#365083",
+      "color": "#FFFFFF",
+    }
+  }
+>
+  Test
+</div>
+`;
+
 exports[`renderer 1`] = `
 <div
   className="sc-bdnylx ckyYMA"

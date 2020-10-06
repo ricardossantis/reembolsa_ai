@@ -21,7 +21,7 @@ const RefundRequest = () => {
   };
 
   const employeeState = useSelector((state) => state.authentication);
-  const employeeId = employeeState.user.id;
+  const employeeId = employeeState.user.userId;
   const employeeName = employeeState.user.user;
   const token = employeeState.auth;
 

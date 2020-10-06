@@ -1,0 +1,331 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`width < 768 1`] = `
+<div>
+  <div
+    className="sc-gtssRu kWnWji"
+  >
+    <ul
+      className="ant-timeline"
+    >
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test1
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test2
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test3
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test4
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item ant-timeline-item-last"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test5
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;
+
+exports[`width > 768 1`] = `
+<div>
+  <div
+    className="sc-bdnylx grBsSd"
+  >
+    <ul
+      className="ant-timeline"
+    >
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test1
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test2
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test3
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test4
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item ant-timeline-item-last"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test5
+        </div>
+      </li>
+    </ul>
+    <ul
+      className="ant-timeline"
+    >
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test6
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test7
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test8
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test9
+        </div>
+      </li>
+      <li
+        className="ant-timeline-item ant-timeline-item-last"
+      >
+        <div
+          className="ant-timeline-item-tail"
+        />
+        <div
+          className="ant-timeline-item-head ant-timeline-item-head-#2CBFD3"
+          style={
+            Object {
+              "borderColor": "#2CBFD3",
+            }
+          }
+        />
+        <div
+          className="ant-timeline-item-content"
+        >
+          test10
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+`;

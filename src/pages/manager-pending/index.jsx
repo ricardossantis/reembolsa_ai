@@ -25,7 +25,7 @@ function Pending() {
                 item.color = "#F2C94C";
                 return item;
               }
-              return undefined
+              return undefined;
             })
             .filter((item) => item !== undefined)
         );
@@ -33,7 +33,16 @@ function Pending() {
       .catch((err) => console.log(err));
   }, []);
 
-  return <SituationList header="Pedidos Pendentes" list={list} title />;
+  return (
+    <SituationList
+      header="Pedidos Pendentes"
+      list={list}
+      title
+      token={token}
+      setList={setList}
+      id={id}
+    />
+  );
 }
 
 export default Pending;

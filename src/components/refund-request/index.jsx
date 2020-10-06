@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { createRef } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Form, Input, Cascader, DatePicker } from "antd";
@@ -21,7 +21,7 @@ const RefundRequest = () => {
   };
 
   const employeeState = useSelector((state) => state.authentication);
-  const employeeId = employeeState.user.id;
+  const employeeId = employeeState.user.userId;
   const employeeName = employeeState.user.user;
   const token = employeeState.auth;
 

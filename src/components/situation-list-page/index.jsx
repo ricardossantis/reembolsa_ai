@@ -8,7 +8,6 @@ import {
   TitleParagraph,
   StyledModal,
   StyledModal2,
-  ButtonBox,
   ChangeButton,
   ConfirmButton,
 } from "./situation.js";

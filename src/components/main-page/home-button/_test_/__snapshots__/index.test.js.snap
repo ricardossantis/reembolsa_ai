@@ -1,0 +1,15 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Test renders a button 1`] = `
+<button
+  className="sc-bdnylx iDLBqO"
+  onClick={[Function]}
+  style={
+    Object {
+      "backgroundColor": "red",
+    }
+  }
+>
+  Quero participar
+</button>
+`;

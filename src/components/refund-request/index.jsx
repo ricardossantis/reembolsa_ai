@@ -27,7 +27,7 @@ const RefundRequest = () => {
       {
         ...values,
         status: "pending",
-        denied: "none",
+        denied: "",
       },
       {
         headers: {

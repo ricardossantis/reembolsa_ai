@@ -6,6 +6,7 @@ import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
+import EmployeesHistory from "../pages/employees-history";
 import Saldo from "../pages/employees-balance";
 import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
@@ -97,7 +98,9 @@ const Routes = () => {
               <Route path="/saldo">
                 <Saldo />
               </Route>
-              <Route path="/historicocolaborador"></Route>
+              <Route path="/historicocolaborador">
+                <EmployeesHistory />
+              </Route>
             </Switch>
           </>
         );

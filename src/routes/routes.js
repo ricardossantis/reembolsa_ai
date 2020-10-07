@@ -71,8 +71,6 @@ const Routes = () => {
           </>
         );
 
-    default:
-      return <div>Loading</div>;
       case "employee":
         return (
           <>
@@ -88,7 +86,6 @@ const Routes = () => {
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
-              input={<InputHeader />}
             />
             <Switch>
               <Route path="/novopedido">
@@ -127,7 +124,7 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <CadastroGerente/>
+            <CadastroGerente />
           </Route>
           <Route exact path="/contato">
             <div>contato</div>

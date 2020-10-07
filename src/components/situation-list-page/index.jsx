@@ -13,57 +13,15 @@ import {
 } from "./situation.js";
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
+import { useDispatch } from "react-redux";
+import { setEmployeeList, setPendingList } from "../../redux/actions/list";
 
-function SituationList({ header, list = [], title, token, setList, id }) {
+function SituationList({ header, list = [], title, token, id }) {
+  const dispatch = useDispatch();
   const [visible, setVisibility] = useState(false);
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
-  const [update, setUpdate] = useState();
-
-  useEffect(() => {
-    if (header === "Pedidos Pendentes") {
-      api
-        .get("/refunds", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setList(
-            res.data
-              .filter((item) => item.userId === id)
-              .map((item) => {
-                if (item.status === "pending") {
-                  item.color = "#F2C94C";
-                  return item;
-                }
-                return undefined;
-              })
-              .filter((item) => item !== undefined)
-          );
-        })
-        .catch((err) => console.log(err));
-    } else {
-      api
-        .get("/users", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setList(
-            res.data
-              .filter((item) => item.userId === id)
-              .map((item) => {
-                item.color = "#365083";
-                return item;
-              })
-          );
-        })
-        .catch((err) => console.log(err));
-    }
-  }, [update]);
 
   const showModal = (item) => {
     setModalItem(item);
@@ -76,16 +34,19 @@ function SituationList({ header, list = [], title, token, setList, id }) {
 
   const handleOk = (e) => {
     if (header === "Pedidos Pendentes") {
-      api.patch(
-        `refunds/${modalItem.id}`,
-        { status: "approved" },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUpdate([]);
+      api
+        .patch(
+          `refunds/${modalItem.id}`,
+          { status: "approved" },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(setPendingList(token, id));
+        });
     }
     setVisibility(false);
   };
@@ -101,28 +62,34 @@ function SituationList({ header, list = [], title, token, setList, id }) {
 
   const handleOk2 = (e) => {
     if (list[0].color === "#365083") {
-      api.patch(
-        `users/${modalItem.id}`,
-        { amountLimit: input },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUpdate([]);
+      api
+        .patch(
+          `users/${modalItem.id}`,
+          { amountLimit: input },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(setEmployeeList(token, id));
+        });
     }
     if (header === "Pedidos Pendentes") {
-      api.patch(
-        `refunds/${modalItem.id}`,
-        { status: "reproved" },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUpdate([]);
+      api
+        .patch(
+          `refunds/${modalItem.id}`,
+          { status: "reproved" },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(setPendingList(token, id));
+        });
     }
     setVisibility2(false);
   };

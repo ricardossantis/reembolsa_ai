@@ -2,6 +2,7 @@ import React, { useState, createRef } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Form, Input, Cascader, DatePicker } from "antd";
+import moment from "moment";
 import {
   RefoundPage,
   Title,
@@ -113,12 +114,13 @@ const RefundRequest = () => {
           <SubTitle>Data</SubTitle>
 
           <Form.Item name="data" value="data">
-            <DatePicker placeholder="Insira a data" />
+            {/* <DatePicker placeholder="Insira a data" /> */}
+            <Input placeholder="Insira apenas números" type="data" />
           </Form.Item>
 
           <SubTitle>Descrição da despesa</SubTitle>
 
-          <Form.Item name="text" value="text">
+          <Form.Item name="description" value="text">
             <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
           </Form.Item>
 

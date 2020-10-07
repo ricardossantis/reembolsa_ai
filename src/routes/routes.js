@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../services/api";
 import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
@@ -73,35 +72,6 @@ const Routes = () => {
             </Switch>
           </>
         );
-
-    case "none":
-      return (
-        <>
-          <Header
-            maxColor="#365083"
-            minColor="#365083"
-            burguerColor="#FFFFFF"
-            title1="Cadastro"
-            title2="Login"
-            title3="Contato"
-            link1="/cadastro"
-            link2="/login"
-            link3="contato"
-            homeButton={<Button bckButton="#2cbfd3" />}
-          />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-
-            </Route>
-            <Route exact path="/cadastro">
-              <CadastroGerente />
-            </Route>
-          </Switch>
-        </>
-      );
 
     default:
       return <div>Loading</div>;

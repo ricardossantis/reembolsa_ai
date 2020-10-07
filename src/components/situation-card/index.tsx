@@ -2,7 +2,12 @@ import React from "react";
 import { Card, DisplayInfo } from "./card.js";
 import ColoredBall from "../colored-ball";
 
-function SituationCard({ color, children }) {
+interface Props {
+  color: string;
+  children: React.ReactNode;
+}
+
+function SituationCard({ color, children }: Props) {
   return (
     <Card>
       <ColoredBall color={color} />

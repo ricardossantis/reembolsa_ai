@@ -27,7 +27,7 @@ function SituationList({ header, list = [], title, token, id }) {
   useEffect(() => {
     if (header === "Pedidos Pendentes") {
       dispatch(setPendingList(token, id));
-    } else {
+    } else if (header === "Colaboradores") {
       dispatch(setEmployeeList(token, id));
     }
   }, [update]);

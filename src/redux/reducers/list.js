@@ -9,7 +9,7 @@ const list = (state = defaultState, action) => {
     case YELLOW:
       return action.list;
     case RAINBOW:
-      break;
+      return action.list;
     default:
       return state;
   }

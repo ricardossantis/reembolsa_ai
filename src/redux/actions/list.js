@@ -46,6 +46,35 @@ export const setPendingList = (token, id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
+export const setHistoryList = (token, id) => (dispatch) => {
+  api
+    .get("/refunds", {
+      headers: {
+        authorization: `Bearer ${token}`,
+      },
+    })
+    .then((res) => {
+      let list = res.data
+        .filter((item) => item.userId === id)
+        .map((item) => {
+          switch (item.status) {
+            case "pending":
+              item.color = "#F9BB1D";
+              break;
+            case "approved":
+              item.color = "#2CD3B5";
+              break;
+            default:
+              item.color = "#F15454";
+              break;
+          }
+          return item;
+        });
+      dispatch(rainbowList(list));
+    })
+    .catch((err) => console.log(err));
+};
+
 const blueList = (list) => ({
   type: BLUE,
   list: list,
@@ -53,5 +82,10 @@ const blueList = (list) => ({
 
 const yellowList = (list) => ({
   type: YELLOW,
+  list: list,
+});
+
+const rainbowList = (list) => ({
+  type: RAINBOW,
   list: list,
 });

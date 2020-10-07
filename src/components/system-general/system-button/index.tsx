@@ -1,7 +1,12 @@
 import React from "react";
 import { ButtonBox, Cancel, Confirm } from "./button-style.js";
 
-const SystemButton = (props) => {
+interface ButtonProps {
+  cancel: () => void;
+  confirm: () => void;
+}
+
+const SystemButton = (props: ButtonProps) => {
   return (
     <ButtonBox>
       <Cancel onClick={props.cancel} />

@@ -13,8 +13,11 @@ import {
 } from "./situation.js";
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
+import { useDispatch } from "react-redux";
+import { setEmployeeList } from "../../redux/actions/list";
 
 function SituationList({ header, list = [], title, token, setList, id }) {
+  const dispatch = useDispatch();
   const [visible, setVisibility] = useState(false);
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
@@ -45,23 +48,7 @@ function SituationList({ header, list = [], title, token, setList, id }) {
         })
         .catch((err) => console.log(err));
     } else {
-      api
-        .get("/users", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setList(
-            res.data
-              .filter((item) => item.userId === id)
-              .map((item) => {
-                item.color = "#365083";
-                return item;
-              })
-          );
-        })
-        .catch((err) => console.log(err));
+      dispatch(setEmployeeList(token, id));
     }
   }, [update]);
 

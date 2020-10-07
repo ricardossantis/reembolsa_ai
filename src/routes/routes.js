@@ -74,37 +74,6 @@ const Routes = () => {
           </>
         );
 
-    case "none":
-      return (
-        <>
-          <Header
-            maxColor="#365083"
-            minColor="#365083"
-            burguerColor="#FFFFFF"
-            title1="Cadastro"
-            title2="Login"
-            title3="Contato"
-            link1="/cadastro"
-            link2="/login"
-            link3="contato"
-            homeButton={<Button bckButton="#2cbfd3" />}
-          />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-
-            </Route>
-            <Route exact path="/cadastro">
-              <CadastroGerente />
-            </Route>
-          </Switch>
-        </>
-      );
-
-    default:
-      return <div>Loading</div>;
       case "employee":
         return (
           <>
@@ -120,7 +89,6 @@ const Routes = () => {
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
-              input={<InputHeader />}
             />
             <Switch>
               <Route path="/novopedido">
@@ -159,7 +127,7 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <CadastroGerente/>
+            <CadastroGerente />
           </Route>
           <Route exact path="/contato">
             <div>contato</div>

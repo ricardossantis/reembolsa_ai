@@ -1,42 +1,23 @@
 import React, { useEffect, useState } from "react";
 import SituationList from "../../components/situation-list-page";
-import api from "../../services/api.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setEmployeeList } from "../../redux/actions/list";
 
 function Employees() {
-  const [list, setList] = useState();
+  const dispatch = useDispatch();
   const stateAuth = useSelector((state) => state.authentication);
+  const list = useSelector((state) => state.list);
   const id = stateAuth.user.id;
   const token = stateAuth.auth;
 
   useEffect(() => {
-    api
-      .get("/users", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setList(
-          res.data
-            .filter((item) => item.userId === id)
-            .map((item) => {
-              item.color = "#365083";
-              return item;
-            })
-        );
-      })
-      .catch((err) => console.log(err));
+    dispatch(setEmployeeList(token, id));
   }, []);
 
+  console.log(list);
+
   return (
-    <SituationList
-      header="Colaboradores"
-      list={list}
-      token={token}
-      setList={setList}
-      id={id}
-    />
+    <SituationList header="Colaboradores" list={list} token={token} id={id} />
   );
 }
 

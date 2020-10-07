@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useWindowSize } from "../../components/system-general/header/hookWindowSize.js";
+import api from "../../services/api.js";
+
 import {
   Box,
   Title,
@@ -11,9 +13,14 @@ import {
 } from "../../components/styled-balance/balance-style.js";
 
 const Saldo = () => {
-  const amountLimit = useSelector(
-    (state) => state.authentication.user.amountLimit
-  );
+  const stateAuth = useSelector((state) => state.authentication);
+  const id = stateAuth.user.id - 1;
+
+  const width = useWindowSize().width;
+
+  const token = stateAuth.auth;
+  const [resul, setResul] = useState();
+  const [value, setValue] = useState([]);
 
   const [circleColor, setCircleColor] = useState("");
   const colors = {
@@ -31,10 +38,34 @@ const Saldo = () => {
       setCircleColor(colors.green);
     }
   };
+  const refundRequest = () => {
+    api
+      .get("/refunds", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        res.data
+          .filter((item) => item.userId === id && item.status === "approved")
+          .map((item) => ({ refoundApproved: parseInt(item.value) }));
+      })
+      .catch((err) => console.log(err));
+  };
+
+  useEffect(() => console.log(refundRequest), []);
+//testar
+  setResul(value);
+  console.log(resul);
+
+  const amountLimit = useSelector(
+    (state) => state.authentication.user.amountLimit
+  );
+
+  // console.log(listValues, "lista aqui")
 
   useEffect(showLimit, []);
 
-  const width = useWindowSize().width;
   return (
     <>
       {(width > 768 && (

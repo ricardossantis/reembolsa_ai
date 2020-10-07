@@ -1,13 +1,11 @@
 import React from "react";
 import Banner from "../../components/main-page/banner";
-import Button from "../../components/main-page/home-button";
 import ClientCard from "../../components/main-page/card-feed";
 import Footer from "../../components/main-page/footer/index.jsx";
 import ClientLogo from "../../components/main-page/client-logo";
 import MainTimeline from "../../components/main-page/timeline";
 import Title from "../../components/main-page/title";
 import HireUs from "../../components/main-page/our-services";
-import CancelButton from "../../components/system-general/cancel-button";
 import { GithubFilled } from "@ant-design/icons";
 
 const Home = () => {

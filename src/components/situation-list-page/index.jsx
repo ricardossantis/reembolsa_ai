@@ -22,15 +22,6 @@ function SituationList({ header, list = [], title, token, id }) {
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
-  const [update, setUpdate] = useState();
-
-  useEffect(() => {
-    if (header === "Pedidos Pendentes") {
-      dispatch(setPendingList(token, id));
-    } else if (header === "Colaboradores") {
-      dispatch(setEmployeeList(token, id));
-    }
-  }, [update]);
 
   const showModal = (item) => {
     setModalItem(item);
@@ -43,16 +34,19 @@ function SituationList({ header, list = [], title, token, id }) {
 
   const handleOk = (e) => {
     if (header === "Pedidos Pendentes") {
-      api.patch(
-        `refunds/${modalItem.id}`,
-        { status: "approved" },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUpdate([]);
+      api
+        .patch(
+          `refunds/${modalItem.id}`,
+          { status: "approved" },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(setPendingList(token, id));
+        });
     }
     setVisibility(false);
   };
@@ -68,28 +62,34 @@ function SituationList({ header, list = [], title, token, id }) {
 
   const handleOk2 = (e) => {
     if (list[0].color === "#365083") {
-      api.patch(
-        `users/${modalItem.id}`,
-        { amountLimit: input },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUpdate([]);
+      api
+        .patch(
+          `users/${modalItem.id}`,
+          { amountLimit: input },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(setEmployeeList(token, id));
+        });
     }
     if (header === "Pedidos Pendentes") {
-      api.patch(
-        `refunds/${modalItem.id}`,
-        { status: "reproved" },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
-      setUpdate([]);
+      api
+        .patch(
+          `refunds/${modalItem.id}`,
+          { status: "reproved" },
+          {
+            headers: {
+              authorization: `Bearer ${token}`,
+            },
+          }
+        )
+        .then(() => {
+          dispatch(setPendingList(token, id));
+        });
     }
     setVisibility2(false);
   };

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SituationList from "../../components/situation-list-page";
 import { useDispatch, useSelector } from "react-redux";
 import { setPendingList } from "../../redux/actions/list";

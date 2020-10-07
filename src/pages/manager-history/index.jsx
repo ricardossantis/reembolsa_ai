@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SituationList from "../../components/situation-list-page";
 import { useDispatch, useSelector } from "react-redux";
 import { setHistoryList } from "../../redux/actions/list";
@@ -14,7 +14,6 @@ function History() {
     dispatch(setHistoryList(token, id));
   }, []);
 
-  console.log(list);
   return (
     <SituationList
       header="Histórico de Movimentações"

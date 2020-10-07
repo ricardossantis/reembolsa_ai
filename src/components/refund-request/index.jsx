@@ -1,4 +1,4 @@
-import React, { useState, createRef } from "react";
+import React, { createRef } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Form, Input, Cascader, DatePicker } from "antd";
@@ -15,18 +15,32 @@ import {
 const RefundRequest = () => {
   const formRef = createRef();
   const componentSize = "default";
-  const stateAuth = useSelector((state) => state.authentication);
-  const token = stateAuth.auth;
+
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
   };
 
+  const employeeState = useSelector((state) => state.authentication);
+  const employeeId = employeeState.user.userId;
+  const employeeName = employeeState.user.user;
+  const token = employeeState.auth;
+
   const onFinish = (values) => {
-    api.post("/refunds", values, {
-      headers: {
-        authorization: `Bearer ${token}`,
+    api.post(
+      "/refunds",
+      {
+        ...values,
+        status: "pending",
+        denied: "",
+        userId: employeeId,
+        userName: employeeName,
       },
-    });
+      {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      }
+    );
     console.log("Valores para o reembolso", values);
     formRef.current.resetFields();
   };

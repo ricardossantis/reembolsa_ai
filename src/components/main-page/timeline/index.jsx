@@ -8,7 +8,7 @@ const MainTimeline = (props) => {
   const green = "#2CBFD3";
   return (
     <div>
-      {(width > 768 && (
+      {width > 768 ? (
         <MaxTimeline>
           <Timeline>
             <Timeline.Item color={green}>{props.item1}</Timeline.Item>
@@ -25,7 +25,7 @@ const MainTimeline = (props) => {
             <Timeline.Item color={green}>{props.item10}</Timeline.Item>
           </Timeline>
         </MaxTimeline>
-      )) || (
+      ) : (
         <MinTimeline>
           <Timeline>
             <Timeline.Item color={green}>{props.item1}</Timeline.Item>

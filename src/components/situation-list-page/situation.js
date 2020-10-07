@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import { Modal } from "antd";
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
 
 export const MainContainer = styled.div`
   width: 100%;
@@ -68,6 +69,7 @@ export const StyledModal = styled(Modal)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
   }
 `;
 
@@ -78,5 +80,20 @@ export const StyledModal2 = styled(Modal)`
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    margin: 10px;
   }
+`;
+
+export const ChangeButton = styled(CloseCircleFilled)`
+  font-size: 2.6rem;
+  margin: 5px;
+  font-weight: bolder;
+  color: #f15454;
+`;
+
+export const ConfirmButton = styled(CheckCircleFilled)`
+  margin: 5px;
+  font-size: 2.6rem;
+  font-weight: bolder;
+  color: #2cbfd3;
 `;

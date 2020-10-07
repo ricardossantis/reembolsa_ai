@@ -14,9 +14,9 @@ import {
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
-import { setEmployeeList } from "../../redux/actions/list";
+import { setEmployeeList, setPendingList } from "../../redux/actions/list";
 
-function SituationList({ header, list = [], title, token, setList, id }) {
+function SituationList({ header, list = [], title, token, id }) {
   const dispatch = useDispatch();
   const [visible, setVisibility] = useState(false);
   const [visible2, setVisibility2] = useState(false);
@@ -26,27 +26,7 @@ function SituationList({ header, list = [], title, token, setList, id }) {
 
   useEffect(() => {
     if (header === "Pedidos Pendentes") {
-      api
-        .get("/refunds", {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        })
-        .then((res) => {
-          setList(
-            res.data
-              .filter((item) => item.userId === id)
-              .map((item) => {
-                if (item.status === "pending") {
-                  item.color = "#F2C94C";
-                  return item;
-                }
-                return undefined;
-              })
-              .filter((item) => item !== undefined)
-          );
-        })
-        .catch((err) => console.log(err));
+      dispatch(setPendingList(token, id));
     } else {
       dispatch(setEmployeeList(token, id));
     }

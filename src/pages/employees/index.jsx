@@ -14,8 +14,6 @@ function Employees() {
     dispatch(setEmployeeList(token, id));
   }, []);
 
-  console.log(list);
-
   return (
     <SituationList header="Colaboradores" list={list} token={token} id={id} />
   );

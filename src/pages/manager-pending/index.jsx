@@ -1,36 +1,17 @@
 import React, { useEffect, useState } from "react";
 import SituationList from "../../components/situation-list-page";
-import api from "../../services/api.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setPendingList } from "../../redux/actions/list";
 
 function Pending() {
-  const [list, setList] = useState();
+  const dispatch = useDispatch();
   const stateAuth = useSelector((state) => state.authentication);
+  const list = useSelector((state) => state.list);
   const id = stateAuth.user.id;
   const token = stateAuth.auth;
 
   useEffect(() => {
-    api
-      .get("/refunds", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setList(
-          res.data
-            .filter((item) => item.userId === id)
-            .map((item) => {
-              if (item.status === "pending") {
-                item.color = "#F2C94C";
-                return item;
-              }
-              return undefined;
-            })
-            .filter((item) => item !== undefined)
-        );
-      })
-      .catch((err) => console.log(err));
+    dispatch(setPendingList(token, id));
   }, []);
 
   return (
@@ -39,7 +20,6 @@ function Pending() {
       list={list}
       title
       token={token}
-      setList={setList}
       id={id}
     />
   );

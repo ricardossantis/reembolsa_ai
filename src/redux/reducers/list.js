@@ -7,7 +7,7 @@ const list = (state = defaultState, action) => {
     case BLUE:
       return action.list;
     case YELLOW:
-      break;
+      return action.list;
     case RAINBOW:
       break;
     default:

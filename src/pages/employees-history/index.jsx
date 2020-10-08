@@ -6,8 +6,7 @@ import { useSelector } from "react-redux";
 const EmployeesHistory = () => {
   const [list, setList] = useState();
   const stateAuth = useSelector((state) => state.authentication);
-  const id = stateAuth.user.id
-  console.log(id)
+  const id = stateAuth.user.id;
   const token = stateAuth.auth;
 
   useEffect(() => {
@@ -18,7 +17,7 @@ const EmployeesHistory = () => {
         },
       })
       .then((res) => {
-        console.log(res)
+        console.log(res);
         setList(
           res.data
             .filter((item) => item.userId + 1 === id)

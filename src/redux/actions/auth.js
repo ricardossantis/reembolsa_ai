@@ -31,6 +31,7 @@ const login = (token, user) => ({
   auth: token,
   user: user,
 });
+
 export const logout = () => {
   return {
     type: LOGOUT,

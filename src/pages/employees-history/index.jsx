@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 const EmployeesHistory = () => {
   const [list, setList] = useState();
   const stateAuth = useSelector((state) => state.authentication);
-  const id = stateAuth.user.id;
+  const id = stateAuth.user.userId;
   const token = stateAuth.auth;
 
   useEffect(() => {
@@ -20,7 +20,7 @@ const EmployeesHistory = () => {
         console.log(res);
         setList(
           res.data
-            .filter((item) => item.userId + 1 === id)
+            .filter((item) => item.userId === id)
             .map((item) => {
               switch (item.status) {
                 case "pending":

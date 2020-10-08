@@ -14,7 +14,7 @@ import {
 
 const Saldo = () => {
   const stateAuth = useSelector((state) => state.authentication);
-  const id = stateAuth.user.id - 1;
+  const id = stateAuth.user.userId;
   const width = useWindowSize().width;
   const token = stateAuth.auth;
 
@@ -30,7 +30,6 @@ const Saldo = () => {
 
   const [renderResult, setRenderResult] = useState("");
 
-  console.log(renderResult);
   useEffect(() => {
     api
       .get("/refunds", {

@@ -14,6 +14,7 @@ import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
+import Logo from '../images/logo_preto.png'
 
 const Routes = () => {
   const [role, setRole] = useState("none");
@@ -113,7 +114,7 @@ const Routes = () => {
           link3="/login"
           link4="/contato"
           home="/"
-          logo="Reembolsa.ai"
+          logo={Logo}
           homeButton={<Button bckButton="#2CBFD3" />}
         />
         <Switch>

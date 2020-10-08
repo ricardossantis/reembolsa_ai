@@ -79,6 +79,7 @@ const LoginPage = () => {
         </div>
         {err !== "" && <StyledError>{err}</StyledError>}
       </DefaultForm>
+      {console.log(Link)}
     </StyledContent>
   );
 };

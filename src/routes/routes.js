@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../services/api";
 import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
@@ -18,7 +17,6 @@ import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
 
 const Routes = () => {
-  let history = useHistory();
   const [role, setRole] = useState("none");
   const dispatch = useDispatch();
   const [auth, setAuth] = useState(null);
@@ -26,7 +24,6 @@ const Routes = () => {
 
   useEffect(() => {
     if (stateAuth.auth === "") {
-      history.replace("/");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");
@@ -75,37 +72,6 @@ const Routes = () => {
           </>
         );
 
-    case "none":
-      return (
-        <>
-          <Header
-            maxColor="#365083"
-            minColor="#365083"
-            burguerColor="#FFFFFF"
-            title1="Cadastro"
-            title2="Login"
-            title3="Contato"
-            link1="/cadastro"
-            link2="/login"
-            link3="contato"
-            homeButton={<Button bckButton="#2cbfd3" />}
-          />
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route exact path="/login">
-
-            </Route>
-            <Route exact path="/cadastro">
-              <CadastroGerente />
-            </Route>
-          </Switch>
-        </>
-      );
-
-    default:
-      return <div>Loading</div>;
       case "employee":
         return (
           <>
@@ -121,7 +87,6 @@ const Routes = () => {
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
-              input={<InputHeader />}
             />
             <Switch>
               <Route path="/novopedido">
@@ -162,7 +127,7 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <CadastroGerente/>
+            <CadastroGerente />
           </Route>
           <Route exact path="/contato">
             <div>contato</div>

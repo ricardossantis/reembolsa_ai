@@ -3,6 +3,11 @@ import api from "../../services/api";
 export const BLUE = "BLUE";
 export const YELLOW = "YELLOW";
 export const RAINBOW = "RAINBOW";
+export const FILTERED = "FILTERED";
+
+export const setFilteredEmployees = (list) => (dispatch) => {
+  dispatch(filteredList(list));
+};
 
 export const setEmployeeList = (token, id) => (dispatch) => {
   api
@@ -87,5 +92,10 @@ const yellowList = (list) => ({
 
 const rainbowList = (list) => ({
   type: RAINBOW,
+  list: list,
+});
+
+const filteredList = (list) => ({
+  type: FILTERED,
   list: list,
 });

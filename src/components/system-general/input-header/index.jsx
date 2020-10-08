@@ -1,21 +1,29 @@
 import React from "react";
 import { useWindowSize } from "../header/hookWindowSize.js";
 import { MaxSearch, MinSearch } from "./input-style.js";
+import { useDispatch, useSelector } from "react-redux";
+import { setFilteredEmployees } from "../../../redux/actions/list";
+import { useHistory } from "react-router-dom";
 
 const InputHeader = () => {
   const width = useWindowSize().width;
+  let list = useSelector((state) => state.list);
+  let dispatch = useDispatch();
+  let history = useHistory();
+
+  const onSearch = (value) => {
+    if(history.location.pathname){
+      history.replace("/colaboradores");
+    }
+    const filteredList = list.filter((item) => item.fullName === value);
+    dispatch(setFilteredEmployees(filteredList));
+  };
   return (
     <>
       {(width > 446 && (
-        <MaxSearch
-          placeholder="Busca pelo colaborador"
-          onSearch={(value) => console.log(value)}
-        />
+        <MaxSearch placeholder="Busca pelo colaborador" onSearch={onSearch} />
       )) || (
-        <MinSearch
-          placeholder="Busca pelo colaborador"
-          onSearch={(value) => console.log(value)}
-        />
+        <MinSearch placeholder="Busca pelo colaborador" onSearch={onSearch} />
       )}
     </>
   );

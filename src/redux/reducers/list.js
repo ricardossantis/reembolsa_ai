@@ -1,4 +1,4 @@
-import { BLUE, YELLOW, RAINBOW } from "../actions/list";
+import { BLUE, YELLOW, RAINBOW, FILTERED } from "../actions/list";
 
 const defaultState = [];
 
@@ -9,6 +9,8 @@ const list = (state = defaultState, action) => {
     case YELLOW:
       return action.list;
     case RAINBOW:
+      return action.list;
+    case FILTERED:
       return action.list;
     default:
       return state;

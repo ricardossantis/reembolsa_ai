@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Test expect to render footer max 1`] = `
+<footer
+  className="sc-bdnylx fBtCDZ"
+/>
+`;
+
+exports[`Render Test expect to render footer min 1`] = `
+<footer
+  className="sc-bdnylx fBtCDZ"
+/>
+`;

@@ -12,9 +12,11 @@ const InputHeader = () => {
   let history = useHistory();
 
   const onSearch = (value) => {
-    history.replace("/colaboradores");
-    list = list.filter((item) => item.fullName === value);
-    dispatch(setFilteredEmployees(list));
+    if(history.location.pathname){
+      history.replace("/colaboradores");
+    }
+    const filteredList = list.filter((item) => item.fullName === value);
+    dispatch(setFilteredEmployees(filteredList));
   };
   return (
     <>

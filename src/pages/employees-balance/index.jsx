@@ -53,14 +53,14 @@ const Saldo = () => {
         <Box>
           <Title>Saldo disponível</Title>
           <BoxCircle>
-            <Circle color="#2CD3B5">R$ {renderResult}</Circle>
+            <Circle color={colors.green}>R$ {renderResult}</Circle>
           </BoxCircle>
         </Box>
       )) || (
         <Box>
           <MinTitle>Saldo disponível</MinTitle>
           <BoxCircle>
-            <MinCircle color="#2CD3B5">R$ {renderResult}</MinCircle>
+            <MinCircle color={colors.green}>R$ {renderResult}</MinCircle>
           </BoxCircle>
         </Box>
       )}

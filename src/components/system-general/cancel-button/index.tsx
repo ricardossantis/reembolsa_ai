@@ -1,7 +1,11 @@
 import React from "react";
 import { CancelBox, Cancel} from "./cancel-style.js";
 
-const CancelButton = (props) => {
+interface CancelButton {
+  cancel: () => void;
+}
+
+const CancelButton = (props: CancelButton) => {
   return (
     <CancelBox>
       <Cancel onClick={props.cancel} />

@@ -1,5 +1,5 @@
 import React from "react";
-import { Ball } from "./ball.jsx";
+import { Ball } from "./ball";
 interface Props {
   color: string;
 }

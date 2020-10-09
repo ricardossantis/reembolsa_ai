@@ -3,13 +3,8 @@ import api from "../../services/api";
 export const BLUE = "BLUE";
 export const YELLOW = "YELLOW";
 export const RAINBOW = "RAINBOW";
-export const FILTERED = "FILTERED";
 
-export const setFilteredEmployees = (list) => (dispatch) => {
-  dispatch(filteredList(list));
-};
-
-export const setEmployeeList = (token, id) => (dispatch) => {
+export const setEmployeeList = (token, id, value = "") => (dispatch) => {
   api
     .get("/users", {
       headers: {
@@ -23,7 +18,12 @@ export const setEmployeeList = (token, id) => (dispatch) => {
           item.color = "#365083";
           return item;
         });
-      dispatch(blueList(list));
+      if (value === "") {
+        dispatch(blueList(list));
+      } else {
+        list = list.filter((item) => item.fullName === value);
+        dispatch(blueList(list));
+      }
     })
     .catch((err) => console.log(err));
 };
@@ -80,7 +80,7 @@ export const setHistoryList = (token, id) => (dispatch) => {
     .catch((err) => console.log(err));
 };
 
-const blueList = (list) => ({
+const blueList = (list, value) => ({
   type: BLUE,
   list: list,
 });
@@ -92,10 +92,5 @@ const yellowList = (list) => ({
 
 const rainbowList = (list) => ({
   type: RAINBOW,
-  list: list,
-});
-
-const filteredList = (list) => ({
-  type: FILTERED,
   list: list,
 });

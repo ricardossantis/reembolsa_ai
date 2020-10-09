@@ -10,8 +10,6 @@ const list = (state = defaultState, action) => {
       return action.list;
     case RAINBOW:
       return action.list;
-    case FILTERED:
-      return action.list;
     default:
       return state;
   }

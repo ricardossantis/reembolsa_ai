@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Register New User Success 1`] = `
+exports[`register new user success 1`] = `
 <form
   className="ant-form ant-form-horizontal sc-bdnylx fIybCv"
   id="register"

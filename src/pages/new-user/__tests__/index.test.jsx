@@ -2,6 +2,7 @@ import React from "react";
 import renderer from "react-test-renderer";
 import { useSelector } from "react-redux";
 import NewUser from "../index";
+//import { shallow } from "enzyme";
 
 jest.mock("react-redux", () => ({
   useSelector: jest.fn(() => ({
@@ -11,17 +12,13 @@ jest.mock("react-redux", () => ({
   })),
 }));
 
-it("register new user success", () => {
-  const tree = renderer.create(<NewUser />).toJSON();
-  expect(tree).toMatchSnapshot();
-});
-
-describe("get input behavior", () => {
-  it("get input values", () => {
+describe("behavior", () => {
+  it("retrieving redux state data", () => {
     useSelector.mockImplementation({
       user: "edson",
       id: 1,
       auth: "token",
     });
+    expect(useSelector).toMatchSnapshot();
   });
 });

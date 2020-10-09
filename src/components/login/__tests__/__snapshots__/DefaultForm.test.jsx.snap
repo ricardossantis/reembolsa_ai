@@ -1,0 +1,8 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Test renders DefaultForm 1`] = `
+<form
+  className="ant-form ant-form-horizontal sc-bdnylx gUWxmY"
+  onSubmit={[Function]}
+/>
+`;

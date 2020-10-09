@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Test renders DefaultForm 1`] = `
+<h1
+  className="sc-bdnylx gispQU"
+/>
+`;
+
+exports[`Render Test renders DefaultH1 1`] = `
+<h1
+  className="sc-bdnylx gispQU"
+/>
+`;

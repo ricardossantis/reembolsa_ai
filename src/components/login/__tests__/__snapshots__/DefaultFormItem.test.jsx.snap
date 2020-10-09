@@ -1,0 +1,41 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Render Test renders DefaultForm 1`] = `
+<div
+  className="ant-row ant-form-item sc-bdnylx itAIRD"
+  style={Object {}}
+>
+  <div
+    className="ant-col ant-form-item-control"
+    style={Object {}}
+  >
+    <div
+      className="ant-form-item-control-input"
+    >
+      <div
+        className="ant-form-item-control-input-content"
+      />
+    </div>
+  </div>
+</div>
+`;
+
+exports[`Render Test renders DefaultFormItem 1`] = `
+<div
+  className="ant-row ant-form-item sc-bdnylx itAIRD"
+  style={Object {}}
+>
+  <div
+    className="ant-col ant-form-item-control"
+    style={Object {}}
+  >
+    <div
+      className="ant-form-item-control-input"
+    >
+      <div
+        className="ant-form-item-control-input-content"
+      />
+    </div>
+  </div>
+</div>
+`;

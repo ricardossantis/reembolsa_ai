@@ -1,0 +1,71 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`width < 768 1`] = `
+<div
+  className="sc-bdnylx hcsGkL"
+>
+  <div
+    className="sc-dlnjPT fFNmza"
+  >
+    <div
+      className="sc-hKFyIo sc-jSFkmK bVKKHk bCCQMK"
+    >
+      <div
+        className="sc-eCApGN sc-gKAblj iFoeTt buyUwi"
+      >
+        logo1
+      </div>
+    </div>
+    <div
+      className="sc-hKFyIo sc-jSFkmK bVKKHk bCCQMK"
+    >
+      logo2
+    </div>
+  </div>
+  <div
+    className="sc-dlnjPT fFNmza"
+  >
+    <div
+      className="sc-hKFyIo sc-jSFkmK bVKKHk bCCQMK"
+    >
+      <div
+        className="sc-eCApGN sc-gKAblj iFoeTt buyUwi"
+      >
+        logo1
+      </div>
+    </div>
+    <div
+      className="sc-hKFyIo sc-jSFkmK bVKKHk bCCQMK"
+    >
+      logo2
+    </div>
+  </div>
+</div>
+`;
+
+exports[`width > 768 1`] = `
+<div
+  className="sc-bdnylx hcsGkL"
+>
+  <div
+    className="sc-gtssRu hLfcnp"
+  >
+    <div
+      className="sc-hKFyIo bVKKHk"
+    >
+      <div
+        className="sc-eCApGN iFoeTt"
+      />
+    </div>
+    <div
+      className="sc-hKFyIo bVKKHk"
+    />
+    <div
+      className="sc-hKFyIo bVKKHk"
+    />
+    <div
+      className="sc-hKFyIo bVKKHk"
+    />
+  </div>
+</div>
+`;

@@ -1,22 +1,22 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
-import api from "../services/api";
 import NewUser from "../pages/new-user";
 import ManagerHistory from "../pages/manager-history";
 import ManagerPending from "../pages/manager-pending";
 import Employees from "../pages/employees";
+import EmployeesHistory from "../pages/employees-history";
 import Saldo from "../pages/employees-balance";
 import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
+import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
 
 const Routes = () => {
-  let history = useHistory();
   const [role, setRole] = useState("none");
   const dispatch = useDispatch();
   const [auth, setAuth] = useState(null);
@@ -24,7 +24,6 @@ const Routes = () => {
 
   useEffect(() => {
     if (stateAuth.auth === "") {
-      history.replace("/");
       setAuth(false);
     } else if (stateAuth.user.accessLevel === 1) {
       setRole("manager");
@@ -88,7 +87,6 @@ const Routes = () => {
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
-              input={<InputHeader />}
             />
             <Switch>
               <Route path="/novopedido">
@@ -97,13 +95,12 @@ const Routes = () => {
               <Route path="/saldo">
                 <Saldo />
               </Route>
-              <Route path="/historicocolaborador"></Route>
+              <Route path="/historicocolaborador">
+                <EmployeesHistory />
+              </Route>
             </Switch>
           </>
         );
-      //adicionei isto na rota e também o setAuth para logout
-      default:
-        return setRole("none");
     }
   } else if (auth === false) {
     return (
@@ -130,7 +127,7 @@ const Routes = () => {
             <LoginPage />
           </Route>
           <Route exact path="/cadastro">
-            <div>cadastro</div>
+            <CadastroGerente />
           </Route>
           <Route exact path="/contato">
             <div>contato</div>

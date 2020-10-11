@@ -1,46 +1,26 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import SituationList from "../../components/situation-list-page";
-import api from "../../services/api.js";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
+import { setHistoryList } from "../../redux/actions/list";
 
 function History() {
-  const [list, setList] = useState();
+  const dispatch = useDispatch();
   const stateAuth = useSelector((state) => state.authentication);
+  const list = useSelector((state) => state.list);
   const id = stateAuth.user.id;
   const token = stateAuth.auth;
 
   useEffect(() => {
-    api
-      .get("/refunds", {
-        headers: {
-          authorization: `Bearer ${token}`,
-        },
-      })
-      .then((res) => {
-        setList(
-          res.data
-            .filter((item) => item.userId === id)
-            .map((item) => {
-              switch (item.status) {
-                case "pending":
-                  item.color = "#F9BB1D";
-                  break;
-                case "aproved":
-                  item.color = "#2CD3B5";
-                  break;
-                default:
-                  item.color = "#F15454";
-                  break;
-              }
-              return item;
-            })
-        );
-      })
-      .catch((err) => console.log(err));
+    dispatch(setHistoryList(token, id));
   }, []);
 
   return (
-    <SituationList header="Histórico de Movimentações" list={list} title />
+    <SituationList
+      header="Histórico de Movimentações"
+      list={list}
+      title
+      token={token}
+    />
   );
 }
 

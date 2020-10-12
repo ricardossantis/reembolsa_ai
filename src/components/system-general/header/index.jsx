@@ -33,8 +33,17 @@ const Header = (props) => {
         </MLink>
       </MenuItem>
       <MenuItem key="4">
-        <MLink to={props.link4} style={{ color: "#FFFFFF" }}>
-          {props.title4}
+        <MLink
+          to={props.link4}
+          onClick={props.logoutColab}
+          style={{ color: "#FFFFFF" }}
+        >
+          {props.title4 || props.titleColab}
+        </MLink>
+      </MenuItem>
+      <MenuItem key="5">
+        <MLink to="/" onClick={props.logout} style={{ color: "#FFFFFF" }}>
+          {props.exitManager}
         </MLink>
       </MenuItem>
     </ZMenu>
@@ -45,12 +54,12 @@ const Header = (props) => {
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           {props.input}
-          <LogoLink to={props.home || "/"}>{props.logo}</LogoLink>
-          <ZLink to={props.link1 || "/"}>{props.title1}</ZLink>
+          <LogoLink to={props.home}>{props.logo}</LogoLink>
+          <ZLink to={props.link1}>{props.title1}</ZLink>
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
-          <ZLink to="/cadastro" onClick={props.logout}>
+          <ZLink to="/" onClick={props.logout}>
             {props.exit || props.homeButton}
           </ZLink>
         </MaxHeader>

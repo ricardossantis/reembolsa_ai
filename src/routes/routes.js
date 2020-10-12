@@ -10,10 +10,10 @@ import Saldo from "../pages/employees-balance";
 import LoginPage from "../pages/login-page/";
 import Header from "../components/system-general/header";
 import Button from "../components/main-page/home-button";
-import InputHeader from "../components/system-general/input-header";
 import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
+import ScrollDown from "../components/main-page/contact";
 import { logout } from "../redux/actions/auth";
 
 const Routes = () => {
@@ -48,12 +48,12 @@ const Routes = () => {
               title3="Histórico"
               title4="Colaboradores"
               exit="Sair"
+              exitManager="Sair"
               logout={() => dispatch(logout())}
               link1="/novocolaborador"
               link2="/pedidospendentes"
               link3="/historicoempresa"
               link4="/colaboradores"
-              input={<InputHeader />}
             />
             <Switch>
               <Route path="/novocolaborador">
@@ -82,11 +82,14 @@ const Routes = () => {
               title1="Novo pedido"
               title2="Saldo"
               title3="Histórico"
+              titleColab="Sair"
               exit="Sair"
               logout={() => dispatch(logout())}
+              logoutColab={() => dispatch(logout())}
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
+              link4="/"
             />
             <Switch>
               <Route path="/novopedido">
@@ -129,8 +132,9 @@ const Routes = () => {
           <Route exact path="/cadastro">
             <CadastroGerente />
           </Route>
+
           <Route exact path="/contato">
-            <div>contato</div>
+            <ScrollDown />
           </Route>
         </Switch>
       </>

@@ -9,7 +9,7 @@ const HireUs = (props) => {
         <Button bckButton="#F1548D" />
       </RegisterButton>
 
-      <Logo>Reembolsa.ai</Logo>
+      <Logo id="#contato">Reembolsa.ai</Logo>
       <Text>
         {" "}
         <div>{props.text1}</div>

@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Banner from "../../components/main-page/banner";
 import ClientCard from "../../components/main-page/card-feed";
 import Footer from "../../components/main-page/footer/index.jsx";
@@ -9,6 +10,11 @@ import HireUs from "../../components/main-page/our-services";
 import { GithubFilled } from "@ant-design/icons";
 
 const Home = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Banner

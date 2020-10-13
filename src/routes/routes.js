@@ -15,6 +15,7 @@ import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
+import Dashboard from "../pages/dashboard";
 
 const Routes = () => {
   const [role, setRole] = useState("none");
@@ -43,19 +44,24 @@ const Routes = () => {
               maxColor="#365083"
               minColor="#F5F5F5"
               burguerColor="#365083"
-              title1="Novo colaborador"
-              title2="Pedidos pendentes"
-              title3="Histórico"
-              title4="Colaboradores"
+              title1="Dashboard"
+              title2="Novo colaborador"
+              title3="Pedidos pendentes"
+              title4="Histórico"
+              title5="Colaboradores"
               exit="Sair"
               logout={() => dispatch(logout())}
-              link1="/novocolaborador"
-              link2="/pedidospendentes"
-              link3="/historicoempresa"
-              link4="/colaboradores"
+              link1="/"
+              link2="/novocolaborador"
+              link3="/pedidospendentes"
+              link4="/historicoempresa"
+              link5="/colaboradores"
               input={<InputHeader />}
             />
             <Switch>
+              <Route exact path="/">
+                <Dashboard />
+              </Route>
               <Route path="/novocolaborador">
                 <NewUser />
               </Route>

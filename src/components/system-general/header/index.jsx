@@ -37,6 +37,11 @@ const Header = (props) => {
           {props.title4}
         </MLink>
       </MenuItem>
+      <MenuItem key="5">
+        <MLink to={props.link5} style={{ color: "#FFFFFF" }}>
+          {props.title5}
+        </MLink>
+      </MenuItem>
     </ZMenu>
   );
 
@@ -50,7 +55,8 @@ const Header = (props) => {
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
-          <ZLink to="/cadastro" onClick={props.logout}>
+          <ZLink to={props.link5}>{props.title5}</ZLink>
+          <ZLink to="/login" onClick={props.logout}>
             {props.exit || props.homeButton}
           </ZLink>
         </MaxHeader>

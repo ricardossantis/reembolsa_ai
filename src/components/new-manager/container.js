@@ -2,6 +2,8 @@ import styled from 'styled-components';
 
 const Container = styled.div `
 width: 100%;
+background-color: #f5f5f5;
+
 @media(max-width: 670px ){
     display: flex;
     flex-direction: column;

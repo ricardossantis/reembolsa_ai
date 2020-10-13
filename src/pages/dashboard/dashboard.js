@@ -19,7 +19,6 @@ export const Title = styled.div`
   text-align: center;
   color: rgba(54, 80, 131, 1);
   font-family: "Roboto";
-  border: 1px solid black;
 `;
 
 export const Buttons = styled.div`
@@ -31,21 +30,24 @@ export const Buttons = styled.div`
 `;
 
 export const StyledButton = styled.button`
-  font-size: 1.1rem;
+  font-size: 0.9rem;
   font-weight: 700;
+  color: rgba(54, 80, 131, 1);
   font-family: "Roboto";
   width: 50%;
   background-color: #ffffff;
+  border: none;
 
   &.active {
+    border: 1px solid black;
+    border-radius: 5px;
     background-color: #e0e0e0 !important;
   }
 `;
 
 export const StyledGraph = styled.div`
-  height: 50%;
+  height: fitcontent;
   width: 80%;
-  border: 1px solid black;
 `;
 
 export const Message = styled.div`

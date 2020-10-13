@@ -1,7 +1,7 @@
 import React from "react";
 import { useWindowSize } from "../../system-general/header/hookWindowSize.js";
 import Button from "../home-button";
-import SVGbanner from "./banner-svg.jsx";
+import BannerImg from '../../../images/banner.png';
 import {
   MaxBoxBanner,
   MinBoxBanner,
@@ -15,6 +15,7 @@ import {
   MinBoxSVG,
   CompanyInfo,
   MinCompanyInfo,
+  MiniBanner,
 } from "./banner-style.js";
 
 const Banner = (props) => {
@@ -31,7 +32,7 @@ const Banner = (props) => {
               <Button bckButton="#F1548D" />
             </MaxContent>
             <BoxSVG>
-              <SVGbanner widthSvg="980.49384" heightSvg="550" />
+              <img src={BannerImg} alt="Reembolsa.ai" />
             </BoxSVG>
           </MaxBoxBanner>
           <CompanyInfo>
@@ -49,11 +50,11 @@ const Banner = (props) => {
             </MaxInfo>
           </CompanyInfo>
         </>
-      )) || (
+      )) ||(
         <>
           <MinBoxBanner>
             <MinBoxSVG>
-              <SVGbanner />
+              <MiniBanner src={BannerImg} alt="Reembolsa.ai"/>
             </MinBoxSVG>
             <MinContent>
               <div>{props.bannerTxt1}</div>

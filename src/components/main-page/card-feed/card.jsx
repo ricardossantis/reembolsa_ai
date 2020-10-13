@@ -3,17 +3,17 @@ import React from "react";
 import {
   Card,
   FeedPhoto,
-  Photo,
   FeedText,
   ClientText,
   ClientName,
+  Picture
 } from "./card-style.js";
 
 const CardFeed = (props) => {
   return (
     <Card>
       <FeedPhoto>
-        <Photo />
+        <Picture src={props.image} alt={"photo profile"}/>
       </FeedPhoto>
       <FeedText>
         <ClientText>{props.text}</ClientText>

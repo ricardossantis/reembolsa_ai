@@ -1,4 +1,4 @@
-import { BLUE, YELLOW, RAINBOW, FILTERED } from "../actions/list";
+import { BLUE, YELLOW, RAINBOW } from "../actions/list";
 
 const defaultState = [];
 

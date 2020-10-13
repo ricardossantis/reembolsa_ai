@@ -10,8 +10,12 @@ import StyledError from "../../components/login/styled-error/index";
 import { requestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { Button } from "antd";
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
 import "antd/dist/antd.css";
+import {
+  ButtonContainer,
+  ZButton,
+} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
 
 const LoginPage = () => {
   const stateAuth = useSelector((state) => state.authentication);
@@ -65,18 +69,23 @@ const LoginPage = () => {
         >
           <StyledInputPassword />
         </DefaultFormItem>
-        <div>
-          <Button
-            style={{ margin: "0px 20px" }}
-            type="primary"
+        <ButtonContainer style={{ marginTop: 10 }}>
+          <ZButton
+            onClick={() => history.push("/")}
+            shape="circle"
+            icon={
+              <CloseCircleFilled style={{ color: "#F15454", fontSize: 50 }} />
+            }
+          />
+
+          <ZButton
             htmlType="submit"
-          >
-            Login
-          </Button>
-          <Link to="/">
-            <Button>Voltar</Button>
-          </Link>
-        </div>
+            shape="circle"
+            icon={
+              <CheckCircleFilled style={{ color: "#2CD3B5", fontSize: 50 }} />
+            }
+          />
+        </ButtonContainer>
         {err !== "" && <StyledError>{err}</StyledError>}
       </DefaultForm>
       {console.log(Link)}

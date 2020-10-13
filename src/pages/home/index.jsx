@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import Banner from "../../components/main-page/banner";
 import ClientCard from "../../components/main-page/card-feed";
 import Footer from "../../components/main-page/footer/index.jsx";
@@ -6,13 +7,17 @@ import ClientLogo from "../../components/main-page/client-logo";
 import MainTimeline from "../../components/main-page/timeline";
 import Title from "../../components/main-page/title";
 import HireUs from "../../components/main-page/our-services";
-import { GithubFilled } from "@ant-design/icons";
 import Kenzie from '../../images/kenzie-logo.png';
 import Google from '../../images/google.png';
 import Philips from '../../images/philips.jpg';
 import Amazon from '../../images/amazon.png';
 
 const Home = () => {
+  const { pathname } = useLocation();
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
   return (
     <>
       <Banner

@@ -11,6 +11,8 @@ import {
   ChangeButton,
   ConfirmButton,
 } from "./situation.js";
+import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons/styles';
+import ModalButtons from '../system-general/modal-buttons/';
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
@@ -151,11 +153,14 @@ function SituationList({ header, list = [], title, token, id }) {
           list[0].color === "#365083" &&
           modalItem &&
           modalItem.category === undefined && (
-            <div>
+           
+              <ContentContainer>
               <p>Valor disponível: {modalItem.amountLimit}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+              <ButtonContainer>
+                <ModalButtons name={"Alterar"} onClick={handleCancel} />
+                <ModalButtons name={"Ok"} onClick={handleOk} />
+              </ButtonContainer>
+              </ContentContainer>
           )}
       </StyledModal>
       <StyledModal2 visible={visible2} footer={null} onCancel={handleCancel2}>
@@ -167,11 +172,11 @@ function SituationList({ header, list = [], title, token, id }) {
           </div>
         )}
         {list.length > 0 && list[0].color === "#365083" && (
-          <div>
+          <ContentContainer>
             <label>Novo valor:</label>
             <input placeholder="Novo valor" onChange={handleChange} />
-            <ConfirmButton onClick={handleOk2} />
-          </div>
+            <ModalButtons name={"Alterar"} onClick={handleOk2} />
+          </ContentContainer>
         )}
       </StyledModal2>
     </MainContainer>

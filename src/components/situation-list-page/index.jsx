@@ -17,6 +17,7 @@ import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
+import Modal from "antd/lib/modal/Modal";
 
 function SituationList({ header, list = [], title, token, id }) {
   const dispatch = useDispatch();
@@ -140,14 +141,16 @@ function SituationList({ header, list = [], title, token, id }) {
           header === "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-            <div>
+            <ContentContainer>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+              <ButtonContainer>
+                <ModalButtons name={"Reprovar"} onClick={handleCancel} />
+                <ModalButtons name={"Aprovar"} onClick={handleOk} />
+              </ButtonContainer>
+            </ContentContainer>
           )}
         {list.length > 0 &&
           list[0].color === "#365083" &&
@@ -165,11 +168,11 @@ function SituationList({ header, list = [], title, token, id }) {
       </StyledModal>
       <StyledModal2 visible={visible2} footer={null} onCancel={handleCancel2}>
         {list.length > 0 && list[0].color !== "#365083" && (
-          <div>
+          <ContentContainer>
             <p>Descreva o motivo da rejeição:</p>
             <textarea onChange={handleChange} />
-            <ConfirmButton onClick={handleOk2} />
-          </div>
+            <ModalButtons name={"Enviar"} onClick={handleOk2} />
+          </ContentContainer>
         )}
         {list.length > 0 && list[0].color === "#365083" && (
           <ContentContainer>

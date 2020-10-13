@@ -1,9 +1,7 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Form } from "antd";
-import {
-  Cancel,
-  Confirm,
-} from "../../components/system-general/system-button/button-style";
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
 import {
   Titulo,
   Container,
@@ -12,9 +10,11 @@ import {
   StyledInput,
   StyledInputPassword,
   ContainerButtons,
-  StyledButtonRed,
-  StyledButtonGreen,
 } from "../../components/new-manager";
+import {
+  ButtonContainer,
+  ZButton,
+} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
 import api from "../../services/api";
 
 const layout = {
@@ -33,6 +33,7 @@ const tailLayout = {
 };
 
 const CadastroGerente = () => {
+  const history = useHistory();
   const [manager, setManager] = useState({
     email: "",
     password: "",
@@ -55,6 +56,7 @@ const CadastroGerente = () => {
   const onFinish = () => {
     handleSubmit();
     form.resetFields();
+    history.push("/login");
   };
 
   return (
@@ -151,16 +153,30 @@ const CadastroGerente = () => {
           />
         </Form.Item>
         <ContainerButtons>
-          <Form.Item {...tailLayout}>
-            <StyledButtonRed to="/">
-              <Cancel />
-            </StyledButtonRed>
-          </Form.Item>
-          <Form.Item {...tailLayout}>
-            <StyledButtonGreen type="primary" htmlType="submit">
-              <Confirm />
-            </StyledButtonGreen>
-          </Form.Item>
+          <ButtonContainer>
+            <Form.Item {...tailLayout}>
+              <ZButton
+                onClick={() => history.push("/")}
+                shape="circle"
+                icon={
+                  <CloseCircleFilled
+                    style={{ color: "#F15454", fontSize: 50 }}
+                  />
+                }
+              />
+            </Form.Item>
+            <Form.Item {...tailLayout}>
+              <ZButton
+                htmlType="submit"
+                shape="circle"
+                icon={
+                  <CheckCircleFilled
+                    style={{ color: "#2CD3B5", fontSize: 50 }}
+                  />
+                }
+              />
+            </Form.Item>
+          </ButtonContainer>
         </ContainerButtons>
       </StyledForm>
     </Container>

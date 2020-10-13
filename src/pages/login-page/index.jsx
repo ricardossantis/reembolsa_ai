@@ -7,14 +7,15 @@ import DefaultLabel from "../../components/login/default-label/index";
 import StyledContent from "../../components/login/styled-content/index";
 import StyledInputPassword from "../../components/login/styled-input-password/index";
 import StyledError from "../../components/login/styled-error/index";
-import StyledButton from "../../components/system-general/system-button";
-import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
 import { requestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
-import { Button } from "antd";
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
 import "antd/dist/antd.css";
-import styled from "styled-components";
+import {
+  ButtonContainer,
+  ZButton,
+} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
 
 const LoginPage = () => {
   const stateAuth = useSelector((state) => state.authentication);
@@ -68,14 +69,22 @@ const LoginPage = () => {
         >
           <StyledInputPassword />
         </DefaultFormItem>
-        <ButtonContainer>
-         
-          <ButtonBox onClick={() => history.push("/")}>
-            <CancelB />
-          </ButtonBox>
-          <ButtonBox  >
-            <ConfirmB />
-          </ButtonBox>
+        <ButtonContainer style={{ marginTop: 10 }}>
+          <ZButton
+            onClick={() => history.push("/")}
+            shape="circle"
+            icon={
+              <CloseCircleFilled style={{ color: "#F15454", fontSize: 50 }} />
+            }
+          />
+
+          <ZButton
+            htmlType="submit"
+            shape="circle"
+            icon={
+              <CheckCircleFilled style={{ color: "#2CD3B5", fontSize: 50 }} />
+            }
+          />
         </ButtonContainer>
         {err !== "" && <StyledError>{err}</StyledError>}
       </DefaultForm>
@@ -85,27 +94,3 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
-
-const ButtonContainer = styled.div`
-background-color: #f5f5f5;
-display: flex;
-justify-content: space-evenly;
-align-items: center;
-`
-
-//arrumar estes botoes senhor amado
-const ButtonBox = styled(Button)`
-border: 0;
-background-color: #F5F5F5;
-font-size: 3rem;
-`;
-const CancelB = styled(CloseCircleFilled)`
-  color: red;
-  font-weight: bolder;
-  color: #f15454;
-`;
-
-const ConfirmB = styled(CheckCircleFilled)`
-  font-weight: bolder;
-  color: #2cbfd3;
-`;

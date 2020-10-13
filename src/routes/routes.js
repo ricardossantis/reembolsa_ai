@@ -13,7 +13,7 @@ import Button from "../components/main-page/home-button";
 import InputHeader from "../components/system-general/input-header";
 import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
-import RefundRequest from "../components/refund-request";
+import RefundRequest from "../pages/refund-request";
 import { logout } from "../redux/actions/auth";
 
 const Routes = () => {

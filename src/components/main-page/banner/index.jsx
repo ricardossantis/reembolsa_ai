@@ -15,6 +15,7 @@ import {
   MinBoxSVG,
   CompanyInfo,
   MinCompanyInfo,
+  MiniBanner,
 } from "./banner-style.js";
 
 const Banner = (props) => {
@@ -49,11 +50,11 @@ const Banner = (props) => {
             </MaxInfo>
           </CompanyInfo>
         </>
-      )) || (
+      )) ||(
         <>
           <MinBoxBanner>
             <MinBoxSVG>
-              <img src={BannerImg} alt="Reembolsa.ai"/>
+              <MiniBanner src={BannerImg} alt="Reembolsa.ai"/>
             </MinBoxSVG>
             <MinContent>
               <div>{props.bannerTxt1}</div>

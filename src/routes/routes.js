@@ -15,7 +15,7 @@ import CadastroGerente from "../pages/new-manager/index";
 import Home from "../pages/home";
 import RefundRequest from "../components/refund-request";
 import { logout } from "../redux/actions/auth";
-import Logo from '../images/logo_preto.png'
+import Logo from '../images/logo.png'
 
 const Routes = () => {
   const [role, setRole] = useState("none");
@@ -110,6 +110,7 @@ const Routes = () => {
           maxColor="#365083"
           minColor="#365083"
           burguerColor="#FFFFFF"
+          title1="Home"
           title2="Cadastro"
           title3="Login"
           title4="Contato"

@@ -1,7 +1,7 @@
-import React, { createRef } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
-import { Form, Input, Cascader, DatePicker } from "antd";
+import { Input, Cascader, DatePicker, InputNumber } from "antd";
 import {
   RefoundPage,
   Title,
@@ -19,30 +19,78 @@ const RefundRequest = () => {
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
   };
-
+  const [amount, setAmount] = useState({
+    value: 0,
+  });
   const employeeState = useSelector((state) => state.authentication);
   const employeeId = employeeState.user.userId;
   const employeeName = employeeState.user.user;
+  const [amountLimit, setAmountLimit] = useState(
+    employeeState.user.amountLimit
+  );
   const token = employeeState.auth;
+  let finishMessage = "";
 
-  const onFinish = (values) => {
-    api.post(
-      "/refunds",
-      {
-        ...values,
-        status: "pending",
-        denied: "",
-        userId: employeeId,
-        userName: employeeName,
-      },
-      {
+  useEffect(() => {
+    api
+      .get("/refunds", {
         headers: {
           authorization: `Bearer ${token}`,
         },
-      }
-    );
-    console.log("Valores para o reembolso", values);
-    formRef.current.resetFields();
+      })
+      .then((res) => {
+        const value = res.data
+          .filter(
+            (item) => item.userId === employeeId && item.status !== "reproved"
+          )
+          .map((item) => ({ refoundApproved: parseInt(item.value) }))
+          .reduce((x, y) => x + y.refoundApproved, 0);
+        setAmountLimit(amountLimit - value);
+      })
+      .catch((err) => console.log(err));
+  }, []);
+  const onFinish = (values) => {
+    if (values.value <= amountLimit) {
+      api.post(
+        "/refunds",
+        {
+          ...values,
+          status: "pending",
+          denied: "",
+          userId: employeeId,
+          userName: employeeName,
+        },
+        {
+          headers: {
+            authorization: `Bearer ${token}`,
+          },
+        }
+      );
+      formRef.current.resetFields();
+      finishMessage = "Dados enviados com sucesso";
+    }
+  };
+  const checkAmount = (value) => {
+    if (value <= amountLimit) {
+      return {
+        validateStatus: "success",
+        errorMsg: null,
+      };
+    }
+    if (value < 0) {
+      return {
+        validateStatus: "error",
+        errorMsg: "Insira um valor para reembolso",
+      };
+    }
+    return {
+      validateStatus: "error",
+      errorMsg: `O seu limite de reembolso é de R$ ${amountLimit}`,
+    };
+  };
+
+  const onValueChange = (value) => {
+    setAmount({ ...checkAmount(value), value });
   };
 
   return (
@@ -68,7 +116,7 @@ const RefundRequest = () => {
           <Title>Novo Pedido de Reembolso</Title>
           <SubTitle>Categoria</SubTitle>
 
-          <Form.Item
+          <NewForm.Item
             background-color="#f5f5f5"
             name="category"
             value="category"
@@ -98,39 +146,52 @@ const RefundRequest = () => {
                 },
               ]}
             />
-          </Form.Item>
+          </NewForm.Item>
 
           <SubTitle>Valor</SubTitle>
 
-          <Form.Item name="value" value="value">
-            <Input
-              type="number"
-              min="0"
+          <NewForm.Item
+            name="value"
+            help={amount.errorMsg || ""}
+            rules={[
+              {
+                required: true,
+                message: "Por favor insira um valor",
+              },
+            ]}
+            validateStatus={amount.validateStatus}
+          >
+            <InputNumber
+              max={amountLimit}
+              min={0}
+              value={amount.value}
+              onChange={onValueChange}
               placeholder="Insira um valor de reembolso"
             />
-          </Form.Item>
+          </NewForm.Item>
 
           <SubTitle>Data</SubTitle>
 
-          <Form.Item name="data" value="data">
+          <NewForm.Item name="date" value="date">
             <DatePicker placeholder="Insira a data" />
-          </Form.Item>
+          </NewForm.Item>
 
           <SubTitle>Descrição da despesa</SubTitle>
 
-          <Form.Item name="text" value="text">
+          <NewForm.Item name="description" value="description">
             <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
-          </Form.Item>
+          </NewForm.Item>
 
           <>
-            <Form.Item name="confirm" value="confirm">
+            <NewForm.Item name="confirm" value="confirm">
               <ButtonContainer>
                 <ButtonYes type="primary" htmlType="submit" />
               </ButtonContainer>
-            </Form.Item>
+            </NewForm.Item>
           </>
         </NewForm>
       </RefoundPage>
+      {finishMessage !== undefined && <p>{finishMessage}</p>}
     </FormContainer>
   );
 };

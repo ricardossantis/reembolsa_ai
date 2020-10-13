@@ -74,6 +74,5 @@ export const MinBoxInfo = styled.div`
 export const MiniBanner = styled.img `
 @media only screen and (min-width: 300px){
     width: 90vw;
-    max-width:100%;
-}
+  }
 `

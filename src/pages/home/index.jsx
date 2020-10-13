@@ -16,11 +16,11 @@ const Home = () => {
   return (
     <>
       <Banner
-        bannerTxt1="Lorem Ipsum"
-        bannerTxt2="has been the"
-        info1="Somos uma empresa que facilitará os exaustivos procedimentos de reembolso dos seus colaboradores."
-        info2="Sed lorem purus, condimentum vel volutpat at, feugiat ut arcu. Donec pharetra tristique velit."
-        info3="Sed lorem purus, condimentum vel volutpat at, feugiat ut arcu."
+        bannerTxt1="Otimizando processos de "
+        bannerTxt2="maneira intuitiva e simples"
+        info1="Controle de reembolsos de maneira mais simples."
+        info2="Sistema fácil e intuitivo, sem necessidade de instalação de aplicativos."
+        info3="Venha fazer parte deste jeito simples e direto de reembolsar seus colaboradores."
       />
       <Title bckTitle="#365083" colorTitle="#FFFFFF" children="Depoimentos" />
 
@@ -31,16 +31,16 @@ const Home = () => {
         children="Nossa solução para sua empresa: "
       />
       <MainTimeline
-        item1="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item2="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item3="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item4="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item5="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item6="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item7="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item8="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item9="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item10="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
+        item1="Controle de reembolso por colaborador."
+        item2="Gestão simplificada de saldo."
+        item3="Timeline com o circuito de aprovação."
+        item4="Comandos intuitivos."
+        item5="Gráficos simples que ajudam na visualização dos valores."
+        item6="Acesso nos principais navegadores da atualidade."
+        item7="Fácil ingresso por smatphone ou tablet."
+        item8="Não precisa instalar aplicativos."
+        item9="Qualquer um pode usar, basta ter conexão com a internet."
+        item10="Disponível 24 horas por dia."
       />
       <Title
         bckTitle="#365083"

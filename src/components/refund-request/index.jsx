@@ -1,4 +1,4 @@
-import React, { createRef, useState } from "react";
+import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
@@ -25,11 +25,32 @@ const RefundRequest = () => {
   const employeeState = useSelector((state) => state.authentication);
   const employeeId = employeeState.user.userId;
   const employeeName = employeeState.user.user;
-  const amountLimit = employeeState.user.amountLimit;
-  let finishMessage = "";
+  const [amountLimit, setAmountLimit] = useState(
+    employeeState.user.amountLimit
+  );
   const token = employeeState.auth;
+  let finishMessage = "";
+
+  useEffect(() => {
+    api
+      .get("/refunds", {
+        headers: {
+          authorization: `Bearer ${token}`,
+        },
+      })
+      .then((res) => {
+        const value = res.data
+          .filter(
+            (item) => item.userId === employeeId && item.status !== "reproved"
+          )
+          .map((item) => ({ refoundApproved: parseInt(item.value) }))
+          .reduce((x, y) => x + y.refoundApproved, 0);
+        setAmountLimit(amountLimit - value);
+      })
+      .catch((err) => console.log(err));
+  }, []);
   const onFinish = (values) => {
-    if (values.value >= amountLimit) {
+    if (values.value <= amountLimit) {
       api.post(
         "/refunds",
         {
@@ -151,13 +172,13 @@ const RefundRequest = () => {
 
           <SubTitle>Data</SubTitle>
 
-          <NewForm.Item name="data" value="data">
+          <NewForm.Item name="date" value="date">
             <DatePicker placeholder="Insira a data" />
           </NewForm.Item>
 
           <SubTitle>Descrição da despesa</SubTitle>
 
-          <NewForm.Item name="text" value="text">
+          <NewForm.Item name="description" value="description">
             <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
           </NewForm.Item>
 

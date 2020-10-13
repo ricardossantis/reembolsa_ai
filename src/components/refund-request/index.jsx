@@ -80,7 +80,7 @@ const RefundRequest = () => {
     if (value < 0) {
       return {
         validateStatus: "error",
-        errorMsg: "Insira um para reembolso",
+        errorMsg: "Insira um valor para reembolso",
       };
     }
     return {

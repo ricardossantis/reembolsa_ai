@@ -12,8 +12,8 @@ const Home = () => {
   return (
     <>
       <Banner
-        bannerTxt1="Otimizando processos"
-        bannerTxt2="sem complicação"
+        bannerTxt1="Otimizando processos de "
+        bannerTxt2="maneira intuitiva e simples"
         info1="Controle de reembolsos de maneira mais simples."
         info2="Sistema fácil e intuitivo, sem necessidade de instalação de aplicativos."
         info3="Venha fazer parte deste jeito simples e direto de reembolsar seus colaboradores."

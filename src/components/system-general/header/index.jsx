@@ -59,7 +59,7 @@ const Header = (props) => {
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
-          <ZLink to="/" onClick={props.logout}>
+          <ZLink to={props.exit && "/"} onClick={props.logout}>
             {props.exit || props.homeButton}
           </ZLink>
         </MaxHeader>

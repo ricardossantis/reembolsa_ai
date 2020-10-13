@@ -7,11 +7,14 @@ import DefaultLabel from "../../components/login/default-label/index";
 import StyledContent from "../../components/login/styled-content/index";
 import StyledInputPassword from "../../components/login/styled-input-password/index";
 import StyledError from "../../components/login/styled-error/index";
+import StyledButton from "../../components/system-general/system-button";
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
 import { requestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
 import { Button } from "antd";
 import "antd/dist/antd.css";
+import styled from "styled-components";
 
 const LoginPage = () => {
   const stateAuth = useSelector((state) => state.authentication);
@@ -65,18 +68,15 @@ const LoginPage = () => {
         >
           <StyledInputPassword />
         </DefaultFormItem>
-        <div>
-          <Button
-            style={{ margin: "0px 20px" }}
-            type="primary"
-            htmlType="submit"
-          >
-            Login
-          </Button>
-          <Link to="/">
-            <Button>Voltar</Button>
-          </Link>
-        </div>
+        <ButtonContainer>
+         
+          <ButtonBox onClick={() => history.push("/")}>
+            <CancelB />
+          </ButtonBox>
+          <ButtonBox  >
+            <ConfirmB />
+          </ButtonBox>
+        </ButtonContainer>
         {err !== "" && <StyledError>{err}</StyledError>}
       </DefaultForm>
       {console.log(Link)}
@@ -85,3 +85,27 @@ const LoginPage = () => {
 };
 
 export default LoginPage;
+
+const ButtonContainer = styled.div`
+background-color: #f5f5f5;
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+`
+
+//arrumar estes botoes senhor amado
+const ButtonBox = styled(Button)`
+border: 0;
+background-color: #F5F5F5;
+font-size: 3rem;
+`;
+const CancelB = styled(CloseCircleFilled)`
+  color: red;
+  font-weight: bolder;
+  color: #f15454;
+`;
+
+const ConfirmB = styled(CheckCircleFilled)`
+  font-weight: bolder;
+  color: #2cbfd3;
+`;

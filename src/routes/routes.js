@@ -85,7 +85,6 @@ const Routes = () => {
               titleColab="Sair"
               exit="Sair"
               logoutColab={() => dispatch(logout())}
-              logoutColab={() => dispatch(logout())}
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"

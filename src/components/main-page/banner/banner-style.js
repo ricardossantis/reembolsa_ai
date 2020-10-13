@@ -70,3 +70,9 @@ export const MinInfo = styled.div`
 export const MinBoxInfo = styled.div`
   padding: 1rem;
 `;
+
+export const MiniBanner = styled.img `
+@media only screen and (min-width: 300px){
+    width: 90vw;
+  }
+`

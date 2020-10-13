@@ -69,3 +69,11 @@ export const BoxButton = styled.div`
   display: flex;
   justify-content: center;
 `;
+
+export const Picture = styled.img `
+  width: 81px;
+  height: 90px;
+  background: #ffffff;
+  box-shadow: 0px 10px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 20px;
+`

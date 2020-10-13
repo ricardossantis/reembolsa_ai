@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import Button from "../home-button";
+import logo from '../../../images/logo.png';
 
 const HireUs = (props) => {
   return (
@@ -9,7 +10,7 @@ const HireUs = (props) => {
         <Button bckButton="#F1548D" />
       </RegisterButton>
 
-      <Logo>Reembolsa.ai</Logo>
+      <Logo><img src={logo} alt="logo" /></Logo>
       <Text>
         {" "}
         <div>{props.text1}</div>

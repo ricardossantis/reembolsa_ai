@@ -27,10 +27,10 @@ const Home = () => {
         children="Nossa solução para sua empresa: "
       />
       <MainTimeline
-        item1="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item2="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item3="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
-        item4="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
+        item1="Controle de reembolso ppor colaborador."
+        item2="Alteração de limite de reembolso simplificado."
+        item3="Acesso nos principais navegadores da atualidade."
+        item4="Fácil uso em seu smatphone ou tablet."
         item5="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
         item6="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."
         item7="Oferecemos um controle de reembolso para sua empresa. Não pode escrever mais do que isso."

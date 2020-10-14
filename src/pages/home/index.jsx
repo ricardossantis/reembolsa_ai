@@ -11,7 +11,6 @@ import Kenzie from "../../images/kenzie-logo.png";
 import Google from "../../images/google.png";
 import Philips from "../../images/philips.jpg";
 import Amazon from "../../images/amazon.png";
-import { motion } from "framer-motion";
 
 const Home = () => {
   const { pathname } = useLocation();

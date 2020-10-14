@@ -1,19 +1,19 @@
 import React from 'react';
 import { Alert } from 'antd';
 
-const SuccessMsg = () => {
+const SuccessMsg = (props) => {
     return <Alert
-      message="Sucesso!"
-      description="Usuário cadastrado já pode ser utilizado para fazer novos reembolsos."
+        message={props.message}
+      description={props.description}
       type="success"
       showIcon
     />
 }
 
-const ErrorMsg = () => {
+const ErrorMsg = (props) => {
     return <Alert
-      message="Ooops, deu erro!"
-      description="Você precisa verificar se o usuário já não existe na sua lista de usuários."
+      message={props.message}
+      description={props.description}
       type="error"
       showIcon
     />    

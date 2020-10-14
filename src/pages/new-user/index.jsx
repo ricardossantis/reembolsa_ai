@@ -185,8 +185,8 @@ const NewUser = () => {
           Cadastrar
         </Button>
       </Form.Item>
-      {status === 201 ? <SuccessMsg /> : null}
-      {status === 400 ? <ErrorMsg />: null}
+      {status === 201 ? <SuccessMsg message='Sucesso!' description='Usuário cadastrado já pode fazer pedidos de reembolso.'/> : null}
+      {status === 400 ? <ErrorMsg message='Erro!' description='Verifique se o usuário já foi cadastrado anteriormente e tente novamente.'/>: null}
     </ContainerForm>
   );
 };

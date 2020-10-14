@@ -15,8 +15,11 @@ import Home from "../pages/home";
 import RefundRequest from "../pages/refund-request/index";
 import ScrollDown from "../components/main-page/contact";
 import { logout } from "../redux/actions/auth";
-import Logo from '../images/logo.png'
+import Dashboard from "../pages/dashboard";
 import LoadingAnimation from "../components/system-general/loading-animation/index"
+import Logo from "../images/logo.png";
+import InputHeader from "../components/system-general/input-header";
+
 const Routes = () => {
   const [role, setRole] = useState("none");
   const dispatch = useDispatch();
@@ -44,19 +47,25 @@ const Routes = () => {
               maxColor="#365083"
               minColor="#F5F5F5"
               burguerColor="#365083"
-              title1="Novo colaborador"
-              title2="Pedidos pendentes"
-              title3="Histórico"
-              title4="Colaboradores"
+              title1="Dashboard"
+              title2="Novo colaborador"
+              title3="Pedidos pendentes"
+              title4="Histórico"
+              title5="Colaboradores"
               exit="Sair"
               exitManager="Sair"
               logout={() => dispatch(logout())}
-              link1="/novocolaborador"
-              link2="/pedidospendentes"
-              link3="/historicoempresa"
-              link4="/colaboradores"
+              link1="/"
+              link2="/novocolaborador"
+              link3="/pedidospendentes"
+              link4="/historicoempresa"
+              link5="/colaboradores"
+              input={<InputHeader />}
             />
             <Switch>
+              <Route exact path="/">
+                <Dashboard />
+              </Route>
               <Route path="/novocolaborador">
                 <NewUser />
               </Route>

@@ -7,10 +7,14 @@ import {
   Title,
   SubTitle,
   ButtonYes,
-  ButtonContainer,
   NewForm,
   FormContainer,
 } from "./refund-style";
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
+import {
+  ButtonContainer,
+  ZButton,
+} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
 
 const RefundRequest = () => {
   const formRef = createRef();
@@ -122,7 +126,6 @@ const RefundRequest = () => {
             value="category"
           >
             <Cascader
-              placeholder="Escolha uma categoria"
               options={[
                 {
                   value: "Alimentação",
@@ -166,26 +169,34 @@ const RefundRequest = () => {
               min={0}
               value={amount.value}
               onChange={onValueChange}
-              placeholder="Insira um valor de reembolso"
             />
           </NewForm.Item>
 
           <SubTitle>Data</SubTitle>
 
           <NewForm.Item name="date" value="date">
-            <DatePicker placeholder="Insira a data" />
+            <DatePicker />
           </NewForm.Item>
 
           <SubTitle>Descrição da despesa</SubTitle>
 
           <NewForm.Item name="description" value="description">
-            <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
+            <Input.TextArea />
           </NewForm.Item>
 
           <>
             <NewForm.Item name="confirm" value="confirm">
               <ButtonContainer>
-                <ButtonYes type="primary" htmlType="submit" />
+                <ZButton
+                style={{padding: 15}}
+                  htmlType="submit"
+                  shape="circle"
+                  icon={
+                    <CheckCircleFilled
+                      style={{ color: "#2CD3B5", fontSize: 50 }}
+                    />
+                  }
+                />
               </ButtonContainer>
             </NewForm.Item>
           </>

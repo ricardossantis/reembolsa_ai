@@ -9,9 +9,10 @@ export const Box = styled.div`
 `;
 
 export const Title = styled.div`
+  margin-bottom: 8rem;
   font-weight: bold;
   color: #365083;
-  font-size: 2.5rem;
+  font-size: 1.8rem;
   display: flex;
   justify-content: center;
 `;

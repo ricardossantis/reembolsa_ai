@@ -1,6 +1,8 @@
 import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
+import postRequest from '../../components/refund-request/index'
 import { useSelector } from "react-redux";
+import {SuccessMsg} from '../../components/feedback-msg/'
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
 import {
   RefoundPage,
@@ -15,6 +17,7 @@ import {
 const RefundRequest = () => {
   const formRef = createRef();
   const componentSize = "default";
+  const [responseStatus, setResponseStatus] = useState()
 
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
@@ -51,23 +54,9 @@ const RefundRequest = () => {
   }, []);
   const onFinish = (values) => {
     if (values.value <= amountLimit) {
-      api.post(
-        "/refunds",
-        {
-          ...values,
-          status: "pending",
-          denied: "",
-          userId: employeeId,
-          userName: employeeName,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      postRequest(values, employeeId, employeeName, token, setResponseStatus)
       formRef.current.resetFields();
-      finishMessage = "Dados enviados com sucesso";
+      //finishMessage = "Dados enviados com sucesso";
     }
   };
   const checkAmount = (value) => {
@@ -182,16 +171,17 @@ const RefundRequest = () => {
             <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
           </NewForm.Item>
 
-          <>
+          <p>
             <NewForm.Item name="confirm" value="confirm">
               <ButtonContainer>
                 <ButtonYes type="primary" htmlType="submit" />
               </ButtonContainer>
             </NewForm.Item>
-          </>
+          </p>
         </NewForm>
       </RefoundPage>
-      {finishMessage !== undefined && <p>{finishMessage}</p>}
+      {/*{finishMessage !== undefined && <p>{finishMessage}</p>}*/}
+      {responseStatus === 201 ? <SuccessMsg message='Sucesso.' description='Reembolso enviado com sucesso. Aguarde aprovação do seu gestor' /> : null}
     </FormContainer>
   );
 };

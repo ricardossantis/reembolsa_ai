@@ -51,7 +51,7 @@ const NewUser = () => {
   const token = employerState.auth;
 
   const onFinish = (values) => {
-    postRequest(token, values, employerId, employerName, setStatus, status);
+    postRequest(token, values, employerId, employerName, setStatus);
   };
 
   return (

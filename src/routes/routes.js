@@ -16,7 +16,7 @@ import RefundRequest from "../pages/refund-request/index";
 import ScrollDown from "../components/main-page/contact";
 import { logout } from "../redux/actions/auth";
 import Logo from '../images/logo.png'
-
+import LoadingAnimation from "../components/system-general/loading-animation/index"
 const Routes = () => {
   const [role, setRole] = useState("none");
   const dispatch = useDispatch();
@@ -34,7 +34,7 @@ const Routes = () => {
       setAuth(true);
     }
   }, [stateAuth]);
-
+  
   if (auth === true) {
     switch (role) {
       case "manager":
@@ -85,7 +85,7 @@ const Routes = () => {
               title3="Histórico"
               titleColab="Sair"
               exit="Sair"
-              logoutColab={() => dispatch(logout())}
+              logout={() => dispatch(logout())}
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
@@ -141,7 +141,7 @@ const Routes = () => {
       </>
     );
   } else {
-    return <div>Loading</div>;
+    return <div><LoadingAnimation/></div>;
   }
 };
 

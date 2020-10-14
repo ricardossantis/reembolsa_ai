@@ -54,7 +54,8 @@ const Header = (props) => {
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           {props.input}
-          <LogoLink to={props.home || "/"}><img src={props.logo} alt="logo"/></LogoLink>
+          {props.logo&&<LogoLink to={props.home || "/"}><img src={props.logo} alt="logo"/></LogoLink>}
+          
           <ZLink to={props.link1 || "/"}>{props.title1}</ZLink>
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>

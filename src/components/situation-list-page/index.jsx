@@ -13,6 +13,7 @@ import {
 } from "./situation.js";
 import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons/styles';
 import ModalButtons from '../system-general/modal-buttons/';
+import AproveButtons from '../system-general/aprove-buttons';
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";

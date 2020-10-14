@@ -18,12 +18,24 @@ function Graph({ type, list }) {
   }
 
   const data = {
-    labels: Object.keys(dataFromList),
+    labels: Object.keys(dataFromList).sort(),
     datasets: [
       {
         data: Object.values(dataFromList),
-        backgroundColor: ["#f9bb1c", "#2cd3b5", "#f15555"],
-        hoverBackgroundColor: ["#f9bb1c", "#2cd3b5", "#f15555"],
+        backgroundColor: [
+          "#2cd3b5",
+          "#f9bb1c",
+          "#f15555",
+          "#4b5b9d",
+          "#e79311",
+        ],
+        hoverBackgroundColor: [
+          "#2cd3b5",
+          "#f9bb1c",
+          "#f15555",
+          "#4b5b9d",
+          "#e79311",
+        ],
       },
     ],
   };

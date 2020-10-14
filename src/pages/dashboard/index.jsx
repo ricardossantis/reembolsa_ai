@@ -2,13 +2,15 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import api from "../../services/api";
 import Graph from "../../components/dashboard-components/graph";
+import Message from "../../components//dashboard-components/message";
 import {
   Content,
   Title,
+  ContentContainer,
   Buttons,
   StyledButton,
   StyledGraph,
-  Message,
+  MessageContainer,
 } from "./dashboard";
 
 function Dashboard() {
@@ -43,29 +45,37 @@ function Dashboard() {
   return (
     <Content>
       <Title>Dashboard</Title>
-      <Buttons>
-        <StyledButton
-          onClick={() => handleClick("custo")}
-          className={buttonClass.button1 ? "active" : ""}
-        >
-          Custo Mensal
-        </StyledButton>
-        <StyledButton
-          onClick={() => handleClick("fluxo")}
-          className={buttonClass.button2 ? "active" : ""}
-        >
-          Fluxo de Pedidos
-        </StyledButton>
-      </Buttons>
-      <StyledGraph>
-        {renderedGraph === "custo" ? (
-          <Graph type="custo" list={list} />
-        ) : (
-          <Graph type="fluxo" list={list} />
-        )}
-      </StyledGraph>
+      <ContentContainer>
+        <Buttons>
+          <StyledButton
+            onClick={() => handleClick("custo")}
+            className={buttonClass.button1 ? "active" : ""}
+          >
+            Custo Mensal
+          </StyledButton>
+          <StyledButton
+            onClick={() => handleClick("fluxo")}
+            className={buttonClass.button2 ? "active" : ""}
+          >
+            Fluxo de Pedidos
+          </StyledButton>
+        </Buttons>
+        <StyledGraph>
+          {renderedGraph === "custo" ? (
+            <Graph type="custo" list={list} />
+          ) : (
+            <Graph type="fluxo" list={list} />
+          )}
+        </StyledGraph>
 
-      <Message></Message>
+        <MessageContainer>
+          {renderedGraph === "custo" ? (
+            <Message type="custo" list={list} />
+          ) : (
+            <Message type="fluxo" list={list} />
+          )}
+        </MessageContainer>
+      </ContentContainer>
     </Content>
   );
 }

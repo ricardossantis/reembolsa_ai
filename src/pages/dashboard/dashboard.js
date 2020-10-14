@@ -21,6 +21,14 @@ export const Title = styled.div`
   font-family: "Roboto";
 `;
 
+export const ContentContainer = styled.div`
+  width: 100%;
+  height: 80%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
 export const Buttons = styled.div`
   width: 80%;
   height: 40px;
@@ -48,10 +56,14 @@ export const StyledButton = styled.button`
 export const StyledGraph = styled.div`
   height: 50vh;
   width: 80%;
+  margin: 20px 0;
 `;
 
-export const Message = styled.div`
+export const MessageContainer = styled.div`
   width: 80%;
-  border: 1px solid black;
-  height: 30%;
+  height: 30vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.8rem;
 `;

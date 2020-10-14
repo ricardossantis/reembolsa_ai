@@ -12,6 +12,7 @@ import {
   ConfirmButton,
 } from "./situation.js";
 import SituationCard from "../situation-card";
+import { Succeed } from '../../components/feedback-msg/'
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
@@ -22,6 +23,7 @@ function SituationList({ header, list = [], title, token, id }) {
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
+  const [responseStatus, setResponseStatus] = useState();
 
   const showModal = (item) => {
     setModalItem(item);
@@ -44,8 +46,9 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          setResponseStatus(response.status);
         });
     }
     setVisibility(false);
@@ -125,7 +128,7 @@ function SituationList({ header, list = [], title, token, id }) {
           header !== "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-            <div>
+          <div>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>

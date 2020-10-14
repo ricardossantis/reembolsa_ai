@@ -1,10 +1,11 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Form, Input, Button } from "antd";
 import {
   ContainerForm,
   Title,
 } from "../../components/new-employee/styled-post";
+import {SuccessMsg, ErrorMsg} from '../../components/feedback-msg/'
 import postRequest from "../../components/new-employee/post-resquest";
 
 const formItemLayout = {
@@ -40,7 +41,9 @@ const tailFormItemLayout = {
 };
 
 const NewUser = () => {
+  const [status, setStatus] = useState()
   const [form] = Form.useForm();
+
 
   const employerState = useSelector((state) => state.authentication);
   const employerId = employerState.user.id;
@@ -48,7 +51,7 @@ const NewUser = () => {
   const token = employerState.auth;
 
   const onFinish = (values) => {
-    postRequest(token, values, employerId, employerName);
+    postRequest(token, values, employerId, employerName, setStatus, status);
   };
 
   return (
@@ -182,6 +185,8 @@ const NewUser = () => {
           Cadastrar
         </Button>
       </Form.Item>
+      {status === 201 ? <SuccessMsg /> : null}
+      {status === 400 ? <ErrorMsg />: null}
     </ContainerForm>
   );
 };

@@ -37,16 +37,16 @@ export const StyledButton = styled.button`
   width: 50%;
   background-color: #ffffff;
   border: none;
+  outline: none;
 
   &.active {
-    border: 1px solid black;
-    border-radius: 5px;
+    border: none;
     background-color: #e0e0e0 !important;
   }
 `;
 
 export const StyledGraph = styled.div`
-  height: fitcontent;
+  height: 50vh;
   width: 80%;
 `;
 

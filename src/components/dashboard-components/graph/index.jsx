@@ -1,5 +1,6 @@
 import React from "react";
-import { Pie } from "react-chartjs-2";
+import { Pie, defaults } from "react-chartjs-2";
+defaults.global.maintainAspectRatio = false;
 
 function Graph({ type, list }) {
   let dataFromList;
@@ -28,7 +29,7 @@ function Graph({ type, list }) {
   };
 
   return (
-    <div>
+    <div style={{ height: "100%" }}>
       <Pie data={data} />
     </div>
   );

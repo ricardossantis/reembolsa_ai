@@ -4,7 +4,6 @@ import {
   MaxLogo,
   MinLogo,
   CLogo,
-  CpLogo,
   MinCLogo,
   MinCpLogo,
   ImageLogo

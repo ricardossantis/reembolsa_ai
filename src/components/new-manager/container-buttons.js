@@ -1,14 +1,16 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const ContainerButtons = styled.div `
-    display:flex;
-    justify-content: space-around;
-    flex-direction: row;
-    height: 50vh;
-@media(max-width: 670px ){
-    justify-content: space-between;
-    flex-direction: row;
-}
+const ContainerButtons = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
 
-`
-export {ContainerButtons}
+  @media (max-width: 670px) {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+`;
+export { ContainerButtons };

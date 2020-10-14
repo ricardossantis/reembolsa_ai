@@ -1,68 +1,67 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import { Form } from "antd";
-import {Cancel, Confirm} from '../../components/system-general/system-button/button-style'
-import { 
-  Titulo, 
+import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
+import {
+  Titulo,
   Container,
   StyledForm,
   StyledLabel,
   StyledInput,
   StyledInputPassword,
   ContainerButtons,
-  StyledButtonRed,
-  StyledButtonGreen
-} from '../../components/new-manager';
+} from "../../components/new-manager";
+import {
+  ButtonContainer,
+  ZButton,
+} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
 import api from "../../services/api";
 
 const layout = {
-    labelCol: {
-      span: 8,
-    },
-    wrapperCol: {
-      span: 16,
-    },
+  labelCol: {
+    span: 8,
+  },
+  wrapperCol: {
+    span: 16,
+  },
+};
+const tailLayout = {
+  wrapperCol: {
+    offset: 8,
+    span: 16,
+  },
+};
+
+const CadastroGerente = () => {
+  const history = useHistory();
+  const [manager, setManager] = useState({
+    email: "",
+    password: "",
+    company: "",
+    accessLevel: 1,
+  });
+
+  const handleSubmit = () => {
+    api
+      .post(`/register`, { ...manager })
+      .then((res) => console.log(res.data))
+      .catch((error) => console.log(error));
   };
-  const tailLayout = {
-    wrapperCol: {
-      offset: 8,
-      span: 16,
-    },
-  };
-
-  
-  
-  const CadastroGerente = () => {
-
-    const [manager, setManager] = useState({
-      
-        email: "",
-        password: "",
-        company: "",
-        accessLevel: 1,   
-  })
-  
-
- const handleSubmit = () => {
-      api.post(`/register`, {...manager})
-      .then(res => console.log(res.data))
-      .catch(error => console.log(error))
-  }
 
   const onFinishFailed = (errorInfo) => {
-    console.log('Failed:', errorInfo.data);
+    console.log("Failed:", errorInfo.data);
   };
-      
+
   const [form] = Form.useForm();
   const onFinish = () => {
     handleSubmit();
     form.resetFields();
+    history.push("/login");
   };
 
-  
-    return (
-      
-        <Container>
-        <Titulo>Cadastro</Titulo>
+  return (
+    <Container>
+      <Titulo>Cadastro</Titulo>
       <StyledForm
         {...layout}
         form={form}
@@ -73,48 +72,60 @@ const layout = {
         onFinish={onFinish}
         onFinishFailed={onFinishFailed}
       >
-        <StyledLabel>Empresa</StyledLabel>
+        <StyledLabel style={{ fontSize: 18 }}>Empresa</StyledLabel>
         <Form.Item
           name="company"
           rules={[
             {
               required: true,
-              message: 'Digite o nome da sua empresa',
+              message: "Digite o nome da sua empresa",
             },
           ]}
         >
-          <StyledInput onChange={({target: {value}}) =>
-        setManager({...manager, company: value})}  placeholder="Insira o nome da sua empresa" value={manager.company}/>
+          <StyledInput
+            onChange={({ target: { value } }) =>
+              setManager({ ...manager, company: value })
+            }
+            value={manager.company}
+          />
         </Form.Item>
-        <StyledLabel>E-mail</StyledLabel>
+        <StyledLabel style={{ fontSize: 18 }}>E-mail</StyledLabel>
         <Form.Item
           name="email"
           rules={[
             {
               required: true,
-              message: 'Digite um e-mail válido',
+              message: "Digite um e-mail válido",
             },
           ]}
         >
-          <StyledInput onChange={({target: {value}}) =>
-        setManager({...manager, email: value})} placeholder="Insira seu e-mail" value={manager.email} />
+          <StyledInput
+            onChange={({ target: { value } }) =>
+              setManager({ ...manager, email: value })
+            }
+            value={manager.email}
+          />
         </Form.Item>
-  
-        <StyledLabel>Senha</StyledLabel>
+
+        <StyledLabel style={{ fontSize: 18 }}>Senha</StyledLabel>
         <Form.Item
           name="password"
           rules={[
             {
               required: true,
-              message: 'Digite uma senha',
+              message: "Digite uma senha",
             },
           ]}
         >
-          <StyledInputPassword  onChange={({target: {value}}) =>
-        setManager({...manager, password: value})} placeholder="Insira sua senha" value={manager.password}/>
+          <StyledInputPassword
+            onChange={({ target: { value } }) =>
+              setManager({ ...manager, password: value })
+            }
+            value={manager.password}
+          />
         </Form.Item>
 
-        <StyledLabel>Confirme sua senha</StyledLabel>
+        <StyledLabel style={{ fontSize: 18 }}>Confirme sua senha</StyledLabel>
         <Form.Item
           name="confirmPassword"
           rules={[
@@ -123,7 +134,7 @@ const layout = {
               message: "Confirme sua senha",
             },
             ({ getFieldValue }) => ({
-              validator( rule, value) {
+              validator(rule, value) {
                 if (!value || getFieldValue("password") === value) {
                   return Promise.resolve();
                 }
@@ -134,24 +145,41 @@ const layout = {
             }),
           ]}
         >
-          <StyledInputPassword onChange={({target: {value}}) =>
-        setManager({...manager, confirmPassword: value})} value={manager.confirmPassword} placeholder="Confirme sua Senha"/>
-          </Form.Item>
-          <ContainerButtons>
-            <Form.Item {...tailLayout} >
-            <StyledButtonRed to="/" >
-              <Cancel/>
-            </StyledButtonRed>
+          <StyledInputPassword
+            onChange={({ target: { value } }) =>
+              setManager({ ...manager, confirmPassword: value })
+            }
+            value={manager.confirmPassword}
+          />
+        </Form.Item>
+        <ContainerButtons>
+          <ButtonContainer>
+            <Form.Item {...tailLayout}>
+              <ZButton
+                onClick={() => history.push("/")}
+                shape="circle"
+                icon={
+                  <CloseCircleFilled
+                    style={{ color: "#F15454", fontSize: 50 }}
+                  />
+                }
+              />
             </Form.Item>
-            <Form.Item {...tailLayout} >
-            <StyledButtonGreen type="primary" htmlType="submit">
-              <Confirm/>
-            </StyledButtonGreen>
+            <Form.Item {...tailLayout}>
+              <ZButton
+                htmlType="submit"
+                shape="circle"
+                icon={
+                  <CheckCircleFilled
+                    style={{ color: "#2CD3B5", fontSize: 50 }}
+                  />
+                }
+              />
             </Form.Item>
-          </ContainerButtons>
-        
+          </ButtonContainer>
+        </ContainerButtons>
       </StyledForm>
-      </Container>
-    );
-  };
+    </Container>
+  );
+};
 export default CadastroGerente;

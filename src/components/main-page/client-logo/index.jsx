@@ -4,9 +4,9 @@ import {
   MaxLogo,
   MinLogo,
   CLogo,
-  CpLogo,
   MinCLogo,
   MinCpLogo,
+  ImageLogo
 } from "./client-style.js";
 
 import { useWindowSize } from "../../system-general/header/hookWindowSize.js";
@@ -20,26 +20,26 @@ const ClientLogo = (props) => {
         <Card>
           <MaxLogo>
             <CLogo>
-              <CpLogo>{props.logo1}</CpLogo>
+              <ImageLogo src={props.logo1} alt="logo" />
             </CLogo>
-            <CLogo>{props.logo2}</CLogo>
-            <CLogo>{props.logo3}</CLogo>
-            <CLogo>{props.logo4}</CLogo>
+            <CLogo><ImageLogo src={props.logo2} alt="logo" /></CLogo>
+            <CLogo><ImageLogo src={props.logo3} alt="logo" /></CLogo>
+            <CLogo><ImageLogo src={props.logo4} alt="logo" /></CLogo>
           </MaxLogo>
         </Card>
       ) : (
         <Card>
           <MinLogo>
             <MinCLogo>
-              <MinCpLogo>{props.logo1}</MinCpLogo>
+              <MinCpLogo><ImageLogo src={props.logo1} alt="logo" /></MinCpLogo>
             </MinCLogo>
-            <MinCLogo>{props.logo2}</MinCLogo>
+            <MinCLogo><ImageLogo src={props.logo2} alt="logo" /></MinCLogo>
           </MinLogo>
           <MinLogo>
             <MinCLogo>
-              <MinCpLogo>{props.logo1}</MinCpLogo>
+              <MinCpLogo><ImageLogo src={props.logo3} alt="logo" /></MinCpLogo>
             </MinCLogo>
-            <MinCLogo>{props.logo2}</MinCLogo>
+            <MinCLogo><ImageLogo src={props.logo4} alt="logo" /></MinCLogo>
           </MinLogo>
         </Card>
       )}

@@ -35,9 +35,13 @@ export const CpLogo = styled.div`
 `;
 
 export const MinCLogo = styled(CLogo)`
-width: 120px;
+  width: 120px;
   height: 122px;
 `
 export const MinCpLogo = styled(CpLogo)`
   font-size: 6rem;
 `;
+
+export const ImageLogo = styled.img `
+  width: 100px;
+`

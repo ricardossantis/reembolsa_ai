@@ -19,7 +19,7 @@ const Header = (props) => {
     <ZMenu>
       <MenuItem key="1">
         <ZLink to={props.link1 || props.home} style={{ color: "#FFFFFF" }}>
-          {props.title1 || props.logo}
+          {width <= 780 ? props.title1 : props.logo}
         </ZLink>
       </MenuItem>
       <MenuItem key="2">
@@ -33,13 +33,22 @@ const Header = (props) => {
         </MLink>
       </MenuItem>
       <MenuItem key="4">
-        <MLink to={props.link4} style={{ color: "#FFFFFF" }}>
-          {props.title4}
+        <MLink
+          to={props.link4}
+          onClick={props.logoutColab}
+          style={{ color: "#FFFFFF" }}
+        >
+          {props.title4 || props.titleColab}
         </MLink>
       </MenuItem>
       <MenuItem key="5">
         <MLink to={props.link5} style={{ color: "#FFFFFF" }}>
           {props.title5}
+        </MLink>
+      </MenuItem>
+      <MenuItem key="6">
+        <MLink to="/" onClick={props.logout} style={{ color: "#FFFFFF" }}>
+          {props.exitManager}
         </MLink>
       </MenuItem>
     </ZMenu>
@@ -50,13 +59,16 @@ const Header = (props) => {
       {(width > 768 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           {props.input}
-          <LogoLink to={props.home || "/"}>{props.logo}</LogoLink>
+          <LogoLink to={props.home || "/"}>
+            <img src={props.logo} alt="logo" />
+          </LogoLink>
           <ZLink to={props.link1 || "/"}>{props.title1}</ZLink>
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
           <ZLink to={props.link5}>{props.title5}</ZLink>
-          <ZLink to="/login" onClick={props.logout}>
+          <ZLink to="/login" onClick={props.logout} />
+          <ZLink to={props.exit ? "/" : "/cadastro"} onClick={props.logout}>
             {props.exit || props.homeButton}
           </ZLink>
         </MaxHeader>

@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import SituationList from "../../components/situation-list-page";
 import { useDispatch, useSelector } from "react-redux";
 import { setPendingList } from "../../redux/actions/list";
+import { motion } from "framer-motion";
 
 function Pending() {
   const dispatch = useDispatch();
@@ -15,13 +16,31 @@ function Pending() {
   }, []);
 
   return (
-    <SituationList
-      header="Pedidos Pendentes"
-      list={list}
-      title
-      token={token}
-      id={id}
-    />
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
+      <SituationList
+        header="Pedidos Pendentes"
+        list={list}
+        title
+        token={token}
+        id={id}
+      />
+    </motion.div>
   );
 }
 

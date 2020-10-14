@@ -117,7 +117,7 @@ function SituationList({ header, list = [], title, token, id }) {
           list.map((item, index) => (
             <SituationCardContainer onClick={() => showModal(item)} key={index}>
               <SituationCard color={item.color}>
-                {item.color !== "#365083" ? item.description : item.fullName}
+                {item.color !== "#365083" ? `Ref: ${item.id} | Cat: ${item.category}` : item.fullName}
               </SituationCard>
             </SituationCardContainer>
           ))}
@@ -129,6 +129,8 @@ function SituationList({ header, list = [], title, token, id }) {
           modalItem &&
           modalItem.category !== undefined && (
           <div>
+              <p>Usuário: {modalItem.userName}</p>
+              <p>Nº de Referência: {modalItem.id}</p>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
@@ -141,7 +143,8 @@ function SituationList({ header, list = [], title, token, id }) {
           header === "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-            <div>
+          <div>
+              <p>Usuário: {modalItem.userName}</p>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>

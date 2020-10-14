@@ -16,6 +16,7 @@ import {
   ButtonContainer,
   ZButton,
 } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+import { motion } from "framer-motion";
 
 const LoginPage = () => {
   const stateAuth = useSelector((state) => state.authentication);
@@ -34,62 +35,80 @@ const LoginPage = () => {
     }
   }, [stateAuth]);
   return (
-    <StyledContent>
-      <DefaultForm onFinish={onFinish}>
-        <DefaultH1>Área de login</DefaultH1>
-        <DefaultLabel>E-mail</DefaultLabel>
-        <DefaultFormItem
-          name="email"
-          rules={[
-            {
-              required: true,
-              message: "Por favor insira um e-mail",
-            },
-            {
-              type: "email",
-              message: "Insira um e-mail válido",
-            },
-          ]}
-        >
-          <DefaultInput />
-        </DefaultFormItem>
-        <DefaultLabel>Senha</DefaultLabel>
-        <DefaultFormItem
-          name="password"
-          rules={[
-            {
-              required: true,
-              message: "Por favor insira uma senha",
-            },
-            {
-              min: 6,
-              message: "Verifique sua senha",
-            },
-          ]}
-        >
-          <StyledInputPassword />
-        </DefaultFormItem>
-        <ButtonContainer style={{ marginTop: 10 }}>
-          <ZButton
-            onClick={() => history.push("/")}
-            shape="circle"
-            icon={
-              <CloseCircleFilled style={{ color: "#F15454", fontSize: 50 }} />
-            }
-          />
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
+      <StyledContent>
+        <DefaultForm onFinish={onFinish}>
+          <DefaultH1>Área de login</DefaultH1>
+          <DefaultLabel>E-mail</DefaultLabel>
+          <DefaultFormItem
+            name="email"
+            rules={[
+              {
+                required: true,
+                message: "Por favor insira um e-mail",
+              },
+              {
+                type: "email",
+                message: "Insira um e-mail válido",
+              },
+            ]}
+          >
+            <DefaultInput />
+          </DefaultFormItem>
+          <DefaultLabel>Senha</DefaultLabel>
+          <DefaultFormItem
+            name="password"
+            rules={[
+              {
+                required: true,
+                message: "Por favor insira uma senha",
+              },
+              {
+                min: 6,
+                message: "Verifique sua senha",
+              },
+            ]}
+          >
+            <StyledInputPassword />
+          </DefaultFormItem>
+          <ButtonContainer style={{ marginTop: 10 }}>
+            <ZButton
+              onClick={() => history.push("/")}
+              shape="circle"
+              icon={
+                <CloseCircleFilled style={{ color: "#F15454", fontSize: 50 }} />
+              }
+            />
 
-          <ZButton
-            htmlType="submit"
-            shape="circle"
-            icon={
-              <CheckCircleFilled style={{ color: "#2CD3B5", fontSize: 50 }} />
-            }
-          />
-        </ButtonContainer>
-        {err !== "" && <StyledError>{err}</StyledError>}
-      </DefaultForm>
-      {console.log(Link)}
-    </StyledContent>
+            <ZButton
+              htmlType="submit"
+              shape="circle"
+              icon={
+                <CheckCircleFilled style={{ color: "#2CD3B5", fontSize: 50 }} />
+              }
+            />
+          </ButtonContainer>
+          {err !== "" && <StyledError>{err}</StyledError>}
+        </DefaultForm>
+        {console.log(Link)}
+      </StyledContent>
+    </motion.div>
   );
 };
 

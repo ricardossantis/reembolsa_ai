@@ -7,10 +7,11 @@ import ClientLogo from "../../components/main-page/client-logo";
 import MainTimeline from "../../components/main-page/timeline";
 import Title from "../../components/main-page/title";
 import HireUs from "../../components/main-page/our-services";
-import Kenzie from '../../images/kenzie-logo.png';
-import Google from '../../images/google.png';
-import Philips from '../../images/philips.jpg';
-import Amazon from '../../images/amazon.png';
+import Kenzie from "../../images/kenzie-logo.png";
+import Google from "../../images/google.png";
+import Philips from "../../images/philips.jpg";
+import Amazon from "../../images/amazon.png";
+import { motion } from "framer-motion";
 
 const Home = () => {
   const { pathname } = useLocation();
@@ -52,7 +53,12 @@ const Home = () => {
         colorTitle="#FFFFFF"
         children="Conheça nossos parceiros de sucesso"
       />
-      <ClientLogo logo1={Kenzie} logo2={Google} logo3={Amazon} logo4={Philips}/>
+      <ClientLogo
+        logo1={Kenzie}
+        logo2={Google}
+        logo3={Amazon}
+        logo4={Philips}
+      />
       <Title
         bckTitle="#FFFFFF"
         colorTitle="#365083"

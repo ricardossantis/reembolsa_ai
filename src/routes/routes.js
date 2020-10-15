@@ -94,6 +94,7 @@ const Routes = () => {
               title3="Histórico"
               titleColab="Sair"
               exit="Sair"
+              logoutColab={() => dispatch(logout())}
               logout={() => dispatch(logout())}
               link1="/novopedido"
               link2="/saldo"
@@ -150,7 +151,7 @@ const Routes = () => {
       </>
     );
   } else {
-    return <div><LoadingAnimation/></div>;
+    return <LoadingAnimation/>;
   }
 };
 

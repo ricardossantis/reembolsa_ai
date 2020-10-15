@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Form } from "antd";
 import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
@@ -11,11 +11,13 @@ import {
   StyledInput,
   StyledInputPassword,
   ContainerButtons,
+  Box,
 } from "../../components/new-manager";
 import {
   ButtonContainer,
   ZButton,
 } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+import { openNotification } from '../../components/feedback-msg/'
 import api from "../../services/api";
 
 const layout = {
@@ -41,12 +43,25 @@ const CadastroGerente = () => {
     company: "",
     accessLevel: 1,
   });
+  const [responseStatus, setResponseStatus] = useState();
 
   const handleSubmit = () => {
     api
       .post(`/register`, { ...manager })
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        if (res.status === 201) {
+          setResponseStatus(res.status)
+          setTimeout(() => {history.push('/login')}, 3000)
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setResponseStatus(error.response.status)
+
+        if (error.response.status === 400) {
+          setTimeout(() => {history.push('/login')}, 5000)
+        }
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -57,8 +72,16 @@ const CadastroGerente = () => {
   const onFinish = () => {
     handleSubmit();
     form.resetFields();
-    history.push("/login");
+    
   };
+
+  useEffect(() => {
+    if (responseStatus === 201) {
+      openNotification('bottomRight', 'Nova empresa cadastrada.', 'Você será redirecionado para o login.')
+    } else if (responseStatus === 400) {
+      openNotification('bottomRight', 'Não foi possivel cadastrar!', 'Você será redirecionado para o login.')
+    }
+  }, [(values) => onFinish(values)])  
 
   return (
     <motion.div
@@ -80,6 +103,7 @@ const CadastroGerente = () => {
     >
       <Container>
         <Titulo>Cadastro</Titulo>
+        <Box>
         <StyledForm
           {...layout}
           form={form}
@@ -197,6 +221,7 @@ const CadastroGerente = () => {
             </ButtonContainer>
           </ContainerButtons>
         </StyledForm>
+        </Box>
       </Container>
     </motion.div>
   );

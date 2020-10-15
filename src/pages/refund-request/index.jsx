@@ -1,14 +1,13 @@
 import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
+import postRequest from '../../components/refund-request/index'
 import { useSelector } from "react-redux";
+import {openNotification } from '../../components/feedback-msg/'
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
-import { motion } from "framer-motion";
 import { CheckCircleFilled } from "@ant-design/icons";
-import {
-  ButtonContainer,
-  ZButton,
-} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
-
+import { motion } from "framer-motion";
+import { ButtonContainer } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+import { ButtonYes } from "./refund-style";
 import {
   RefoundPage,
   Title,
@@ -17,9 +16,14 @@ import {
   FormContainer,
 } from "./refund-style";
 
+
 const RefundRequest = () => {
   const formRef = createRef();
   const componentSize = "default";
+  const [responseStatus, setResponseStatus] = useState()
+  
+
+  
 
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
@@ -34,7 +38,6 @@ const RefundRequest = () => {
     employeeState.user.amountLimit
   );
   const token = employeeState.auth;
-  let finishMessage = "";
 
   useEffect(() => {
     api
@@ -54,25 +57,12 @@ const RefundRequest = () => {
       })
       .catch((err) => console.log(err));
   }, []);
+
   const onFinish = (values) => {
     if (values.value <= amountLimit) {
-      api.post(
-        "/refunds",
-        {
-          ...values,
-          status: "pending",
-          denied: "",
-          userId: employeeId,
-          userName: employeeName,
-        },
-        {
-          headers: {
-            authorization: `Bearer ${token}`,
-          },
-        }
-      );
+      postRequest(values, employeeId, employeeName, token, setResponseStatus)
       formRef.current.resetFields();
-      finishMessage = "Dados enviados com sucesso";
+      openNotification('bottomRight','Sucesso.', 'Seu reembolso foi enviado para a revisão do seu gestor.');
     }
   };
   const checkAmount = (value) => {
@@ -206,23 +196,15 @@ const RefundRequest = () => {
 
             <>
               <NewForm.Item name="confirm" value="confirm">
-                <ButtonContainer  style={{ padding: 10 }}>
-                  <ZButton
-                   
-                    htmlType="submit"
-                    shape="circle"
-                    icon={
-                      <CheckCircleFilled
-                        style={{ color: "#2CD3B5", fontSize: 50 }}
-                      />
-                    }
-                  />
+                <ButtonContainer>
+                  <ButtonYes type="primary" htmlType="submit">
+                    <CheckCircleFilled />
+                  </ButtonYes>
                 </ButtonContainer>
               </NewForm.Item>
             </>
           </NewForm>
         </RefoundPage>
-        {finishMessage !== undefined && <p>{finishMessage}</p>}
       </FormContainer>
     </motion.div>
   );

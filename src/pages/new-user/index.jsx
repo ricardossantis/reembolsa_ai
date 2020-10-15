@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Form, Input } from "antd";
 import {
@@ -7,6 +7,7 @@ import {
   FormBox,
   LButton,
 } from "../../components/new-employee/styled-post";
+import { openNotification } from '../../components/feedback-msg/'
 import postRequest from "../../components/new-employee/post-resquest";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { ZButton } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
@@ -33,7 +34,9 @@ const formItemLayout = {
 };
 
 const NewUser = () => {
+  const [responseStatus, setResponseStatus] = useState()
   const [form] = Form.useForm();
+
 
   const employerState = useSelector((state) => state.authentication);
   const employerId = employerState.user.id;
@@ -41,8 +44,18 @@ const NewUser = () => {
   const token = employerState.auth;
 
   const onFinish = (values) => {
-    postRequest(token, values, employerId, employerName);
+    postRequest(token, values, employerId, employerName, setResponseStatus);
+    form.resetFields();
   };
+
+  //UseEffect sendo usado para validar o estado após a captura do status do servidor, passando o proprio onFinish como array de dependencia.
+  useEffect(() => {
+    if (responseStatus === 201) {
+      openNotification('bottomRight', 'Sucesso!', 'Novo usuário cadastrado!')
+    } else if (responseStatus === 400) {
+      openNotification('bottomRight', 'Negado!', 'O usuário que você tentou cadastrar já existe no sistema.')
+    }
+  }, [(values) => onFinish(values)])
 
   return (
     <motion.div

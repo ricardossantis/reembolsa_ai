@@ -185,20 +185,6 @@ const RefundRequest = () => {
 
             <SubTitle>Descrição da despesa</SubTitle>
 
-<<<<<<< HEAD
-          <p>
-            <NewForm.Item name="confirm" value="confirm">
-              <ButtonContainer>
-                <ButtonYes type="primary" htmlType="submit" />
-              </ButtonContainer>
-            </NewForm.Item>
-          </p>
-        </NewForm>
-      </RefoundPage>
-      {/*{finishMessage !== undefined && <p>{finishMessage}</p>}*/}
-      {responseStatus === 201 ? <SuccessMsg message='Sucesso.' description='Reembolso enviado com sucesso. Aguarde aprovação do seu gestor' /> : null}
-    </FormContainer>
-=======
             <NewForm.Item name="description" value="description">
               <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
             </NewForm.Item>
@@ -212,10 +198,10 @@ const RefundRequest = () => {
             </>
           </NewForm>
         </RefoundPage>
-        {finishMessage !== undefined && <p>{finishMessage}</p>}
+        {/*{finishMessage !== undefined && <p>{finishMessage}</p>}*/}
+        {responseStatus === 201 ? <SuccessMsg message='Sucesso.' description='Reembolso enviado com sucesso. Aguarde aprovação do seu gestor' /> : null}
       </FormContainer>
     </motion.div>
->>>>>>> master
   );
 };
 

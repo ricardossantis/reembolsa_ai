@@ -2,14 +2,28 @@ import React from 'react';
 import { Alert } from 'antd';
 import { message, Button } from 'antd';
 
-const Succeed = () => {
+const Succeed = (content) => {
   message.success({
-    content: 'This is a prompt message with custom className and style',
+    content: 'Pronto! Novo usuário criado e pronto para fazer reembolsos.',
     className: 'custom-class',
     style: {
       marginTop: '20vh',
     },
   });
+  
+  
+};
+
+const ThrowError = (content) => {
+  message.error({
+    content: 'Erro! O usuário cadastrado já existe!',
+    className: 'custom-class',
+    style: {
+      marginTop: '20vh',
+    },
+  });
+
+ 
 };
 
 const SuccessMsg = (props) => {
@@ -30,5 +44,5 @@ const ErrorMsg = (props) => {
     />    
 }
 
-export {SuccessMsg, ErrorMsg, Succeed}
+export {SuccessMsg, ErrorMsg, Succeed, ThrowError}
   

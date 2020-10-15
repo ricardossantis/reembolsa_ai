@@ -5,7 +5,7 @@ import {
   ContainerForm,
   Title,
 } from "../../components/new-employee/styled-post";
-import {SuccessMsg, ErrorMsg} from '../../components/feedback-msg/'
+import {SuccessMsg, ErrorMsg, Succeed, ThrowError} from '../../components/feedback-msg/'
 import postRequest from "../../components/new-employee/post-resquest";
 
 import { motion } from "framer-motion";
@@ -199,24 +199,15 @@ const NewUser = () => {
           </div>
         </Form.Item>
 
-<<<<<<< HEAD
-      <Form.Item {...tailFormItemLayout}>
-        <Button type="primary" htmlType="submit">
-          Cadastrar
-        </Button>
-      </Form.Item>
-      {status === 201 ? <SuccessMsg message='Sucesso!' description='Usuário cadastrado já pode fazer pedidos de reembolso.'/> : null}
-      {status === 400 ? <ErrorMsg message='Erro!' description='Verifique se o usuário já foi cadastrado anteriormente e tente novamente.'/>: null}
-    </ContainerForm>
-=======
         <Form.Item {...tailFormItemLayout}>
           <Button type="primary" htmlType="submit">
             Cadastrar
           </Button>
         </Form.Item>
+        {status === 201 ? <SuccessMsg message='Pronto.' description='Novo usuário criado com sucesso!' /> : null}
+        {status === 400 ? <ErrorMsg message='Erro!' description='Usuário já está cadastrado na base.'/> : null}
       </ContainerForm>
     </motion.div>
->>>>>>> master
   );
 };
 

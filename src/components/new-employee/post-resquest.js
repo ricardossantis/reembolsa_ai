@@ -6,7 +6,7 @@ const postRequest = (
   values,
   employerId,
   employerName,
-  setStatus
+  setStatus,
 ) => {
   api
     .post(
@@ -25,9 +25,9 @@ const postRequest = (
     .then((response) => {
       setStatus(response.status)
     })
-    .catch((error) => setStatus(error.response.status))
-  
-    //.catch(({ response: { data: { error } } }) => console.log(error));
+    .catch((error) => {
+      setStatus(error.response.status);
+    })
 };
 
 export default postRequest;

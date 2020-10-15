@@ -17,7 +17,7 @@ import {
   ButtonContainer,
   ZButton,
 } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
-import { SuccessMsg, ErrorMsg } from '../../components/feedback-msg/'
+import { openNotification } from '../../components/feedback-msg/'
 import api from "../../services/api";
 
 const layout = {
@@ -72,9 +72,16 @@ const CadastroGerente = () => {
   const onFinish = () => {
     handleSubmit();
     form.resetFields();
+    
   };
 
-  
+  useEffect(() => {
+    if (responseStatus === 201) {
+      openNotification('bottomRight', 'Nova empresa cadastrada.', 'Você será redirecionado para o login.')
+    } else if (responseStatus === 400) {
+      openNotification('bottomRight', 'Não foi possivel cadastrar!', 'Você será redirecionado para o login.')
+    }
+  }, [(values) => onFinish(values)])  
 
   return (
     <motion.div
@@ -213,8 +220,6 @@ const CadastroGerente = () => {
               </Form.Item>
             </ButtonContainer>
           </ContainerButtons>
-          {responseStatus === 201 ? <SuccessMsg message='Sucesso!' description='Empresa cadastrada com sucesso. Faça o login para usar o sistema.'/> : null}
-          {responseStatus === 400 ? <ErrorMsg message='Erro!' description='Parece que a empresa já está cadastrada. Você será redirecionado para o login!'/> : null}
         </StyledForm>
         </Box>
       </Container>

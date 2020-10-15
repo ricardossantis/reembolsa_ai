@@ -1,6 +1,9 @@
 import React from "react";
 import { Alert } from "antd";
 import { message } from "antd";
+import styled from "styled-components";
+import { notification } from 'antd';
+import { SmileOutlined } from '@ant-design/icons';
 
 const Succeed = (content) => {
   message.success({
@@ -24,12 +27,14 @@ const ThrowError = (content) => {
 
 const SuccessMsg = (props) => {
   return (
-    <Alert
+    
+      <Alert
       message={props.message}
       description={props.description}
       type="success"
       showIcon
     />
+    
   );
 };
 
@@ -44,4 +49,14 @@ const ErrorMsg = (props) => {
   );
 };
 
-export { SuccessMsg, ErrorMsg, Succeed, ThrowError };
+const openNotification = (placement, message, description) => {
+  notification.info({
+    message: message,
+    description: description,
+    placement,
+  });
+};
+
+
+
+export { SuccessMsg, ErrorMsg, Succeed, ThrowError, openNotification };

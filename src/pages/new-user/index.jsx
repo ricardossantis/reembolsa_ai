@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { Form, Input } from "antd";
 import {
@@ -7,7 +7,7 @@ import {
   FormBox,
   LButton,
 } from "../../components/new-employee/styled-post";
-import {SuccessMsg, ErrorMsg} from '../../components/feedback-msg/'
+import { openNotification } from '../../components/feedback-msg/'
 import postRequest from "../../components/new-employee/post-resquest";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { ZButton } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
@@ -34,7 +34,7 @@ const formItemLayout = {
 };
 
 const NewUser = () => {
-  const [status, setStatus] = useState()
+  const [responseStatus, setResponseStatus] = useState()
   const [form] = Form.useForm();
 
 
@@ -44,9 +44,18 @@ const NewUser = () => {
   const token = employerState.auth;
 
   const onFinish = (values) => {
-    postRequest(token, values, employerId, employerName, setStatus);
+    postRequest(token, values, employerId, employerName, setResponseStatus);
     form.resetFields();
   };
+
+  //UseEffect sendo usado para validar o estado após a captura do status do servidor, passando o proprio onFinish como array de dependencia.
+  useEffect(() => {
+    if (responseStatus === 201) {
+      openNotification('bottomRight', 'Sucesso!', 'Novo usuário cadastrado!')
+    } else if (responseStatus === 400) {
+      openNotification('bottomRight', 'Negado!', 'O usuário que você tentou cadastrar já existe no sistema.')
+    }
+  }, [(values) => onFinish(values)])
 
   return (
     <motion.div
@@ -199,8 +208,6 @@ const NewUser = () => {
               }
             />
           </LButton>
-          {status === 201 ? <SuccessMsg message='Pronto.' description='Novo usuário criado com sucesso!' /> : null}
-          {status === 400 ? <ErrorMsg message='Erro!' description='Usuário já está cadastrado na base.'/> : null}
         </ContainerForm>
       </FormBox>
     </motion.div>

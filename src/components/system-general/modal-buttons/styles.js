@@ -14,7 +14,6 @@ margin-top: 20px;
 `
 
 const ContentContainer = styled.div `
-width: 300px;
 font-size: 1.2rem;
 display: flex;
 flex-direction: column;
@@ -23,12 +22,10 @@ text-align: left;
 `
 
 const ButtonContainer = styled.div `
-width: 200px;
 font-size: 1.3rem;
 display: flex;
 flex-direction: row;
-justify-content: space-around;
-align-items: center;
+justify-content: space-evenly;
 `
 
 export {AlterButton, ContentContainer, ButtonContainer}

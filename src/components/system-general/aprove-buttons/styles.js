@@ -1,39 +1,27 @@
 import styled from 'styled-components';
 
 const AproveButton = styled.button `
-background-color: #green;
-border: 0.5px solid #122752;
+background-color: #2cbfd3;
+border: 0.5px solid #2cbfd3;
 box-shadow: 2px 2px 5px #707070;
 border-radius: 10px;
 color: #ffffff;
 margin-top: 20px;
  &:hover{
-    background-color: #2CBFD3;
-    border: 0.5px solid #1b95a6;
+    background-color: #5fd3e3 ;
+    border: 0.5px solid #5fd3e3;
  }
 `
 
 const ReproveButton = styled(AproveButton) `
-   background-color: #red;
+   background-color: #f15454;
+   border: 0.5px solid #f15454;
+   margin-left: 10px;
+      &:hover{
+         background-color: #ed6d6d ;
+         border: 0.5px solid #ed6d6d;
+      }
  }
 `
 
-const ContentContainer = styled.div `
-width: 300px;
-font-size: 1.2rem;
-display: flex;
-flex-direction: column;
-justify-content: space-around;
-text-align: left;
-`
-
-const ButtonContainer = styled.div `
-width: 200px;
-font-size: 1.3rem;
-display: flex;
-flex-direction: row;
-justify-content: space-around;
-align-items: center;
-`
-
-export {AproveButton,ReproveButton, ContentContainer, ButtonContainer}
+export {AproveButton,ReproveButton}

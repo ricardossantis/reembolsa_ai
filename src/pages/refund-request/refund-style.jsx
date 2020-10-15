@@ -109,7 +109,9 @@ const ButtonNo = styled(Button)`
 `;
 
 const ButtonYes = styled(Button)`
-  background-color: #2cd3b5;
+  background-color: transparent;
+  color: #2cd3b5;
+  font-size: 50px;
 `;
 
 const ButtonContainer = styled.div`

@@ -2,6 +2,7 @@ import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
+import {CheckCircleFilled } from "@ant-design/icons"
 import {
   RefoundPage,
   Title,
@@ -185,7 +186,7 @@ const RefundRequest = () => {
           <>
             <NewForm.Item name="confirm" value="confirm">
               <ButtonContainer>
-                <ButtonYes type="primary" htmlType="submit" />
+                <ButtonYes type="primary" htmlType="submit"><CheckCircleFilled></CheckCircleFilled></ButtonYes>
               </ButtonContainer>
             </NewForm.Item>
           </>

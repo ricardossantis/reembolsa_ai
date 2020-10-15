@@ -129,13 +129,13 @@ function SituationList({ header, list = [], title, token, id }) {
           header !== "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-            <div>
+            <ContentContainer>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
               <ConfirmButton onClick={handleOk} />
-            </div>
+            </ContentContainer>
           )}
         {list.length > 0 &&
           list[0].color !== "#365083" &&
@@ -148,8 +148,7 @@ function SituationList({ header, list = [], title, token, id }) {
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
               <ButtonContainer>
-                <ModalButtons name={"Reprovar"} onClick={handleCancel} />
-                <ModalButtons name={"Aprovar"} onClick={handleOk} />
+                <AproveButtons reprove={handleCancel} aprove={handleOk} />
               </ButtonContainer>
             </ContentContainer>
           )}
@@ -160,10 +159,10 @@ function SituationList({ header, list = [], title, token, id }) {
            
               <ContentContainer>
               <p>Valor disponível: {modalItem.amountLimit}</p>
-              <ButtonContainer>
-                <ModalButtons name={"Alterar"} onClick={handleCancel} />
-                <ModalButtons name={"Ok"} onClick={handleOk} />
-              </ButtonContainer>
+                <ButtonContainer>
+                  <ModalButtons name={"Alterar"} onClick={handleCancel} />
+                  <ModalButtons name={"Voltar"} onClick={handleOk} />
+                </ButtonContainer>
               </ContentContainer>
           )}
       </StyledModal>

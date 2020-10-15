@@ -60,7 +60,7 @@ const Header = (props) => {
 
   return (
     <>
-      {(width > 768 && (
+      {(width > 1066 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           {props.input}
           {props.logo && (

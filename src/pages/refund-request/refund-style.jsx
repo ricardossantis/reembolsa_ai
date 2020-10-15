@@ -75,6 +75,45 @@ const SubTitle = styled.h3`
   align-items: center;
 
   color: #365083;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 116px;
+    height: 29px;
+  }
 `;
 
-export { RefoundPage, FormContainer, Title, SubTitle, NewForm };
+const Button = styled.button`
+  width: 50px;
+  height: 50px;
+  background-color: #f15454;
+  border: none;
+  border-radius: 100%;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 46px;
+    height: 40px;
+  }
+`;
+
+const ButtonNo = styled(Button)`
+  background-color: #f15454;
+`;
+
+const ButtonYes = styled(Button)`
+  background-color: transparent;
+  color: #2cd3b5;
+  font-size: 50px;
+`;
+
+const ButtonContainer = styled.div`
+  text-align: center;
+  display: flex;
+  justify-content: space-around;
+
+  @media (min-width: 320px) and (max-width: 768px) {
+    width: 46px;
+    height: 40px;
+  }
+`;
+
+export { RefoundPage, FormContainer, Title, SubTitle, NewForm, ButtonNo, ButtonYes, ButtonContainer };

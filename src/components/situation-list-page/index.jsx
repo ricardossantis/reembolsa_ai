@@ -118,7 +118,7 @@ function SituationList({ header, list = [], title, token, id }) {
           list.map((item, index) => (
             <SituationCardContainer onClick={() => showModal(item)} key={index}>
               <SituationCard color={item.color}>
-                {item.color !== "#365083" ? item.description : item.fullName}
+                {item.color !== "#365083" ? `Ref: ${item.id} | Cat: ${item.category}` : item.fullName}
               </SituationCard>
             </SituationCardContainer>
           ))}

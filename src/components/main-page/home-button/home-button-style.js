@@ -1,6 +1,5 @@
 import styled from "styled-components";
 
-
 export const ZButton = styled.button`
   cursor: pointer;
   width: 230px;

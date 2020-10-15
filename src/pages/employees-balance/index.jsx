@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
 import { useWindowSize } from "../../components/system-general/header/hookWindowSize.js";
 import api from "../../services/api.js";
-
+import { motion } from "framer-motion";
 import {
   Box,
   Title,
@@ -48,23 +48,41 @@ const Saldo = () => {
   }, []);
 
   return (
-    <>
-      {(width > 768 && (
-        <Box>
-          <Title>Saldo disponível</Title>
-          <BoxCircle>
-            <Circle color={colors.green}>R$ {renderResult}</Circle>
-          </BoxCircle>
-        </Box>
-      )) || (
-        <Box>
-          <MinTitle>Saldo disponível</MinTitle>
-          <BoxCircle>
-            <MinCircle color={colors.green}>R$ {renderResult}</MinCircle>
-          </BoxCircle>
-        </Box>
-      )}
-    </>
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
+      <>
+        {(width > 768 && (
+          <Box>
+            <Title>Saldo disponível</Title>
+            <BoxCircle>
+              <Circle color={colors.green}>R$ {renderResult}</Circle>
+            </BoxCircle>
+          </Box>
+        )) || (
+          <Box>
+            <MinTitle>Saldo disponível</MinTitle>
+            <BoxCircle>
+              <MinCircle color={colors.green}>R$ {renderResult}</MinCircle>
+            </BoxCircle>
+          </Box>
+        )}
+      </>
+    </motion.div>
   );
 };
 

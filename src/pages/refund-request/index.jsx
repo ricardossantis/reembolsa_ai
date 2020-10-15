@@ -3,6 +3,7 @@ import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
 import {CheckCircleFilled } from "@ant-design/icons"
+import { motion } from "framer-motion";
 import {
   RefoundPage,
   Title,
@@ -95,105 +96,123 @@ const RefundRequest = () => {
   };
 
   return (
-    <FormContainer>
-      <RefoundPage>
-        <NewForm
-          labelCol={{
-            span: 8,
-          }}
-          wrapperCol={{
-            span: 8,
-          }}
-          layout="horizontal"
-          initialValues={{
-            size: componentSize,
-          }}
-          onValuesChange={onFormLayoutChange}
-          size={componentSize}
-          onFinish={onFinish}
-          ref={formRef}
-          name="control-ref"
-        >
-          <Title>Novo Pedido de Reembolso</Title>
-          <SubTitle>Categoria</SubTitle>
-
-          <NewForm.Item
-            background-color="#f5f5f5"
-            name="category"
-            value="category"
+    <motion.div
+      initial="hidden"
+      animate="visible"
+      variants={{
+        hidden: {
+          scale: 0.8,
+          opacity: 0,
+        },
+        visible: {
+          scale: 1,
+          opacity: 1,
+          transition: {
+            delay: 0.4,
+          },
+        },
+      }}
+    >
+      <FormContainer>
+        <RefoundPage>
+          <NewForm
+            labelCol={{
+              span: 8,
+            }}
+            wrapperCol={{
+              span: 8,
+            }}
+            layout="horizontal"
+            initialValues={{
+              size: componentSize,
+            }}
+            onValuesChange={onFormLayoutChange}
+            size={componentSize}
+            onFinish={onFinish}
+            ref={formRef}
+            name="control-ref"
           >
-            <Cascader
-              placeholder="Escolha uma categoria"
-              options={[
+            <Title>Novo Pedido de Reembolso</Title>
+            <SubTitle>Categoria</SubTitle>
+
+            <NewForm.Item
+              background-color="#f5f5f5"
+              name="category"
+              value="category"
+            >
+              <Cascader
+                placeholder="Escolha uma categoria"
+                options={[
+                  {
+                    value: "Alimentação",
+                    label: "Alimentação",
+                  },
+                  {
+                    value: "Transporte",
+                    label: "Transporte",
+                  },
+                  {
+                    value: "Hospedagem",
+                    label: "Hospedagem",
+                  },
+                  {
+                    value: "Combustível",
+                    label: "Combustível",
+                  },
+                  {
+                    value: "Outros",
+                    label: "Outros",
+                  },
+                ]}
+              />
+            </NewForm.Item>
+
+            <SubTitle>Valor</SubTitle>
+
+            <NewForm.Item
+              name="value"
+              help={amount.errorMsg || ""}
+              rules={[
                 {
-                  value: "Alimentação",
-                  label: "Alimentação",
-                },
-                {
-                  value: "Transporte",
-                  label: "Transporte",
-                },
-                {
-                  value: "Hospedagem",
-                  label: "Hospedagem",
-                },
-                {
-                  value: "Combustível",
-                  label: "Combustível",
-                },
-                {
-                  value: "Outros",
-                  label: "Outros",
+                  required: true,
+                  message: "Por favor insira um valor",
                 },
               ]}
-            />
-          </NewForm.Item>
-
-          <SubTitle>Valor</SubTitle>
-
-          <NewForm.Item
-            name="value"
-            help={amount.errorMsg || ""}
-            rules={[
-              {
-                required: true,
-                message: "Por favor insira um valor",
-              },
-            ]}
-            validateStatus={amount.validateStatus}
-          >
-            <InputNumber
-              max={amountLimit}
-              min={0}
-              value={amount.value}
-              onChange={onValueChange}
-              placeholder="Insira um valor de reembolso"
-            />
-          </NewForm.Item>
-
-          <SubTitle>Data</SubTitle>
-
-          <NewForm.Item name="date" value="date">
-            <DatePicker placeholder="Insira a data" />
-          </NewForm.Item>
-
-          <SubTitle>Descrição da despesa</SubTitle>
-
-          <NewForm.Item name="description" value="description">
-            <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
-          </NewForm.Item>
-
-          <>
-            <NewForm.Item name="confirm" value="confirm">
-              <ButtonContainer>
-                <ButtonYes type="primary" htmlType="submit"><CheckCircleFilled></CheckCircleFilled></ButtonYes>
-              </ButtonContainer>
+              validateStatus={amount.validateStatus}
+            >
+              <InputNumber
+                max={amountLimit}
+                min={0}
+                value={amount.value}
+                onChange={onValueChange}
+                placeholder="Insira um valor de reembolso"
+              />
             </NewForm.Item>
-          </>
-        </NewForm>
-      </RefoundPage>
-      {finishMessage !== undefined && <p>{finishMessage}</p>}
-    </FormContainer>
+
+            <SubTitle>Data</SubTitle>
+
+            <NewForm.Item name="date" value="date">
+              <DatePicker placeholder="Insira a data" />
+            </NewForm.Item>
+
+            <SubTitle>Descrição da despesa</SubTitle>
+
+            <NewForm.Item name="description" value="description">
+              <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
+            </NewForm.Item>
+
+            <>
+              <NewForm.Item name="confirm" value="confirm">
+                <ButtonContainer>
+                  <ButtonYes type="primary" htmlType="submit"><CheckCircleFilled/></ButtonYes>
+                </ButtonContainer>
+              </NewForm.Item>
+            </>
+          </NewForm>
+        </RefoundPage>
+        {finishMessage !== undefined && <p>{finishMessage}</p>}
+      </FormContainer>
+    </motion.div>
   );
 };
 

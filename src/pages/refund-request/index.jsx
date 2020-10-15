@@ -13,7 +13,9 @@ import {
   Title,
   SubTitle,
   NewForm,
+  NewFormItem,
   FormContainer,
+  DefaultInputNumber
 } from "./refund-style";
 
 const RefundRequest = () => {
@@ -87,7 +89,7 @@ const RefundRequest = () => {
   const onValueChange = (value) => {
     setAmount({ ...checkAmount(value), value });
   };
-
+  console.log(amount)
   return (
     <motion.div
       initial="hidden"
@@ -109,11 +111,12 @@ const RefundRequest = () => {
       <FormContainer>
         <RefoundPage>
           <NewForm
+          
             labelCol={{
-              span: 8,
+              span: 32,
             }}
             wrapperCol={{
-              span: 8,
+              span: 32,
             }}
             layout="horizontal"
             initialValues={{
@@ -162,7 +165,7 @@ const RefundRequest = () => {
 
             <SubTitle>Valor</SubTitle>
 
-            <NewForm.Item
+            <NewFormItem
               name="value"
               help={amount.errorMsg || ""}
               rules={[
@@ -172,20 +175,21 @@ const RefundRequest = () => {
                 },
               ]}
               validateStatus={amount.validateStatus}
-            >
-              <InputNumber
+            > 
+
+              <DefaultInputNumber
                 max={amountLimit}
                 min={1}
                 value={amount.value}
                 onChange={onValueChange}
                 placeholder="Insira um valor de reembolso"
               />
-            </NewForm.Item>
+            </NewFormItem>
 
             <SubTitle>Data</SubTitle>
 
             <NewForm.Item name="date" value="date">
-              <DatePicker placeholder="Insira a data" />
+              <DatePicker style={{width:"100%"}} placeholder="Insira a data" />
             </NewForm.Item>
 
             <SubTitle>Descrição da despesa</SubTitle>

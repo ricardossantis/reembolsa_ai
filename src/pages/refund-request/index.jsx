@@ -1,8 +1,8 @@
 import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
-import postRequest from '../../components/refund-request/index'
+import postRequest from "../../components/refund-request/index";
 import { useSelector } from "react-redux";
-import {openNotification } from '../../components/feedback-msg/'
+import { openNotification } from "../../components/feedback-msg/";
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { motion } from "framer-motion";
@@ -16,14 +16,10 @@ import {
   FormContainer,
 } from "./refund-style";
 
-
 const RefundRequest = () => {
   const formRef = createRef();
   const componentSize = "default";
-  const [responseStatus, setResponseStatus] = useState()
-  
-
-  
+  const [responseStatus, setResponseStatus] = useState();
 
   const onFormLayoutChange = ({ size }) => {
     formRef.current.setFieldsValue(size);
@@ -59,23 +55,27 @@ const RefundRequest = () => {
   }, []);
 
   const onFinish = (values) => {
-    if (values.value <= amountLimit) {
-      postRequest(values, employeeId, employeeName, token, setResponseStatus)
+    if (values.value <= amountLimit && amountLimit>0) {
+      postRequest(values, employeeId, employeeName, token, setResponseStatus);
       formRef.current.resetFields();
-      openNotification('bottomRight','Sucesso.', 'Seu reembolso foi enviado para a revisão do seu gestor.');
+      openNotification(
+        "bottomRight",
+        "Sucesso.",
+        "Seu reembolso foi enviado para a revisão do seu gestor."
+      );
     }
   };
   const checkAmount = (value) => {
-    if (value <= amountLimit) {
+    if (value <= amountLimit && amountLimit !== 0) {
       return {
         validateStatus: "success",
         errorMsg: null,
       };
     }
-    if (value < 0) {
+    if (value < 1) {
       return {
         validateStatus: "error",
-        errorMsg: "Insira um valor para reembolso",
+        errorMsg: "Valor invalido",
       };
     }
     return {
@@ -175,7 +175,7 @@ const RefundRequest = () => {
             >
               <InputNumber
                 max={amountLimit}
-                min={0}
+                min={1}
                 value={amount.value}
                 onChange={onValueChange}
                 placeholder="Insira um valor de reembolso"

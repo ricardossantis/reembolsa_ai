@@ -19,7 +19,7 @@ const Header = (props) => {
     <ZMenu>
       <MenuItem key="1">
         <ZLink to={props.link1 || props.home} style={{ color: "#FFFFFF" }}>
-          {width <= 780 ? props.title1 : props.logo}
+          {width <= 1066 ? props.title1 : props.logo}
         </ZLink>
       </MenuItem>
       <MenuItem key="2">

@@ -100,7 +100,6 @@ const Routes = () => {
               link2="/saldo"
               link3="/historicocolaborador"
               link4="/"
-              logo={Logo}
             />
             <Switch>
               <Route path="/novopedido">

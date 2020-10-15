@@ -11,6 +11,9 @@ import {
   ChangeButton,
   ConfirmButton,
 } from "./situation.js";
+import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons/styles';
+import ModalButtons from '../system-general/modal-buttons/';
+import AproveButtons from '../system-general/aprove-buttons';
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
@@ -125,7 +128,7 @@ function SituationList({ header, list = [], title, token, id }) {
           header !== "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-          <div>
+            <ContentContainer>
               <p>Usuário: {modalItem.userName}</p>
               <p>Nº de Referência: {modalItem.id}</p>
               <p>Categoria: {modalItem.category}</p>
@@ -133,48 +136,52 @@ function SituationList({ header, list = [], title, token, id }) {
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
               <ConfirmButton onClick={handleOk} />
-            </div>
+            </ContentContainer>
           )}
         {list.length > 0 &&
           list[0].color !== "#365083" &&
           header === "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-          <div>
+            <ContentContainer>
               <p>Usuário: {modalItem.userName}</p>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+              <ButtonContainer>
+                <AproveButtons reprove={handleCancel} aprove={handleOk} />
+              </ButtonContainer>
+            </ContentContainer>
           )}
         {list.length > 0 &&
           list[0].color === "#365083" &&
           modalItem &&
           modalItem.category === undefined && (
-            <div>
+           
+              <ContentContainer>
               <p>Valor disponível: {modalItem.amountLimit}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+                <ButtonContainer>
+                  <ModalButtons name={"Alterar"} onClick={handleCancel} />
+                  <ModalButtons name={"Voltar"} onClick={handleOk} />
+                </ButtonContainer>
+              </ContentContainer>
           )}
       </StyledModal>
       <StyledModal2 visible={visible2} footer={null} onCancel={handleCancel2}>
         {list.length > 0 && list[0].color !== "#365083" && (
-          <div>
+          <ContentContainer>
             <p>Descreva o motivo da rejeição:</p>
             <textarea onChange={handleChange} />
-            <ConfirmButton onClick={handleOk2} />
-          </div>
+            <ModalButtons name={"Enviar"} onClick={handleOk2} />
+          </ContentContainer>
         )}
         {list.length > 0 && list[0].color === "#365083" && (
-          <div>
+          <ContentContainer>
             <label>Novo valor:</label>
             <input placeholder="Novo valor" onChange={handleChange} />
-            <ConfirmButton onClick={handleOk2} />
-          </div>
+            <ModalButtons name={"Alterar"} onClick={handleOk2} />
+          </ContentContainer>
         )}
       </StyledModal2>
     </MainContainer>

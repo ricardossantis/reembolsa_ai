@@ -2,13 +2,10 @@ import React, { createRef, useEffect, useState } from "react";
 import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
-import { motion } from "framer-motion";
 import { CheckCircleFilled } from "@ant-design/icons";
-import {
-  ButtonContainer,
-  ZButton,
-} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
-
+import { motion } from "framer-motion";
+import { ButtonContainer } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+import { ButtonYes } from "./refund-style";
 import {
   RefoundPage,
   Title,
@@ -206,17 +203,10 @@ const RefundRequest = () => {
 
             <>
               <NewForm.Item name="confirm" value="confirm">
-                <ButtonContainer  style={{ padding: 10 }}>
-                  <ZButton
-                   
-                    htmlType="submit"
-                    shape="circle"
-                    icon={
-                      <CheckCircleFilled
-                        style={{ color: "#2CD3B5", fontSize: 50 }}
-                      />
-                    }
-                  />
+                <ButtonContainer>
+                  <ButtonYes type="primary" htmlType="submit">
+                    <CheckCircleFilled />
+                  </ButtonYes>
                 </ButtonContainer>
               </NewForm.Item>
             </>

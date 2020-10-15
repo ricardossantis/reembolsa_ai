@@ -54,6 +54,7 @@ const NewUser = () => {
 
   const onFinish = (values) => {
     postRequest(token, values, employerId, employerName, setStatus);
+    form.resetFields();
   };
 
   return (

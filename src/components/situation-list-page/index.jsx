@@ -11,8 +11,10 @@ import {
   ChangeButton,
   ConfirmButton,
 } from "./situation.js";
+import { Button, notification, Divider, Space } from 'antd';
 import SituationCard from "../situation-card";
-import { Succeed } from '../../components/feedback-msg/'
+import { SuccessMsg } from '../../components/feedback-msg/'
+import { openNotification, Context, contextHolder } from '../../components/feedback-msg/notification'
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
@@ -24,6 +26,16 @@ function SituationList({ header, list = [], title, token, id }) {
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
   const [responseStatus, setResponseStatus] = useState();
+  const [apiAntd, contextHolder] = notification.useNotification();
+  const Context = React.createContext({ name: 'Default' });
+
+  const openNotification = (placement) => {  
+    apiAntd.info({
+      message: `Notification ${placement}`,
+      description: <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>,
+      placement,
+    });
+  };
 
   const showModal = (item) => {
     setModalItem(item);
@@ -46,9 +58,8 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then((response) => {
+        .then(() => {
           dispatch(setPendingList(token, id));
-          setResponseStatus(response.status);
         });
     }
     setVisibility(false);
@@ -75,8 +86,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setEmployeeList(token, id));
+          setResponseStatus(response.status);
+          console.log(responseStatus)
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -91,10 +104,10 @@ function SituationList({ header, list = [], title, token, id }) {
           }
         )
         .then(() => {
-          dispatch(setPendingList(token, id));
+          dispatch(setPendingList(token, id));          
         });
     }
-    setVisibility2(false);
+    setVisibility2(false);    
   };
 
   const handleCancel2 = (e) => {
@@ -157,11 +170,11 @@ function SituationList({ header, list = [], title, token, id }) {
           list[0].color === "#365083" &&
           modalItem &&
           modalItem.category === undefined && (
-            <div>
-              <p>Valor disponível: {modalItem.amountLimit}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+          <div>
+            <p>Valor disponível: {modalItem.amountLimit}</p>
+            <ChangeButton onClick={handleCancel} />
+            <ConfirmButton onClick={handleOk} />
+          </div>         
           )}
       </StyledModal>
       <StyledModal2 visible={visible2} footer={null} onCancel={handleCancel2}>
@@ -177,9 +190,10 @@ function SituationList({ header, list = [], title, token, id }) {
             <label>Novo valor:</label>
             <input placeholder="Novo valor" onChange={handleChange} />
             <ConfirmButton onClick={handleOk2} />
-          </div>
+          </div>          
         )}
       </StyledModal2>
+      {responseStatus === 200 ? <SuccessMsg message='Sucesso!' description='Limite aumentado.'/> : null}
     </MainContainer>
   );
 }

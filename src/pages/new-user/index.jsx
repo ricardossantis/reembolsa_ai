@@ -7,7 +7,7 @@ import {
   FormBox,
   LButton,
 } from "../../components/new-employee/styled-post";
-import {SuccessMsg, ErrorMsg, Succeed, ThrowError} from '../../components/feedback-msg/'
+import {SuccessMsg, ErrorMsg} from '../../components/feedback-msg/'
 import postRequest from "../../components/new-employee/post-resquest";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { ZButton } from "../../components/system-general/system-button/ant-button/ant-button-style.js";

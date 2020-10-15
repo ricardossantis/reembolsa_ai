@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import {
   MainContainer,
   Header,
@@ -8,15 +8,12 @@ import {
   TitleParagraph,
   StyledModal,
   StyledModal2,
-  ChangeButton,
   ConfirmButton,
 } from "./situation.js";
 import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons/styles';
 import ModalButtons from '../system-general/modal-buttons/';
 import AproveButtons from '../system-general/aprove-buttons';
 import SituationCard from "../situation-card";
-import { SuccessMsg } from '../../components/feedback-msg/'
-import { openNotification, Context, contextHolder } from '../../components/feedback-msg/notification'
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";

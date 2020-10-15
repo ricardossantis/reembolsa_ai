@@ -49,8 +49,6 @@ const CadastroGerente = () => {
     api
       .post(`/register`, { ...manager })
       .then((res) => {
-        console.log(res.data);
-
         if (res.status === 201) {
           setResponseStatus(res.status)
           setTimeout(() => {history.push('/login')}, 3000)

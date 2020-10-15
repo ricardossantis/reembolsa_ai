@@ -4,13 +4,14 @@ import postRequest from '../../components/refund-request/index'
 import { useSelector } from "react-redux";
 import {SuccessMsg} from '../../components/feedback-msg/'
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
+import { CheckCircleFilled } from "@ant-design/icons";
 import { motion } from "framer-motion";
+import { ButtonContainer } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+import { ButtonYes } from "./refund-style";
 import {
   RefoundPage,
   Title,
   SubTitle,
-  ButtonYes,
-  ButtonContainer,
   NewForm,
   FormContainer,
 } from "./refund-style";
@@ -192,7 +193,9 @@ const RefundRequest = () => {
             <>
               <NewForm.Item name="confirm" value="confirm">
                 <ButtonContainer>
-                  <ButtonYes type="primary" htmlType="submit" />
+                  <ButtonYes type="primary" htmlType="submit">
+                    <CheckCircleFilled />
+                  </ButtonYes>
                 </ButtonContainer>
               </NewForm.Item>
             </>

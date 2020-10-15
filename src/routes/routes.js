@@ -94,11 +94,13 @@ const Routes = () => {
               title3="Histórico"
               titleColab="Sair"
               exit="Sair"
+              logoutColab={() => dispatch(logout())}
               logout={() => dispatch(logout())}
               link1="/novopedido"
               link2="/saldo"
               link3="/historicocolaborador"
               link4="/"
+              logo={Logo}
             />
             <Switch>
               <Route path="/novopedido">
@@ -129,7 +131,6 @@ const Routes = () => {
           link3="/login"
           link4="/contato"
           home="/"
-          logo={Logo}
           homeButton={<Button bckButton="#2CBFD3" />}
         />
         <Switch>
@@ -150,7 +151,7 @@ const Routes = () => {
       </>
     );
   } else {
-    return <div><LoadingAnimation/></div>;
+    return <LoadingAnimation/>;
   }
 };
 

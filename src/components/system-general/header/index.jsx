@@ -41,31 +41,39 @@ const Header = (props) => {
           {props.title4 || props.titleColab}
         </MLink>
       </MenuItem>
-      <MenuItem key="5">
-        <MLink to={props.link5} style={{ color: "#FFFFFF" }}>
-          {props.title5}
-        </MLink>
-      </MenuItem>
-      <MenuItem key="6">
-        <MLink to="/" onClick={props.logout} style={{ color: "#FFFFFF" }}>
-          {props.exitManager}
-        </MLink>
-      </MenuItem>
+      {props.link5 && (
+        <MenuItem key="5">
+          <MLink to={props.link5} style={{ color: "#FFFFFF" }}>
+            {props.title5}
+          </MLink>
+        </MenuItem>
+      )}
+      {props.exitManager && (
+        <MenuItem key="6">
+          <MLink to="/" onClick={props.logout} style={{ color: "#FFFFFF" }}>
+            {props.exitManager}
+          </MLink>
+        </MenuItem>
+      )}
     </ZMenu>
   );
 
   return (
     <>
-      {(width > 768 && (
+      {(width > 1066 && (
         <MaxHeader style={{ backgroundColor: props.maxColor }}>
           {props.input}
-          {props.logo&&<LogoLink to={props.home || "/"}><img src={props.logo} alt="logo"/></LogoLink>}
-          
+          {props.logo && (
+            <LogoLink to={props.home || "/"}>
+              <img src={props.logo} alt="logo" />
+            </LogoLink>
+          )}
+
           <ZLink to={props.link1 || "/"}>{props.title1}</ZLink>
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
-          <ZLink to={props.link5}>{props.title5}</ZLink>
+          {props.link5 && <ZLink to={props.link5}>{props.title5}</ZLink>}
           <ZLink to="/login" onClick={props.logout} />
           <ZLink to={props.exit ? "/" : "/cadastro"} onClick={props.logout}>
             {props.exit || props.homeButton}

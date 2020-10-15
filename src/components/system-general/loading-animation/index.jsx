@@ -13,7 +13,7 @@ const loadingContainer = {
   width: "100%",
   height: "100vh",
   display: "flex",
-  "align-items":"center",
+  alignItems:"center",
   justifyContent: "center",
 };
 const loadingContainerVariants = {

@@ -11,6 +11,7 @@ import {
   StyledInput,
   StyledInputPassword,
   ContainerButtons,
+  Box,
 } from "../../components/new-manager";
 import {
   ButtonContainer,
@@ -97,6 +98,7 @@ const CadastroGerente = () => {
     >
       <Container>
         <Titulo>Cadastro</Titulo>
+        <Box>
         <StyledForm
           {...layout}
           form={form}
@@ -216,6 +218,7 @@ const CadastroGerente = () => {
           {responseStatus === 201 ? <SuccessMsg message='Sucesso!' description='Empresa cadastrada com sucesso. Faça o login para usar o sistema.'/> : null}
           {responseStatus === 400 ? <ErrorMsg message='Erro!' description='Parece que a empresa já está cadastrada. Você será redirecionado para o login!'/> : null}
         </StyledForm>
+        </Box>
       </Container>
     </motion.div>
   );

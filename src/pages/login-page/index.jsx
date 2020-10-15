@@ -7,6 +7,7 @@ import DefaultLabel from "../../components/login/default-label/index";
 import StyledContent from "../../components/login/styled-content/index";
 import StyledInputPassword from "../../components/login/styled-input-password/index";
 import StyledError from "../../components/login/styled-error/index";
+import { ErrorMsg, openNotification } from "../../components/feedback-msg/index"
 import { requestLogin } from "../../redux/actions/auth";
 import { useDispatch, useSelector } from "react-redux";
 import { Link, useHistory } from "react-router-dom";
@@ -104,7 +105,7 @@ const LoginPage = () => {
               }
             />
           </ButtonContainer>
-          {err !== "" && <StyledError>{err}</StyledError>}
+          {err !== "" && openNotification('bottomRight','Não foi possível fazer login', err)}
         </DefaultForm>
       </StyledContent>
     </motion.div>

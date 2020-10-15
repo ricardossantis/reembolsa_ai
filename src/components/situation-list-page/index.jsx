@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainContainer,
   Header,
@@ -17,6 +17,7 @@ import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
+import {openNotification} from '../../components/feedback-msg/'
 
 function SituationList({ header, list = [], title, token, id }) {
   const dispatch = useDispatch();
@@ -50,7 +51,7 @@ function SituationList({ header, list = [], title, token, id }) {
         .then((response) => {
           dispatch(setPendingList(token, id));
           setResponseStatus(response.status)
-          console.log(response.status)
+          openNotification('bottomRight','Feito.', 'Você aprovou o reembolso!')
         });
     }
     setVisibility(false);
@@ -80,7 +81,7 @@ function SituationList({ header, list = [], title, token, id }) {
         .then((response) => {
           dispatch(setEmployeeList(token, id));
           setResponseStatus(response.status);
-          console.log(responseStatus)
+          openNotification('bottomRight','Uau', 'Você alterou o limite do usuário!')
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -96,7 +97,7 @@ function SituationList({ header, list = [], title, token, id }) {
         )
         .then((response) => {
           dispatch(setPendingList(token, id));
-          console.log(response.status)
+          openNotification('bottomRight','Feito.', 'Você reprovou o reembolso!')
         });
     }
     setVisibility2(false);    

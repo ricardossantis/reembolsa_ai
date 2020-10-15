@@ -1,11 +1,12 @@
 import api from "../../services/api";
 
+
 const postRequest = (
   token,
   values,
   employerId,
   employerName,
-  setStatusResponse
+  setResponseStatus,
 ) => {
   api
     .post(
@@ -22,14 +23,11 @@ const postRequest = (
       
     )
     .then((response) => {
-      if (response.status === 200) {
-        return setStatusResponse(response.status);
-      } else if (response.status === 400) {
-        setStatusResponse(response.status);
-      } else if (response.status === 500) {
-        setStatusResponse(response.status);
-      }
-    });
+      setResponseStatus(response.status)
+    })
+    .catch((error) => {
+      setResponseStatus(error.response.status);
+    })
 };
 
 export default postRequest;

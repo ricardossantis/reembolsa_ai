@@ -6,7 +6,7 @@ const Titulo = styled.h1`
   font-weight: bold;
   padding: 3rem;
   @media (max-width: 670px) {
-    margin-bottom: 5%;
+   margin-bottom: 1rem;
   }
 `;
 export { Titulo };

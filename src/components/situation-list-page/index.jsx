@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainContainer,
   Header,
@@ -8,13 +8,16 @@ import {
   TitleParagraph,
   StyledModal,
   StyledModal2,
-  ChangeButton,
   ConfirmButton,
 } from "./situation.js";
+import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons/styles';
+import ModalButtons from '../system-general/modal-buttons/';
+import AproveButtons from '../system-general/aprove-buttons';
 import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
+import {openNotification} from '../../components/feedback-msg/'
 
 function SituationList({ header, list = [], title, token, id }) {
   const dispatch = useDispatch();
@@ -22,6 +25,7 @@ function SituationList({ header, list = [], title, token, id }) {
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
+  const [responseStatus, setResponseStatus] = useState();
 
   const showModal = (item) => {
     setModalItem(item);
@@ -44,8 +48,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          setResponseStatus(response.status)
+          openNotification('bottomRight','Feito.', 'Você aprovou o reembolso!')
         });
     }
     setVisibility(false);
@@ -72,8 +78,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setEmployeeList(token, id));
+          setResponseStatus(response.status);
+          openNotification('bottomRight','Uau', 'Você alterou o limite do usuário!')
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -87,11 +95,12 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          openNotification('bottomRight','Feito.', 'Você reprovou o reembolso!')
         });
     }
-    setVisibility2(false);
+    setVisibility2(false);    
   };
 
   const handleCancel2 = (e) => {
@@ -125,7 +134,7 @@ function SituationList({ header, list = [], title, token, id }) {
           header !== "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-          <div>
+            <ContentContainer>
               <p>Usuário: {modalItem.userName}</p>
               <p>Nº de Referência: {modalItem.id}</p>
               <p>Categoria: {modalItem.category}</p>
@@ -133,50 +142,55 @@ function SituationList({ header, list = [], title, token, id }) {
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
               <ConfirmButton onClick={handleOk} />
-            </div>
+            </ContentContainer>
           )}
         {list.length > 0 &&
           list[0].color !== "#365083" &&
           header === "Pedidos Pendentes" &&
           modalItem &&
           modalItem.category !== undefined && (
-          <div>
+            <ContentContainer>
               <p>Usuário: {modalItem.userName}</p>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
               <p>Descrição: {modalItem.description}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+              <ButtonContainer>
+                <AproveButtons reprove={handleCancel} aprove={handleOk} />
+              </ButtonContainer>
+            </ContentContainer>
           )}
         {list.length > 0 &&
           list[0].color === "#365083" &&
           modalItem &&
           modalItem.category === undefined && (
-            <div>
+           
+              <ContentContainer>
               <p>Valor disponível: {modalItem.amountLimit}</p>
-              <ChangeButton onClick={handleCancel} />
-              <ConfirmButton onClick={handleOk} />
-            </div>
+                <ButtonContainer>
+                  <ModalButtons name={"Alterar"} onClick={handleCancel} />
+                  <ModalButtons name={"Voltar"} onClick={handleOk} />
+                </ButtonContainer>
+              </ContentContainer>
           )}
       </StyledModal>
       <StyledModal2 visible={visible2} footer={null} onCancel={handleCancel2}>
         {list.length > 0 && list[0].color !== "#365083" && (
-          <div>
+          <ContentContainer>
             <p>Descreva o motivo da rejeição:</p>
             <textarea onChange={handleChange} />
-            <ConfirmButton onClick={handleOk2} />
-          </div>
+            <ModalButtons name={"Enviar"} onClick={handleOk2} />
+          </ContentContainer>
         )}
         {list.length > 0 && list[0].color === "#365083" && (
-          <div>
+          <ContentContainer>
             <label>Novo valor:</label>
             <input placeholder="Novo valor" onChange={handleChange} />
-            <ConfirmButton onClick={handleOk2} />
-          </div>
+            <ModalButtons name={"Alterar"} onClick={handleOk2} />
+          </ContentContainer>
         )}
       </StyledModal2>
+      
     </MainContainer>
   );
 }

@@ -73,7 +73,7 @@ const Header = (props) => {
           <ZLink to={props.link2}>{props.title2}</ZLink>
           <ZLink to={props.link3}>{props.title3}</ZLink>
           <ZLink to={props.link4}>{props.title4}</ZLink>
-          <ZLink to={props.link5}>{props.title5}</ZLink>
+          {props.link5 && <ZLink to={props.link5}>{props.title5}</ZLink>}
           <ZLink to="/login" onClick={props.logout} />
           <ZLink to={props.exit ? "/" : "/cadastro"} onClick={props.logout}>
             {props.exit || props.homeButton}

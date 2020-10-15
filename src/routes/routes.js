@@ -151,7 +151,7 @@ const Routes = () => {
       </>
     );
   } else {
-    return <div><LoadingAnimation/></div>;
+    return <LoadingAnimation/>;
   }
 };
 

@@ -18,7 +18,6 @@ const EmployeesHistory = () => {
         },
       })
       .then((res) => {
-        console.log(res);
         setList(
           res.data
             .filter((item) => item.userId === id)

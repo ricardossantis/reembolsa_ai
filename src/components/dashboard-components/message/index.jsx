@@ -5,7 +5,6 @@ function Message({ type, list }) {
   let message;
   let dataFromList;
   let alertType;
-  console.log(list);
 
   if (type === "fluxo") {
     let approved = list.filter((item) => item.status === "approved").length;
@@ -24,7 +23,6 @@ function Message({ type, list }) {
     }
   } else if (type === "custo") {
     let date = new Date();
-    console.log(list)
     let month = (date.getMonth() + 1).toString();
     if (month.length === 1) {
       month = `0${month}`;
@@ -36,7 +34,6 @@ function Message({ type, list }) {
         acc[category] ? (acc[category] += value) : (acc[category] = value);
         return acc;
       }, {});
-      console.log(dataFromList)
     let result = Math.floor(
       Object.values(dataFromList).reduce((acc, current) => acc + current, 0)
     );

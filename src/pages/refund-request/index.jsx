@@ -3,12 +3,16 @@ import api from "../../services/api";
 import { useSelector } from "react-redux";
 import { Input, Cascader, DatePicker, InputNumber } from "antd";
 import { motion } from "framer-motion";
+import { CheckCircleFilled } from "@ant-design/icons";
+import {
+  ButtonContainer,
+  ZButton,
+} from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+
 import {
   RefoundPage,
   Title,
   SubTitle,
-  ButtonYes,
-  ButtonContainer,
   NewForm,
   FormContainer,
 } from "./refund-style";
@@ -202,8 +206,17 @@ const RefundRequest = () => {
 
             <>
               <NewForm.Item name="confirm" value="confirm">
-                <ButtonContainer>
-                  <ButtonYes type="primary" htmlType="submit" />
+                <ButtonContainer  style={{ padding: 10 }}>
+                  <ZButton
+                   
+                    htmlType="submit"
+                    shape="circle"
+                    icon={
+                      <CheckCircleFilled
+                        style={{ color: "#2CD3B5", fontSize: 50 }}
+                      />
+                    }
+                  />
                 </ButtonContainer>
               </NewForm.Item>
             </>

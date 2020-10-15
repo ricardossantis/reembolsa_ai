@@ -3,10 +3,9 @@ import api from "../../services/api";
 import postRequest from "../../components/refund-request/index";
 import { useSelector } from "react-redux";
 import { openNotification } from "../../components/feedback-msg/";
-import { Input, Cascader, DatePicker, InputNumber } from "antd";
+import { Input, Cascader, DatePicker } from "antd";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { motion } from "framer-motion";
-import { ButtonContainer } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
 import { ButtonYes } from "./refund-style";
 import {
   RefoundPage,
@@ -15,7 +14,7 @@ import {
   NewForm,
   NewFormItem,
   FormContainer,
-  DefaultInputNumber
+  DefaultInputNumber,
 } from "./refund-style";
 
 const RefundRequest = () => {
@@ -57,7 +56,7 @@ const RefundRequest = () => {
   }, []);
 
   const onFinish = (values) => {
-    if (values.value <= amountLimit && amountLimit>0) {
+    if (values.value <= amountLimit && amount.value > 0) {
       postRequest(values, employeeId, employeeName, token, setResponseStatus);
       formRef.current.resetFields();
       openNotification(
@@ -68,28 +67,28 @@ const RefundRequest = () => {
     }
   };
   const checkAmount = (value) => {
-    if (value <= amountLimit && amountLimit !== 0) {
+    console.log(value);
+    if (value <= amountLimit && value !== 0 && value !== null) {
       return {
         validateStatus: "success",
         errorMsg: null,
       };
-    }
-    if (value < 1) {
+    } else if (value < 1 || value == null) {
       return {
         validateStatus: "error",
         errorMsg: "Valor invalido",
       };
+    } else {
+      return {
+        validateStatus: "error",
+        errorMsg: `O seu limite de reembolso é de R$ ${amountLimit}`,
+      };
     }
-    return {
-      validateStatus: "error",
-      errorMsg: `O seu limite de reembolso é de R$ ${amountLimit}`,
-    };
   };
 
   const onValueChange = (value) => {
     setAmount({ ...checkAmount(value), value });
   };
-  console.log(amount)
   return (
     <motion.div
       initial="hidden"
@@ -111,7 +110,6 @@ const RefundRequest = () => {
       <FormContainer>
         <RefoundPage>
           <NewForm
-          
             labelCol={{
               span: 32,
             }}
@@ -131,7 +129,14 @@ const RefundRequest = () => {
             <Title>Novo Pedido de Reembolso</Title>
             <SubTitle>Categoria</SubTitle>
 
-            <NewForm.Item
+            <NewFormItem
+              style={{ textAlign: "left" }}
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor escolha uma categoria",
+                },
+              ]}
               background-color="#f5f5f5"
               name="category"
               value="category"
@@ -161,13 +166,13 @@ const RefundRequest = () => {
                   },
                 ]}
               />
-            </NewForm.Item>
+            </NewFormItem>
 
             <SubTitle>Valor</SubTitle>
 
             <NewFormItem
               name="value"
-              help={amount.errorMsg || ""}
+              help={amount.errorMsg}
               rules={[
                 {
                   required: true,
@@ -175,11 +180,9 @@ const RefundRequest = () => {
                 },
               ]}
               validateStatus={amount.validateStatus}
-            > 
-
+            >
               <DefaultInputNumber
                 max={amountLimit}
-                min={1}
                 value={amount.value}
                 onChange={onValueChange}
                 placeholder="Insira um valor de reembolso"
@@ -188,24 +191,34 @@ const RefundRequest = () => {
 
             <SubTitle>Data</SubTitle>
 
-            <NewForm.Item name="date" value="date">
-              <DatePicker style={{width:"100%"}} placeholder="Insira a data" />
-            </NewForm.Item>
+            <NewFormItem
+              rules={[
+                {
+                  required: true,
+                  message: "Por favor insira a data do gasto",
+                },
+              ]}
+              name="date"
+              value="date"
+            >
+              <DatePicker
+                style={{ width: "100%" }}
+                placeholder="Insira a data"
+              />
+            </NewFormItem>
 
             <SubTitle>Descrição da despesa</SubTitle>
 
-            <NewForm.Item name="description" value="description">
+            <NewFormItem name="description" value="description">
               <Input.TextArea placeholder="Descreva a natureza de seu reembolso" />
-            </NewForm.Item>
+            </NewFormItem>
 
             <>
-              <NewForm.Item name="confirm" value="confirm">
-                <ButtonContainer>
-                  <ButtonYes type="primary" htmlType="submit">
-                    <CheckCircleFilled />
-                  </ButtonYes>
-                </ButtonContainer>
-              </NewForm.Item>
+              <NewFormItem name="confirm" value="confirm">
+                <ButtonYes type="primary" htmlType="submit">
+                  <CheckCircleFilled />
+                </ButtonYes>
+              </NewFormItem>
             </>
           </NewForm>
         </RefoundPage>

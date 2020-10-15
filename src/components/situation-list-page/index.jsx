@@ -8,7 +8,6 @@ import {
   TitleParagraph,
   StyledModal,
   StyledModal2,
-  ChangeButton,
   ConfirmButton,
 } from "./situation.js";
 import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons/styles';
@@ -25,6 +24,7 @@ function SituationList({ header, list = [], title, token, id }) {
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
+  const [responseStatus, setResponseStatus] = useState();
 
   const showModal = (item) => {
     setModalItem(item);
@@ -47,8 +47,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          setResponseStatus(response.status)
+          console.log(response.status)
         });
     }
     setVisibility(false);
@@ -75,8 +77,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setEmployeeList(token, id));
+          setResponseStatus(response.status);
+          console.log(responseStatus)
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -90,11 +94,12 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          console.log(response.status)
         });
     }
-    setVisibility2(false);
+    setVisibility2(false);    
   };
 
   const handleCancel2 = (e) => {
@@ -184,6 +189,7 @@ function SituationList({ header, list = [], title, token, id }) {
           </ContentContainer>
         )}
       </StyledModal2>
+      
     </MainContainer>
   );
 }

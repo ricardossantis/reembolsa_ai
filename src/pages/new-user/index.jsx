@@ -48,14 +48,13 @@ const NewUser = () => {
     form.resetFields();
   };
 
+  //UseEffect sendo usado para validar o estado após a captura do status do servidor, passando o proprio onFinish como array de dependencia.
   useEffect(() => {
     if (responseStatus === 201) {
       openNotification('bottomRight', 'Sucesso!', 'Novo usuário cadastrado!')
     } else if (responseStatus === 400) {
       openNotification('bottomRight', 'Negado!', 'O usuário que você tentou cadastrar já existe no sistema.')
     }
-
-    console.log(responseStatus)
   }, [(values) => onFinish(values)])
 
   return (

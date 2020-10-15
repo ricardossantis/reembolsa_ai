@@ -10,13 +10,18 @@ import {
   Circle,
   MinTitle,
   MinCircle,
+  CircleContainer
 } from "../../components/styled-balance/balance-style.js";
+import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Saldo = () => {
   const stateAuth = useSelector((state) => state.authentication);
   const id = stateAuth.user.userId;
   const width = useWindowSize().width;
   const token = stateAuth.auth;
+
+  const value = 0.66;
 
   const colors = {
     red: "#F15454",
@@ -66,21 +71,16 @@ const Saldo = () => {
       }}
     >
       <>
-        {(width > 768 && (
-          <Box>
-            <Title>Saldo disponível</Title>
-            <BoxCircle>
-              <Circle color={colors.green}>R$ {renderResult}</Circle>
-            </BoxCircle>
-          </Box>
-        )) || (
+        
           <Box>
             <MinTitle>Saldo disponível</MinTitle>
             <BoxCircle>
-              <MinCircle color={colors.green}>R$ {renderResult}</MinCircle>
+              <CircleContainer>
+                <CircularProgressbar value={renderResult} maxValue={amountLimit} text={`R$ ${renderResult}`} />
+              </CircleContainer>
             </BoxCircle>
           </Box>
-        )}
+        
       </>
     </motion.div>
   );

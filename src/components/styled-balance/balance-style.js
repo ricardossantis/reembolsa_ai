@@ -59,3 +59,10 @@ export const MinCircle = styled(Circle)`
   box-sizing: border-box;
   filter: drop-shadow(0px 0px 15px ${(props) => props.color});
 `;
+
+export const CircleContainer = styled.div`
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`

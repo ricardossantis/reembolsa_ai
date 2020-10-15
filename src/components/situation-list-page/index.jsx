@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainContainer,
   Header,
@@ -17,6 +17,7 @@ import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
+import {openNotification} from '../../components/feedback-msg/'
 
 function SituationList({ header, list = [], title, token, id }) {
   const dispatch = useDispatch();
@@ -50,7 +51,6 @@ function SituationList({ header, list = [], title, token, id }) {
         .then((response) => {
           dispatch(setPendingList(token, id));
           setResponseStatus(response.status)
-          console.log(response.status)
         });
     }
     setVisibility(false);
@@ -80,7 +80,6 @@ function SituationList({ header, list = [], title, token, id }) {
         .then((response) => {
           dispatch(setEmployeeList(token, id));
           setResponseStatus(response.status);
-          console.log(responseStatus)
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -96,11 +95,16 @@ function SituationList({ header, list = [], title, token, id }) {
         )
         .then((response) => {
           dispatch(setPendingList(token, id));
-          console.log(response.status)
         });
     }
     setVisibility2(false);    
   };
+
+  useEffect(() => {
+    if (responseStatus === 200) {
+      openNotification('bottomRight','Uau', 'Você alterou o limite do usuário!')
+    }
+  }, [handleOk2])
 
   const handleCancel2 = (e) => {
     setVisibility2(false);

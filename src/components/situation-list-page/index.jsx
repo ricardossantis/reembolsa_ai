@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainContainer,
   Header,
@@ -26,16 +26,6 @@ function SituationList({ header, list = [], title, token, id }) {
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
   const [responseStatus, setResponseStatus] = useState();
-  const [apiAntd, contextHolder] = notification.useNotification();
-  const Context = React.createContext({ name: 'Default' });
-
-  const openNotification = (placement) => {  
-    apiAntd.info({
-      message: `Notification ${placement}`,
-      description: <Context.Consumer>{({ name }) => `Hello, ${name}!`}</Context.Consumer>,
-      placement,
-    });
-  };
 
   const showModal = (item) => {
     setModalItem(item);
@@ -58,8 +48,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          setResponseStatus(response.status)
+          console.log(response.status)
         });
     }
     setVisibility(false);
@@ -103,8 +95,9 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
-          dispatch(setPendingList(token, id));          
+        .then((response) => {
+          dispatch(setPendingList(token, id));
+          console.log(response.status)
         });
     }
     setVisibility2(false);    
@@ -190,10 +183,11 @@ function SituationList({ header, list = [], title, token, id }) {
             <label>Novo valor:</label>
             <input placeholder="Novo valor" onChange={handleChange} />
             <ConfirmButton onClick={handleOk2} />
+            {responseStatus === 200 ? <SuccessMsg message='Sucesso!' description='Limite aumentado.'/> : null}
           </div>          
         )}
       </StyledModal2>
-      {responseStatus === 200 ? <SuccessMsg message='Sucesso!' description='Limite aumentado.'/> : null}
+      
     </MainContainer>
   );
 }

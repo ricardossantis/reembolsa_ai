@@ -130,7 +130,6 @@ const Routes = () => {
           link3="/login"
           link4="/contato"
           home="/"
-          logo={Logo}
           homeButton={<Button bckButton="#2CBFD3" />}
         />
         <Switch>

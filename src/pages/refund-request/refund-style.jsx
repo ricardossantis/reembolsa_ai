@@ -34,7 +34,7 @@ const RefoundPage = styled.div`
     height: 640px;
     align-items: center;
     div {
-      width: 237px;
+      width: 300px;
       height: 35px;
     }
   }
@@ -61,7 +61,7 @@ const Title = styled.h1`
   color: #365083;
 
   @media (min-width: 320px) and (max-width: 768px) {
-    width: 236px;
+    width: 300px;
     height: 95px;
   }
 `;

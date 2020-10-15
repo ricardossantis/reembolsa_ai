@@ -1,15 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { useSelector } from "react-redux";
-import { useWindowSize } from "../../components/system-general/header/hookWindowSize.js";
 import api from "../../services/api.js";
 import { motion } from "framer-motion";
 import {
   Box,
   Title,
   BoxCircle,
-  Circle,
   MinTitle,
-  MinCircle,
   CircleContainer
 } from "../../components/styled-balance/balance-style.js";
 import { CircularProgressbar, buildStyles } from 'react-circular-progressbar';
@@ -18,16 +15,7 @@ import 'react-circular-progressbar/dist/styles.css';
 const Saldo = () => {
   const stateAuth = useSelector((state) => state.authentication);
   const id = stateAuth.user.userId;
-  const width = useWindowSize().width;
   const token = stateAuth.auth;
-
-  const value = 0.66;
-
-  const colors = {
-    red: "#F15454",
-    yellow: "#F9BB1D",
-    green: "#2CD3B5",
-  };
 
   const amountLimit = useSelector(
     (state) => state.authentication.user.amountLimit
@@ -76,7 +64,10 @@ const Saldo = () => {
             <MinTitle>Saldo disponível</MinTitle>
             <BoxCircle>
               <CircleContainer>
-                <CircularProgressbar value={renderResult} maxValue={amountLimit} text={`R$ ${renderResult}`} />
+              <CircularProgressbar value={renderResult} maxValue={amountLimit} text={`R$ ${renderResult}`} styles={{
+                background: {
+                  fill: "#2CD3B5",  
+                }}} />
               </CircleContainer>
             </BoxCircle>
           </Box>

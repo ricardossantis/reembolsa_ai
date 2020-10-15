@@ -14,7 +14,6 @@ import {
   MinBoxSVG,
   CompanyInfo,
   MinCompanyInfo,
-  MiniBanner,
 } from "./banner-style.js";
 
 const Banner = (props) => {

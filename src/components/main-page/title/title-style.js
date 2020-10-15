@@ -9,4 +9,5 @@ export const TitleInfo = styled.div`
   justify-content: center;
   align-items: center;
   padding: 1rem;
+
 `;

@@ -12,7 +12,6 @@ function Graph({ type, list }) {
     }, {});
   } else if (type === "custo") {
     let date = new Date();
-    console.log(list)
     let month = (date.getMonth() + 1).toString();
     if (month.length === 1) {
       month = `0${month}`;

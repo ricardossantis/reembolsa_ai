@@ -106,7 +106,6 @@ const LoginPage = () => {
           </ButtonContainer>
           {err !== "" && <StyledError>{err}</StyledError>}
         </DefaultForm>
-        {console.log(Link)}
       </StyledContent>
     </motion.div>
   );

@@ -49,7 +49,7 @@ const Home = () => {
 
         <ClientCard />
         <Title
-          bckTitle="#FFFFFF"
+          bckTitle="#F5F5F5"
           colorTitle="#365083"
           children="Nossa solução para sua empresa: "
         />
@@ -77,7 +77,7 @@ const Home = () => {
           logo4={Philips}
         />
         <Title
-          bckTitle="#FFFFFF"
+          bckTitle="#F5F5F5"
           colorTitle="#365083"
           children="Contrate nossos serviços"
         />

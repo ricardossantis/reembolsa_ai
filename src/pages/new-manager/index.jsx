@@ -11,6 +11,7 @@ import {
   StyledInput,
   StyledInputPassword,
   ContainerButtons,
+  Box,
 } from "../../components/new-manager";
 import {
   ButtonContainer,
@@ -80,6 +81,7 @@ const CadastroGerente = () => {
     >
       <Container>
         <Titulo>Cadastro</Titulo>
+        <Box>
         <StyledForm
           {...layout}
           form={form}
@@ -197,6 +199,7 @@ const CadastroGerente = () => {
             </ButtonContainer>
           </ContainerButtons>
         </StyledForm>
+        </Box>
       </Container>
     </motion.div>
   );

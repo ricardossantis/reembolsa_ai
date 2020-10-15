@@ -51,6 +51,7 @@ function SituationList({ header, list = [], title, token, id }) {
         .then((response) => {
           dispatch(setPendingList(token, id));
           setResponseStatus(response.status)
+          openNotification('bottomRight','Feito.', 'Você aprovou o reembolso!')
         });
     }
     setVisibility(false);
@@ -80,6 +81,7 @@ function SituationList({ header, list = [], title, token, id }) {
         .then((response) => {
           dispatch(setEmployeeList(token, id));
           setResponseStatus(response.status);
+          openNotification('bottomRight','Uau', 'Você alterou o limite do usuário!')
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -95,16 +97,11 @@ function SituationList({ header, list = [], title, token, id }) {
         )
         .then((response) => {
           dispatch(setPendingList(token, id));
+          openNotification('bottomRight','Feito.', 'Você reprovou o reembolso!')
         });
     }
     setVisibility2(false);    
   };
-
-  useEffect(() => {
-    if (responseStatus === 200) {
-      openNotification('bottomRight','Uau', 'Você alterou o limite do usuário!')
-    }
-  }, [handleOk2])
 
   const handleCancel2 = (e) => {
     setVisibility2(false);

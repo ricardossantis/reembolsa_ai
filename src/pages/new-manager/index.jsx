@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import { Form } from "antd";
 import { CloseCircleFilled, CheckCircleFilled } from "@ant-design/icons";
@@ -17,6 +17,7 @@ import {
   ButtonContainer,
   ZButton,
 } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
+import { SuccessMsg, ErrorMsg } from '../../components/feedback-msg/'
 import api from "../../services/api";
 
 const layout = {
@@ -42,12 +43,27 @@ const CadastroGerente = () => {
     company: "",
     accessLevel: 1,
   });
+  const [responseStatus, setResponseStatus] = useState();
 
   const handleSubmit = () => {
     api
       .post(`/register`, { ...manager })
-      .then((res) => console.log(res.data))
-      .catch((error) => console.log(error));
+      .then((res) => {
+        console.log(res.data);
+
+        if (res.status === 201) {
+          setResponseStatus(res.status)
+          setTimeout(() => {history.push('/login')}, 3000)
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+        setResponseStatus(error.response.status)
+
+        if (error.response.status === 400) {
+          setTimeout(() => {history.push('/login')}, 5000)
+        }
+      });
   };
 
   const onFinishFailed = (errorInfo) => {
@@ -58,8 +74,9 @@ const CadastroGerente = () => {
   const onFinish = () => {
     handleSubmit();
     form.resetFields();
-    history.push("/login");
   };
+
+  
 
   return (
     <motion.div
@@ -198,6 +215,8 @@ const CadastroGerente = () => {
               </Form.Item>
             </ButtonContainer>
           </ContainerButtons>
+          {responseStatus === 201 ? <SuccessMsg message='Sucesso!' description='Empresa cadastrada com sucesso. Faça o login para usar o sistema.'/> : null}
+          {responseStatus === 400 ? <ErrorMsg message='Erro!' description='Parece que a empresa já está cadastrada. Você será redirecionado para o login!'/> : null}
         </StyledForm>
         </Box>
       </Container>

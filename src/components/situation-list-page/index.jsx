@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   MainContainer,
   Header,
@@ -15,6 +15,8 @@ import {ContentContainer, ButtonContainer} from '../system-general/modal-buttons
 import ModalButtons from '../system-general/modal-buttons/';
 import AproveButtons from '../system-general/aprove-buttons';
 import SituationCard from "../situation-card";
+import { SuccessMsg } from '../../components/feedback-msg/'
+import { openNotification, Context, contextHolder } from '../../components/feedback-msg/notification'
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
@@ -25,6 +27,7 @@ function SituationList({ header, list = [], title, token, id }) {
   const [visible2, setVisibility2] = useState(false);
   const [modalItem, setModalItem] = useState();
   const [input, setInput] = useState();
+  const [responseStatus, setResponseStatus] = useState();
 
   const showModal = (item) => {
     setModalItem(item);
@@ -47,8 +50,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          setResponseStatus(response.status)
+          console.log(response.status)
         });
     }
     setVisibility(false);
@@ -75,8 +80,10 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setEmployeeList(token, id));
+          setResponseStatus(response.status);
+          console.log(responseStatus)
         });
     }
     if (header === "Pedidos Pendentes") {
@@ -90,11 +97,12 @@ function SituationList({ header, list = [], title, token, id }) {
             },
           }
         )
-        .then(() => {
+        .then((response) => {
           dispatch(setPendingList(token, id));
+          console.log(response.status)
         });
     }
-    setVisibility2(false);
+    setVisibility2(false);    
   };
 
   const handleCancel2 = (e) => {
@@ -184,6 +192,7 @@ function SituationList({ header, list = [], title, token, id }) {
           </ContentContainer>
         )}
       </StyledModal2>
+      
     </MainContainer>
   );
 }

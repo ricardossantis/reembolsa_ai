@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useSelector } from "react-redux";
 import { Form, Input } from "antd";
 import {
@@ -7,6 +7,7 @@ import {
   FormBox,
   LButton,
 } from "../../components/new-employee/styled-post";
+import {SuccessMsg, ErrorMsg, Succeed, ThrowError} from '../../components/feedback-msg/'
 import postRequest from "../../components/new-employee/post-resquest";
 import { CheckCircleFilled } from "@ant-design/icons";
 import { ZButton } from "../../components/system-general/system-button/ant-button/ant-button-style.js";
@@ -33,7 +34,9 @@ const formItemLayout = {
 };
 
 const NewUser = () => {
+  const [status, setStatus] = useState()
   const [form] = Form.useForm();
+
 
   const employerState = useSelector((state) => state.authentication);
   const employerId = employerState.user.id;
@@ -41,7 +44,8 @@ const NewUser = () => {
   const token = employerState.auth;
 
   const onFinish = (values) => {
-    postRequest(token, values, employerId, employerName);
+    postRequest(token, values, employerId, employerName, setStatus);
+    form.resetFields();
   };
 
   return (
@@ -195,6 +199,8 @@ const NewUser = () => {
               }
             />
           </LButton>
+          {status === 201 ? <SuccessMsg message='Pronto.' description='Novo usuário criado com sucesso!' /> : null}
+          {status === 400 ? <ErrorMsg message='Erro!' description='Usuário já está cadastrado na base.'/> : null}
         </ContainerForm>
       </FormBox>
     </motion.div>

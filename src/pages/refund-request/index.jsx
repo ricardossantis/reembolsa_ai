@@ -175,7 +175,7 @@ const RefundRequest = () => {
             >
               <InputNumber
                 max={amountLimit}
-                min={0}
+                min={1}
                 value={amount.value}
                 onChange={onValueChange}
                 placeholder="Insira um valor de reembolso"

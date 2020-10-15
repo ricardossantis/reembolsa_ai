@@ -18,7 +18,6 @@ import SituationCard from "../situation-card";
 import api from "../../services/api.js";
 import { useDispatch } from "react-redux";
 import { setEmployeeList, setPendingList } from "../../redux/actions/list";
-import Modal from "antd/lib/modal/Modal";
 
 function SituationList({ header, list = [], title, token, id }) {
   const dispatch = useDispatch();
@@ -130,6 +129,8 @@ function SituationList({ header, list = [], title, token, id }) {
           modalItem &&
           modalItem.category !== undefined && (
             <ContentContainer>
+              <p>Usuário: {modalItem.userName}</p>
+              <p>Nº de Referência: {modalItem.id}</p>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>
@@ -143,6 +144,7 @@ function SituationList({ header, list = [], title, token, id }) {
           modalItem &&
           modalItem.category !== undefined && (
             <ContentContainer>
+              <p>Usuário: {modalItem.userName}</p>
               <p>Categoria: {modalItem.category}</p>
               <p>Valor: {modalItem.value}</p>
               <p>Data: {modalItem.date}</p>

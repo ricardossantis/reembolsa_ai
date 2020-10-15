@@ -10,20 +10,30 @@ function Graph({ type, list }) {
       acc[status] ? (acc[status] += 1) : (acc[status] = 1);
       return acc;
     }, {});
+    const ordered = {};
+    Object.keys(dataFromList)
+      .sort()
+      .forEach((key) => {
+        ordered[key] = dataFromList[key];
+      });
+    dataFromList = ordered;
   } else if (type === "custo") {
     let date = new Date();
     let month = (date.getMonth() + 1).toString();
     if (month.length === 1) {
       month = `0${month}`;
     }
-    dataFromList = list.filter((item) => item.date.toString().substring(5, 7) === month).filter(item => item.status === "approved").reduce((acc, { category, value }) => {
-      acc[category] ? (acc[category] += value) : (acc[category] = value);
-      return acc;
-    }, {});
+    dataFromList = list
+      .filter((item) => item.date.toString().substring(5, 7) === month)
+      .filter((item) => item.status === "approved")
+      .reduce((acc, { category, value }) => {
+        acc[category] ? (acc[category] += value) : (acc[category] = value);
+        return acc;
+      }, {});
   }
 
   const data = {
-    labels: Object.keys(dataFromList).sort(),
+    labels: Object.keys(dataFromList),
     datasets: [
       {
         data: Object.values(dataFromList),

@@ -10,12 +10,11 @@ function Message({ type, list }) {
     let approved = list.filter((item) => item.status === "approved").length;
     let pending = list.filter((item) => item.status === "pending").length;
     let reproved = list.filter((item) => item.status === "reproved").length;
-    if ((pending / approved >= 0, 5)) {
+    if (pending / approved >= 0.5) {
       message = "Atenção: Reembolsos precisam ser analisados.";
       alertType = "warning";
-    } else if ((reproved / approved >= 0, 75)) {
-      message =
-        "Urgente: Verificar os documentos fiscais junto aos colaboradores.";
+    } else if (reproved / approved >= 0.75) {
+      message = "Urgente: Indice de reprovação alto!";
       alertType = "error";
     } else {
       message = "Tudo certo por aqui. Mandou bem!";
@@ -29,7 +28,7 @@ function Message({ type, list }) {
     }
     dataFromList = list
       .filter((item) => item.date.toString().substring(5, 7) === month)
-      .filter(item => item.status === "approved")
+      .filter((item) => item.status === "approved")
       .reduce((acc, { category, value }) => {
         acc[category] ? (acc[category] += value) : (acc[category] = value);
         return acc;

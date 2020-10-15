@@ -100,7 +100,6 @@ const Routes = () => {
               link2="/saldo"
               link3="/historicocolaborador"
               link4="/"
-              logo={Logo}
             />
             <Switch>
               <Route path="/novopedido">
@@ -131,6 +130,7 @@ const Routes = () => {
           link3="/login"
           link4="/contato"
           home="/"
+          logo={Logo}
           homeButton={<Button bckButton="#2CBFD3" />}
         />
         <Switch>

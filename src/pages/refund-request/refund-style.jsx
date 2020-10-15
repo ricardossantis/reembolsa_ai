@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { Form } from "antd";
+import { Form, InputNumber } from "antd";
 
 const FormContainer = styled.div`
   background: #f5f5f5;
@@ -25,10 +25,6 @@ const RefoundPage = styled.div`
   margin: 0rem auto;
   background: #f5f5f5;
 
-  div {
-    width: 721px;
-  }
-
   @media (min-width: 320px) and (max-width: 768px) {
     width: 237px;
     height: 640px;
@@ -42,8 +38,15 @@ const RefoundPage = styled.div`
 
 const NewForm = styled(Form)`
   margin-top: 3rem;
+  width:721px;
 `;
-
+const NewFormItem = styled(NewForm.Item)`
+margin-top: 3rem;
+width:721px;
+`;
+const DefaultInputNumber = styled(InputNumber)`
+  width:100%;
+`
 const Title = styled.h1`
   width: 719px;
   height: 80px;
@@ -116,4 +119,4 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export { RefoundPage, FormContainer, Title, SubTitle, NewForm, ButtonNo, ButtonYes, ButtonContainer };
+export { RefoundPage, FormContainer, Title, SubTitle, NewForm, ButtonNo, ButtonYes, ButtonContainer, DefaultInputNumber,NewFormItem };

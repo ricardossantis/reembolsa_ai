@@ -38,18 +38,26 @@ const RefoundPage = styled.div`
 
 const NewForm = styled(Form)`
   margin-top: 3rem;
-  width:721px;
+  width: 721px;
+  max-width:100vw;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 const NewFormItem = styled(NewForm.Item)`
-margin-top: 3rem;
-width:721px;
+  width: 721px;
+  max-width:100vw;
+  margin-bottom:20px;
+  text-align: center;
 `;
 const DefaultInputNumber = styled(InputNumber)`
-  width:100%;
-`
+  width: 100%;
+`;
 const Title = styled.h1`
   width: 719px;
   height: 80px;
+  max-width:100vw;
   margin-bottom: 2rem;
   display: flex;
   flex-direction: column;
@@ -60,7 +68,6 @@ const Title = styled.h1`
   display: flex;
   align-items: center;
   text-align: center;
-
   color: #365083;
 
   @media (min-width: 320px) and (max-width: 768px) {
@@ -119,4 +126,15 @@ const ButtonContainer = styled.div`
   }
 `;
 
-export { RefoundPage, FormContainer, Title, SubTitle, NewForm, ButtonNo, ButtonYes, ButtonContainer, DefaultInputNumber,NewFormItem };
+export {
+  RefoundPage,
+  FormContainer,
+  Title,
+  SubTitle,
+  NewForm,
+  ButtonNo,
+  ButtonYes,
+  ButtonContainer,
+  DefaultInputNumber,
+  NewFormItem,
+};
